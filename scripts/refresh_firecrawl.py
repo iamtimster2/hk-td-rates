@@ -36,7 +36,7 @@ import json, os, pathlib, sys, time, re
 from typing import Any
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SKILL_ROOT = ROOT / "hk-td-rates"
+SKILL_ROOT = ROOT
 SNAP_PATH = SKILL_ROOT / "data" / "latest.json"
 HIST_DIR  = SKILL_ROOT / "data" / "history"
 HIST_DIR.mkdir(parents=True, exist_ok=True)
@@ -192,12 +192,12 @@ def main():
     if FirecrawlApp is None:
         print("[refresh_firecrawl] firecrawl-py not installed.")
         print("[refresh_firecrawl] Falling back to local Playwright path (refresh_rates.py).")
-        os.execv(sys.executable, [sys.executable, str(ROOT / "verification" / "refresh_rates.py")])
+        os.execv(sys.executable, [sys.executable, str(ROOT / "scripts" / "refresh_rates.py")])
 
     if not API_KEY:
         print("[refresh_firecrawl] FIRECRAWL_API_KEY env var not set.")
         print("[refresh_firecrawl] Falling back to local Playwright path (refresh_rates.py).")
-        os.execv(sys.executable, [sys.executable, str(ROOT / "verification" / "refresh_rates.py")])
+        os.execv(sys.executable, [sys.executable, str(ROOT / "scripts" / "refresh_rates.py")])
 
     app = FirecrawlApp(api_key=API_KEY)
 
@@ -283,7 +283,7 @@ def main():
         "direct_calls":    direct_diag,
         "aggregator_keys": len(agg_indexed),
     }
-    (ROOT / "verification" / "firecrawl_report.json").write_text(
+    (ROOT / "scripts" / "firecrawl_report.json").write_text(
         json.dumps(rpt, indent=2, default=str))
 
     print(f"[refresh_firecrawl] done in {rpt['duration_sec']}s — "

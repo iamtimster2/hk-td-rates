@@ -29,7 +29,7 @@ import json, re, time, pathlib, sys, subprocess
 from playwright.sync_api import sync_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SNAP = ROOT / "hk-td-rates" / "data" / "latest.json"
+SNAP = ROOT / "data" / "latest.json"
 
 UA = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
       "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120 Safari/537.36")
@@ -97,7 +97,7 @@ def scrape_syfe_direct(browser):
 # ==============================================================
 # 2. StashAway aggregator (reused from verify_pipelines.py)
 # ==============================================================
-sys.path.insert(0, str(ROOT / "verification"))
+sys.path.insert(0, str(ROOT / "scripts"))
 from verify_pipelines import parse_stashaway_text, STASHAWAY_NAME_MAP
 
 def scrape_stashaway(browser, url):
@@ -136,7 +136,7 @@ def main():
     # to render when run inline alongside other navigations.
     print("[refresh] Syfe direct (subprocess, incognito) ...", end=" ", flush=True)
     syfe_proc = subprocess.run(
-        [sys.executable, str(ROOT / "verification" / "scrape_syfe_live.py")],
+        [sys.executable, str(ROOT / "scripts" / "scrape_syfe_live.py")],
         capture_output=True, text=True, timeout=40,
     )
     try:
@@ -257,7 +257,7 @@ def main():
     SNAP.write_text(json.dumps(snap, indent=2))
 
     # Drift report
-    drift_path = ROOT / "verification" / "drift_report.json"
+    drift_path = ROOT / "scripts" / "drift_report.json"
     drift_path.write_text(json.dumps({
         "ran_at": today_iso,
         "syfe_direct": syfe_direct,

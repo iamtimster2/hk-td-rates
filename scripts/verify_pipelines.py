@@ -18,7 +18,7 @@ import json, re, sys, time, pathlib
 from playwright.sync_api import sync_playwright
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-SNAP_PATH = ROOT / "hk-td-rates" / "data" / "latest.json"
+SNAP_PATH = ROOT / "data" / "latest.json"
 
 # ============================================================
 # Provider name → our provider_id mapping (per source)
@@ -356,7 +356,7 @@ def main():
         "ok_sample":      [r for r in results if r["status"] == "ok"][:8],
     }
 
-    (ROOT / "verification" / "pipeline_report.json").write_text(
+    (ROOT / "scripts" / "pipeline_report.json").write_text(
         json.dumps(report, indent=2, default=str))
 
     # Print concise summary
