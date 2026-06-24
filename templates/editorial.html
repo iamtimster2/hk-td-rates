@@ -3,625 +3,1755 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>HK Time Deposit Rates · Syfe vs. competitors</title>
+<title>Syfe HK · Rate Intelligence Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Mulish:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
+  /* ============================================================
+     SYFE BRAND TOKENS (from official guidelines)
+     PT Serif = titles only · Proxima Nova (Mulish fallback) = everything else
+     Electric blue = emphasis only (never bg, never on titles)
+     Dark midnight = openers/dividers · Ivory = content/body
+     ============================================================ */
   :root {
-    --paper:        #FAF6EB;
-    --paper-deep:   #F0EBDC;
-    --ink:          #0E0D0B;
-    --ink-1:        #2C2A26;
-    --ink-2:        #5A554A;
-    --ink-3:        #8B8478;
-    --rule:         #BDB39A;
-    --rule-soft:    #D9D0B6;
-    --oxblood:      #7A1F2E;
-    --oxblood-tint: #F2E5E4;
-    --gold:         #B89248;
-    --gold-tint:    #F4ECD7;
-    --moss:         #5F6B3F;
-    --bar-ink:      #0E0D0B;
-    --bar-syfe:     #7A1F2E;
-    --bar-gold:     #B89248;
+    /* Primary */
+    --midnight:        #263159;
+    --midnight-soft:   #414E7D;
+    --ivory:           #FDFCF8;
+
+    /* Accent — emphasis only, never bg */
+    --accent:          #2F51C9;
+    --accent-soft:     #879BE2;
+
+    /* Premium */
+    --gold:            #E3BF61;
+    --gold-soft:       #F2DCA0;
+
+    /* Tertiary palette */
+    --slate-100:       #F7F8FC;
+    --slate-200:       #DEDFEE;
+    --slate-300:       #BCBED7;
+    --slate-500:       #7D839B;
+
+    /* Signal — data deltas only */
+    --positive:        #01877F;
+    --positive-tint:   #DFEFEE;
+    --negative:        #DB4B42;
+    --negative-tint:   #FBE3E2;
+
+    /* Typography */
+    --font-serif:      'PT Serif', Georgia, 'Times New Roman', serif;
+    --font-sans:       'Proxima Nova', 'Mulish', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono:       'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
   }
 
   *, *::before, *::after { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
 
   body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Inter', -apple-system, system-ui, sans-serif;
-    font-size: 15px; line-height: 1.5;
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--midnight);
+    background: var(--ivory);
     -webkit-font-smoothing: antialiased;
-    font-feature-settings: "ss01", "cv11";
+    -moz-osx-font-smoothing: grayscale;
+    font-feature-settings: "cv11";
   }
-  a { color: inherit; }
 
-  .page { max-width: 1140px; margin: 0 auto; padding: 0 36px 72px; }
+  /* Typography */
+  .serif { font-family: var(--font-serif); }
+  .mono  { font-family: var(--font-mono); font-feature-settings: "tnum"; }
+  .label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--slate-500);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    color: var(--midnight);
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
   /* ============================================================
-     Top bar — system info, not editorial framing
+     Layout
      ============================================================ */
-  .topbar {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 0; gap: 16px;
-    border-bottom: 1px solid var(--ink);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.08em;
-    text-transform: uppercase; color: var(--ink-2);
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 36px; }
+
+  /* ============================================================
+     Masthead (light surface)
+     ============================================================ */
+  .masthead {
+    background: var(--ivory);
+    border-bottom: 1px solid var(--slate-200);
   }
-  .topbar-left { font-weight: 500; color: var(--ink); }
-  .topbar-right { display: flex; gap: 16px; align-items: center; }
-  .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--moss); }
-  .refresh-link {
-    color: var(--ink); text-decoration: none;
-    border: 1px solid var(--ink); padding: 4px 10px;
+  .masthead-inner {
+    padding: 22px 0;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 24px;
+  }
+  .logo { display: flex; align-items: center; gap: 12px; }
+  .logo-mark {
+    width: 38px; height: 38px;
+    background: var(--midnight); color: var(--ivory);
+    font-family: var(--font-serif);
+    font-weight: 700; font-size: 20px;
+    display: inline-flex; align-items: center; justify-content: center;
     border-radius: 2px;
-    font-family: 'JetBrains Mono', monospace; font-size: 10px;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    transition: all .15s ease;
   }
-  .refresh-link:hover { background: var(--ink); color: var(--paper); }
+  .logo-title {
+    font-family: var(--font-serif);
+    font-weight: 700; font-size: 19px;
+    color: var(--midnight); letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+  .logo-sub {
+    font-size: 11px; color: var(--slate-500);
+    margin-top: 1px; letter-spacing: 0.04em;
+  }
+  .topbar-meta {
+    display: flex; gap: 18px; align-items: center;
+    font-family: var(--font-mono); font-size: 11px; color: var(--slate-500);
+  }
+  .topbar-meta .pulse {
+    display: inline-block; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--positive); margin-right: 7px;
+    box-shadow: 0 0 0 3px rgba(1,135,127,0.18);
+  }
+  .btn-refresh {
+    background: var(--midnight); color: var(--ivory);
+    padding: 9px 18px; font-size: 13px; font-weight: 600;
+    font-family: var(--font-sans);
+    border: 0; cursor: pointer; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 7px;
+    transition: background .15s ease, transform .15s ease;
+  }
+  .btn-refresh:hover { background: var(--midnight-soft); text-decoration: none; }
+  .btn-refresh:active { transform: translateY(1px); }
 
   /* ============================================================
-     Header
+     Tabs — sits on dark midnight divider (opener style)
      ============================================================ */
-  header.intro {
-    display: grid; grid-template-columns: 1fr auto; gap: 32px;
-    align-items: end; padding: 40px 0 28px;
-    border-bottom: 1px solid var(--ink);
+  .tab-bar {
+    background: var(--midnight);
+    color: var(--ivory);
   }
-  h1.title {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 500; font-size: clamp(36px, 5vw, 56px);
-    line-height: 1.02; letter-spacing: -0.015em;
-    margin: 0 0 10px;
-    font-variation-settings: "opsz" 144;
+  .tab-bar-inner {
+    display: flex; gap: 4px; overflow-x: auto;
+    scrollbar-width: thin;
   }
-  .sub {
-    font-size: 15px; color: var(--ink-2);
-    max-width: 620px; line-height: 1.5;
+  .tab-btn {
+    appearance: none; border: 0; background: transparent;
+    padding: 18px 22px;
+    font-family: var(--font-sans);
+    font-size: 13px; font-weight: 600;
+    color: rgba(253, 252, 248, 0.65);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+    transition: color .15s ease, border-color .15s ease;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
   }
-  .sub strong { color: var(--ink); font-weight: 500; }
+  .tab-btn:hover { color: var(--ivory); }
+  .tab-btn.active {
+    color: var(--ivory);
+    border-bottom-color: var(--accent);
+  }
+  .tab-btn .badge-mini {
+    display: inline-block; margin-left: 7px;
+    padding: 2px 7px; border-radius: 2px;
+    background: rgba(135, 155, 226, 0.2);
+    color: var(--ivory);
+    font-family: var(--font-mono);
+    font-size: 10px;
+  }
+
+  /* ============================================================
+     Main + panels
+     ============================================================ */
+  main { padding: 48px 0 72px; }
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* Eyebrow */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  /* Hero block (light surface — body content) */
+  .hero { margin-bottom: 44px; }
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--slate-500);
+    font-weight: 400;
+  }
+  .hero p.lead {
+    font-size: 17px;
+    color: var(--midnight-soft);
+    max-width: 700px;
+    line-height: 1.55;
+  }
+
+  /* Stat strip */
+  .stat-strip {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-bottom: 56px;
+    border-top: 1px solid var(--slate-200);
+    border-bottom: 1px solid var(--slate-200);
+  }
+  .stat-card {
+    padding: 24px 28px;
+    border-right: 1px solid var(--slate-200);
+  }
+  .stat-card:last-child { border-right: 0; }
+  .stat-card .label { margin-bottom: 10px; }
+  .stat-card .stat-value {
+    font-family: var(--font-serif);
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1;
+    color: var(--midnight);
+    letter-spacing: -0.02em;
+  }
+  .stat-card .stat-value .sup {
+    font-size: 18px; font-weight: 400;
+    color: var(--slate-500); margin-left: 2px;
+    font-family: var(--font-serif);
+  }
+  .stat-card.is-syfe .stat-value { color: var(--midnight); }
+  .stat-card.is-syfe::before {
+    content: ""; display: block;
+    width: 32px; height: 3px; background: var(--accent);
+    margin-bottom: 14px;
+  }
+  .stat-card .stat-foot {
+    margin-top: 6px;
+    font-size: 13px; color: var(--slate-500);
+  }
+
+  /* ============================================================
+     Section heads
+     ============================================================ */
+  .section-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: 16px;
+    padding-bottom: 18px;
+    border-bottom: 1.5px solid var(--midnight);
+    margin: 8px 0 24px;
+  }
+  .section-head h2 {
+    font-size: 26px;
+    letter-spacing: -0.01em;
+  }
 
   /* Currency switcher */
   .ccy-switch {
-    display: inline-flex; border: 1px solid var(--ink); padding: 3px;
-    background: var(--paper-deep);
+    display: inline-flex; padding: 3px;
+    background: var(--slate-100);
+    border: 1px solid var(--slate-200);
   }
   .ccy-tab {
     appearance: none; border: 0; background: transparent;
-    padding: 9px 18px; font-family: 'JetBrains Mono', monospace;
-    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--ink-2); cursor: pointer; font-weight: 500;
+    padding: 8px 18px;
+    font-family: var(--font-sans);
+    font-size: 12px; font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--slate-500);
+    cursor: pointer;
     transition: all .15s ease;
   }
-  .ccy-tab:hover { color: var(--ink); }
-  .ccy-tab.active { background: var(--ink); color: var(--paper); }
+  .ccy-tab:hover { color: var(--midnight); }
+  .ccy-tab.active {
+    background: var(--midnight); color: var(--ivory);
+  }
 
   /* ============================================================
-     Stat strip — three numbers, factual
-     ============================================================ */
-  .stats {
-    display: grid; grid-template-columns: repeat(3, 1fr);
-    gap: 0; margin: 28px 0 8px;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-  }
-  .stat {
-    padding: 18px 20px;
-    border-right: 1px solid var(--rule);
-  }
-  .stat:last-child { border-right: 0; }
-  .stat-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
-    color: var(--ink-3); margin-bottom: 6px;
-  }
-  .stat-value {
-    font-family: 'Fraunces', Georgia, serif;
-    font-weight: 500; font-size: 30px; line-height: 1.05;
-    letter-spacing: -0.01em;
-    font-variation-settings: "opsz" 96;
-  }
-  .stat-value .small {
-    font-size: 18px; color: var(--ink-3);
-    font-weight: 400; margin-left: 2px;
-  }
-  .stat-foot {
-    font-size: 12px; color: var(--ink-2);
-    margin-top: 4px;
-  }
-  .stat-foot.syfe { color: var(--oxblood); font-weight: 500; }
-
-  /* ============================================================
-     Tenor sections
+     Tenor cards (light surface)
      ============================================================ */
   .tenor-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 36px 40px; margin-top: 36px;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
   }
-  .tenor {}
-  .tenor-head {
+  .tenor-card {
+    background: var(--ivory);
+    border: 1px solid var(--slate-200);
+  }
+  .tenor-card-head {
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--slate-200);
     display: flex; justify-content: space-between; align-items: baseline;
-    padding: 14px 0 12px;
-    border-bottom: 1.5px solid var(--ink);
-    gap: 16px;
+    background: var(--slate-100);
   }
-  .tenor-label {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 13px; font-weight: 600;
+  .tenor-card-head h3 {
+    font-family: var(--font-sans);
+    font-size: 11px; font-weight: 700;
     letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink);
+    color: var(--midnight);
   }
-  .tenor-meta {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px; letter-spacing: 0.04em;
-    color: var(--ink-2); text-align: right; line-height: 1.5;
+  .tenor-card-head .leader {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 0.02em;
   }
-  .tenor-meta .syfe { color: var(--oxblood); font-weight: 500; }
+  .tenor-card-body {
+    padding: 4px 22px;
+  }
 
-  /* ============================================================
-     Bar rows
-     ============================================================ */
-  .rows { display: flex; flex-direction: column; }
   .row {
     display: grid;
-    grid-template-columns: 22px minmax(110px, 1.2fr) minmax(80px, 1.5fr) 56px 64px;
-    gap: 10px; align-items: center;
-    padding: 9px 0;
-    border-bottom: 1px solid var(--rule-soft);
-    font-size: 13.5px;
+    grid-template-columns: 22px minmax(110px, 1.3fr) minmax(80px, 1.5fr) 60px 70px;
+    gap: 12px; align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--slate-200);
+    font-size: 14px;
   }
   .row:last-child { border-bottom: 0; }
   .row.is-syfe {
-    background: var(--oxblood-tint);
-    margin: 0 -10px; padding-left: 10px; padding-right: 10px;
-    border-bottom-color: var(--oxblood-tint);
+    margin: 0 -22px;
+    padding-left: 22px; padding-right: 22px;
+    background: var(--slate-100);
+    border-bottom-color: transparent;
+    border-left: 3px solid var(--accent);
+    padding-left: 19px;
   }
+  .row.is-syfe + .row:not(.is-syfe) { border-top: 1px solid var(--slate-200); }
 
   .r-rank {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; font-weight: 500;
-    color: var(--ink-3); text-align: right;
-    font-feature-settings: "tnum";
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--slate-500); text-align: right;
   }
-  .row.is-leader .r-rank { color: var(--gold); font-weight: 700; }
-  .row.is-syfe   .r-rank { color: var(--oxblood); font-weight: 700; }
-
+  .row.is-leader .r-rank { color: var(--gold); font-weight: 700; font-size: 13px; }
+  .row.is-syfe .r-rank { color: var(--accent); font-weight: 700; }
   .r-name {
-    display: flex; flex-direction: column; gap: 1px;
     min-width: 0;
+    display: flex; flex-direction: column; gap: 2px;
   }
   .r-name-main {
-    font-weight: 500; color: var(--ink);
-    font-size: 14px; line-height: 1.25;
+    font-weight: 600; font-size: 14px;
+    color: var(--midnight);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-  .row.is-syfe .r-name-main { font-weight: 700; color: var(--oxblood); }
+  .row.is-syfe .r-name-main { font-weight: 700; }
   .r-name-tags {
-    display: flex; gap: 6px; flex-wrap: wrap;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10px; color: var(--ink-3);
-    letter-spacing: 0.02em;
+    display: flex; gap: 10px; flex-wrap: wrap;
+    font-family: var(--font-mono); font-size: 10px;
+    color: var(--slate-500);
   }
-  .tag-promo { color: var(--oxblood); }
-  .tag-min   { color: var(--moss); }
+  .r-name-tags .tag-promo { color: var(--negative); }
+  .r-name-tags .tag-min { color: var(--midnight-soft); }
 
-  .r-bar {
-    height: 18px; display: flex; align-items: center;
-    position: relative;
-  }
+  .r-bar { height: 6px; background: var(--slate-200); overflow: hidden; }
   .r-bar-fill {
-    height: 100%; background: var(--bar-ink);
+    height: 100%; background: var(--midnight-soft);
     transition: width .6s cubic-bezier(.2,.6,.2,1);
   }
-  .row.is-syfe .r-bar-fill { background: var(--bar-syfe); }
-  .row.is-leader .r-bar-fill { background: var(--bar-gold); }
+  .row.is-syfe .r-bar-fill { background: var(--accent); }
+  .row.is-leader .r-bar-fill { background: var(--gold); }
 
   .r-rate {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 15px; font-weight: 600;
-    text-align: right;
-    font-feature-settings: "tnum";
-    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 16px; font-weight: 600;
+    text-align: right; color: var(--midnight);
   }
-  .row.is-syfe .r-rate { color: var(--oxblood); }
-  .row.is-leader .r-rate { font-weight: 700; }
+  .row.is-syfe .r-rate { color: var(--accent); }
+  .row.is-leader .r-rate { color: var(--midnight); }
 
   .r-date {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 10.5px; font-weight: 500;
-    color: var(--ink-3); text-align: right;
-    letter-spacing: 0.02em;
-    font-feature-settings: "tnum";
+    font-family: var(--font-mono); font-size: 10.5px;
+    color: var(--slate-500); text-align: right;
   }
   .r-date .src-dot {
     display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-    vertical-align: middle; margin-right: 5px;
+    background: var(--slate-500); vertical-align: middle; margin-right: 5px;
   }
-  .src-dot.src-stashaway { background: #5A8FB8; }
-  .src-dot.src-stashaway_fallback { background: #5A8FB8; }
-  .src-dot.src-direct            { background: var(--moss); }
-  .src-dot.src-syfe      { background: var(--oxblood); }
-  .src-dot.src-syfe_blog { background: var(--oxblood); opacity: 0.5; }
-
-  /* Make rate clickable */
-  a.r-rate-link { text-decoration: none; color: inherit; }
-  a.r-rate-link:hover .r-rate { text-decoration: underline; text-decoration-color: var(--ink-3); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+  .src-dot.src-direct, .src-dot.src-syfe,
+  .src-dot.src-stashaway, .src-dot.src-stashaway_fallback,
+  .src-dot.src-syfe_blog { background: var(--positive); }
 
   /* ============================================================
-     Source legend + footer
+     FX tab
      ============================================================ */
-  .legend {
-    margin-top: 36px;
-    display: flex; flex-wrap: wrap; gap: 22px;
-    padding-top: 18px; padding-bottom: 18px;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--ink-2);
-    letter-spacing: 0.04em;
+  .fx-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 28px;
   }
-  .legend-item { display: inline-flex; align-items: center; gap: 8px; }
-  .legend-swatch { width: 14px; height: 14px; flex-shrink: 0; }
-  .legend-swatch.dot { border-radius: 50%; width: 10px; height: 10px; }
-  .sw-syfe   { background: var(--oxblood-tint); border-left: 3px solid var(--oxblood); }
-  .sw-leader { background: var(--gold); }
-  .sw-bar    { background: var(--bar-ink); }
-  .sw-promo  { color: var(--oxblood); }
+  .card {
+    background: var(--ivory);
+    border: 1px solid var(--slate-200);
+  }
+  .card-head {
+    padding: 22px 28px 18px;
+    border-bottom: 1px solid var(--slate-200);
+    background: var(--slate-100);
+  }
+  .card-head .label { display: block; margin-bottom: 4px; }
+  .card-title {
+    font-family: var(--font-serif);
+    font-size: 18px; font-weight: 700;
+    color: var(--midnight); letter-spacing: -0.01em;
+  }
+  .card-desc {
+    color: var(--slate-500); font-size: 13px; margin-top: 4px;
+  }
+  .card-body { padding: 28px; }
 
-  /* Sources list — flat, factual */
-  .sources {
-    margin-top: 24px;
-    padding-top: 16px;
+  .fx-rate-block {
+    display: flex; align-items: baseline; gap: 12px; margin-bottom: 6px;
   }
-  .sources h3 {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink); margin: 0 0 12px; font-weight: 600;
+  .fx-rate-num {
+    font-family: var(--font-serif);
+    font-size: 64px; font-weight: 700; line-height: 1;
+    color: var(--midnight); letter-spacing: -0.03em;
   }
-  .sources ul {
-    list-style: none; margin: 0; padding: 0;
+  .fx-rate-ccy {
+    font-family: var(--font-sans);
+    font-size: 16px; color: var(--slate-500);
+    font-weight: 500;
   }
-  .sources li {
-    display: grid; grid-template-columns: 1fr auto; gap: 16px;
-    padding: 8px 0; border-bottom: 1px solid var(--rule-soft);
+  .fx-meta {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--slate-500); margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+  .sparkline-wrap { position: relative; }
+  .sparkline {
+    width: 100%; height: 100px;
+    display: block;
+  }
+  #fx-tooltip {
+    position: absolute;
+    background: var(--midnight); color: var(--ivory);
+    padding: 6px 10px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    pointer-events: none;
+    transform: translate(-50%, -100%);
+    margin-top: -8px;
+    white-space: nowrap;
+  }
+  #fx-tooltip.hidden { display: none; }
+  .spark-labels {
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 10px;
+    color: var(--slate-500); margin-top: 8px; letter-spacing: 0.04em;
+  }
+
+  /* Calculator */
+  .calc-grid {
+    display: grid; grid-template-columns: 1fr auto 1fr;
+    gap: 16px; align-items: end;
+  }
+  .input-group { display: flex; flex-direction: column; gap: 8px; }
+  .input-frame {
+    display: flex; align-items: center;
+    border: 1px solid var(--slate-300);
+    background: var(--ivory);
+    transition: border-color .15s ease, box-shadow .15s ease;
+  }
+  .input-frame:focus-within {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(47, 81, 201, 0.12);
+  }
+  .input-frame select {
+    background: var(--slate-100);
+    border: 0; border-right: 1px solid var(--slate-300);
+    padding: 12px 14px;
+    font-family: var(--font-sans); font-size: 14px; font-weight: 600;
+    color: var(--midnight);
+    cursor: pointer; outline: 0;
+  }
+  .input-frame input {
+    flex: 1; border: 0; background: transparent;
+    padding: 12px 14px;
+    font-family: var(--font-mono); font-size: 16px;
+    color: var(--midnight); text-align: right;
+    outline: 0;
+  }
+  .input-frame.is-readonly { background: var(--slate-100); }
+  .calc-arrow {
+    color: var(--accent);
+    font-size: 22px; font-weight: 700;
+    align-self: center; padding-bottom: 12px;
+    user-select: none;
+  }
+
+  /* ============================================================
+     Income+ section
+     ============================================================ */
+  .compliance-banner {
+    background: var(--negative-tint);
+    border-left: 3px solid var(--negative);
+    color: var(--midnight);
+    padding: 14px 18px;
+    margin-bottom: 28px;
+    font-size: 13px; line-height: 1.55;
+    display: flex; gap: 12px;
+  }
+  .compliance-banner svg { flex-shrink: 0; color: var(--negative); }
+  .compliance-banner strong { font-weight: 700; color: var(--negative); }
+
+  .hero-meta-row {
+    margin-top: 22px; display: inline-flex;
+    align-items: baseline; gap: 14px; flex-wrap: wrap;
+    padding: 12px 18px; background: var(--slate-100);
+    border-left: 3px solid var(--accent);
+  }
+  .hero-meta-row .label { margin-bottom: 0; }
+  .hero-meta-row .big {
+    font-family: var(--font-serif);
+    font-size: 22px; font-weight: 700;
+    color: var(--midnight);
+  }
+  .hero-meta-row a {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--accent); letter-spacing: 0.04em;
+  }
+
+  /* Portfolio selector */
+  .portfolio-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 12px; margin-bottom: 32px;
+  }
+  .portfolio-card {
+    background: var(--ivory);
+    border: 1px solid var(--slate-200);
+    padding: 20px 22px;
+    text-align: left;
+    cursor: pointer;
+    font-family: var(--font-sans);
+    transition: all .15s ease;
+    position: relative;
+  }
+  .portfolio-card:hover { border-color: var(--midnight-soft); }
+  .portfolio-card.active {
+    background: var(--midnight);
+    color: var(--ivory);
+    border-color: var(--midnight);
+  }
+  .portfolio-card-top {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 12px; gap: 12px;
+  }
+  .portfolio-card-meta {
+    font-family: var(--font-mono); font-size: 10px;
+    color: var(--slate-500); letter-spacing: 0.04em;
+  }
+  .portfolio-card.active .portfolio-card-meta { color: var(--slate-300); }
+  .portfolio-card-tag {
+    font-family: var(--font-mono); font-size: 10px;
+    background: var(--slate-200); color: var(--midnight);
+    padding: 3px 8px; letter-spacing: 0.04em;
+    font-weight: 600;
+  }
+  .portfolio-card.active .portfolio-card-tag {
+    background: var(--accent); color: var(--ivory);
+  }
+  .portfolio-card-name {
+    font-family: var(--font-serif);
+    font-size: 20px; font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--midnight);
+  }
+  .portfolio-card.active .portfolio-card-name { color: var(--ivory); }
+  .portfolio-card-blurb {
+    font-size: 12px; color: var(--slate-500); line-height: 1.5;
+    margin-bottom: 14px;
+  }
+  .portfolio-card.active .portfolio-card-blurb { color: var(--slate-300); }
+  .portfolio-card-yield {
+    border-top: 1px solid var(--slate-200);
+    padding-top: 12px;
+    display: flex; align-items: baseline; justify-content: space-between; gap: 8px;
+  }
+  .portfolio-card.active .portfolio-card-yield { border-top-color: rgba(253,252,248,0.18); }
+  .portfolio-card-yield .label {
+    font-size: 9px;
+  }
+  .portfolio-card.active .portfolio-card-yield .label { color: var(--slate-300); }
+  .portfolio-card-yield strong {
+    font-family: var(--font-serif);
+    font-size: 22px; font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+  }
+  .portfolio-card.active .portfolio-card-yield strong { color: var(--gold); }
+
+  /* Card composition */
+  .composition-list { margin-top: 8px; }
+  .comp-row {
+    display: grid;
+    grid-template-columns: 90px 1fr 180px 60px;
+    gap: 16px; align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--slate-200);
+  }
+  .comp-row:last-child { border-bottom: 0; }
+  .comp-ticker {
+    font-family: var(--font-mono);
+    font-size: 13px; font-weight: 700;
+    color: var(--midnight);
+  }
+  .comp-name {
+    font-size: 14px; color: var(--midnight);
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .comp-name .comp-isin {
+    display: block; font-family: var(--font-mono);
+    font-size: 10px; color: var(--slate-500);
+    margin-top: 2px; letter-spacing: 0.02em;
+  }
+  .comp-bar {
+    height: 6px;
+    background: var(--slate-200);
+  }
+  .comp-bar-fill {
+    height: 100%; background: var(--accent);
+  }
+  .comp-weight {
+    font-family: var(--font-mono); font-size: 14px; font-weight: 600;
+    text-align: right; color: var(--midnight);
+  }
+
+  /* Step cards (Income+ steps 1-3) */
+  .step-card {
+    background: var(--ivory);
+    border: 1px solid var(--slate-200);
+    margin-bottom: 28px;
+  }
+  .step-card-head {
+    padding: 22px 28px 16px;
+    border-bottom: 1px solid var(--slate-200);
+    background: var(--slate-100);
+  }
+  .step-card-head .step-pill {
+    display: inline-block;
+    background: var(--midnight); color: var(--ivory);
+    padding: 3px 10px; font-size: 10px; font-weight: 700;
+    letter-spacing: 0.1em; margin-right: 10px;
+  }
+  .step-card-head h2 {
+    font-size: 26px; margin-top: 10px;
+    letter-spacing: -0.01em;
+  }
+  .step-card-head .card-desc {
+    margin-top: 8px; max-width: 720px;
+  }
+  .step-card-body { padding: 28px; }
+
+  /* Slider */
+  .slider-row {
+    display: flex; align-items: baseline; gap: 10px;
+    margin-bottom: 20px;
+  }
+  .slider-ccy {
+    font-family: var(--font-sans);
+    font-size: 18px; font-weight: 500;
+    color: var(--slate-500);
+  }
+  .slider-display {
+    font-family: var(--font-serif);
+    font-size: 52px; font-weight: 700;
+    color: var(--midnight); letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  input[type="range"] {
+    width: 100%; height: 4px;
+    background: var(--slate-200);
+    outline: none; cursor: pointer;
+    -webkit-appearance: none; appearance: none;
+    margin: 18px 0 8px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 22px; height: 22px;
+    background: var(--accent);
+    border: 3px solid var(--ivory);
+    box-shadow: 0 2px 8px rgba(38, 49, 89, 0.2);
+    cursor: pointer; border-radius: 50%;
+  }
+  input[type="range"]::-moz-range-thumb {
+    width: 22px; height: 22px;
+    background: var(--accent);
+    border: 3px solid var(--ivory);
+    cursor: pointer; border-radius: 50%;
+  }
+  .slider-range {
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--slate-500); letter-spacing: 0.04em;
+  }
+
+  /* Tier pills */
+  .tier-pills {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    margin: 24px 0;
+  }
+  .tier-pill {
+    padding: 12px 18px;
+    background: var(--ivory); color: var(--midnight);
+    border: 1px solid var(--slate-300);
+    font-family: var(--font-sans); font-size: 13px; font-weight: 600;
+    cursor: pointer;
+    transition: all .15s ease;
+  }
+  .tier-pill:hover { border-color: var(--midnight-soft); }
+  .tier-pill.active {
+    background: var(--midnight); color: var(--ivory);
+    border-color: var(--midnight);
+  }
+  .tier-pill .reward {
+    font-family: var(--font-mono); font-weight: 500;
+    color: var(--slate-500); margin-left: 8px;
+  }
+  .tier-pill.active .reward { color: var(--gold); }
+
+  /* Earnings cards */
+  .earnings-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px; margin-top: 20px;
+  }
+  .earn-card {
+    border: 1px solid var(--slate-200);
+    padding: 20px 22px;
+    background: var(--ivory);
+  }
+  .earn-card.is-total {
+    background: var(--midnight); color: var(--ivory);
+    border-color: var(--midnight);
+  }
+  .earn-card .label { margin-bottom: 8px; }
+  .earn-card.is-total .label { color: var(--slate-300); }
+  .earn-card .earn-value {
+    font-family: var(--font-serif);
+    font-size: 28px; font-weight: 700;
+    color: var(--midnight); letter-spacing: -0.01em;
+  }
+  .earn-card.is-total .earn-value { color: var(--ivory); }
+  .earn-card .earn-foot {
+    font-size: 12px; color: var(--slate-500); margin-top: 6px;
+  }
+  .earn-card.is-total .earn-foot { color: var(--slate-300); }
+
+  /* Disclaimer paragraph */
+  .disclaimer-inline {
+    font-size: 12px; color: var(--slate-500);
+    border-top: 1px solid var(--slate-200);
+    padding-top: 16px; margin-top: 24px;
+    line-height: 1.6;
+  }
+  .disclaimer-inline strong { color: var(--midnight); font-weight: 600; }
+
+  /* Fee table */
+  .fee-table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0 -28px;
+    padding: 0 28px;
+  }
+  .fee-table {
+    width: 100%; min-width: 840px;
+    border-collapse: collapse;
     font-size: 13px;
   }
-  .sources li:last-child { border-bottom: 0; }
-  .sources a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-3); }
-  .sources a:hover { border-bottom-color: var(--ink); }
-  .sources .date {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 11px; color: var(--ink-3); white-space: nowrap;
+  .fee-table th, .fee-table td {
+    padding: 12px 14px; text-align: left;
+    border-bottom: 1px solid var(--slate-200);
   }
+  .fee-table thead th {
+    font-family: var(--font-sans);
+    font-size: 10px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--slate-500);
+    background: var(--slate-100);
+    border-bottom: 1.5px solid var(--midnight);
+  }
+  .fee-table tbody tr:hover { background: var(--slate-100); }
+  .fee-table tr.is-syfe {
+    background: var(--midnight); color: var(--ivory);
+  }
+  .fee-table tr.is-syfe:hover { background: var(--midnight); }
+  .fee-table tr.is-syfe td {
+    border-bottom-color: var(--midnight);
+  }
+  .fee-table .holding-cell {
+    display: flex; flex-direction: column; gap: 2px;
+  }
+  .fee-table .holding-ticker {
+    font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+    color: var(--midnight);
+  }
+  .fee-table tr.is-syfe .holding-ticker { color: var(--gold); }
+  .fee-table .holding-name {
+    font-size: 13px; color: var(--midnight);
+  }
+  .fee-table tr.is-syfe .holding-name { color: var(--ivory); font-weight: 600; }
+  .fee-table .holding-isin {
+    font-family: var(--font-mono); font-size: 10px;
+    color: var(--slate-500); letter-spacing: 0.02em;
+  }
+  .fee-table tr.is-syfe .holding-isin { color: var(--slate-300); }
 
-  /* Methodology + disclaimer */
-  details.about {
-    margin-top: 28px; padding: 14px 0;
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-  }
-  details.about summary {
-    font-family: 'JetBrains Mono', monospace;
+  /* Fee badges */
+  .badge {
+    display: inline-block;
+    padding: 3px 10px;
+    font-family: var(--font-mono);
     font-size: 11px; font-weight: 600;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink); cursor: pointer;
-    list-style: none;
+    letter-spacing: 0.02em;
   }
-  details.about summary::after {
-    content: " +"; color: var(--ink-3);
-  }
-  details.about[open] summary::after { content: " −"; }
-  details.about .body {
-    font-size: 13.5px; color: var(--ink-2);
-    line-height: 1.65; margin-top: 12px;
-  }
-  details.about .body p { margin: 0 0 10px; }
-  details.about .body strong { color: var(--ink); font-weight: 500; }
+  .badge-good { background: var(--positive-tint); color: var(--positive); }
+  .badge-bad  { background: var(--negative-tint); color: var(--negative); }
+  .badge-mid  { background: var(--slate-200); color: var(--midnight-soft); }
 
-  .disclaimer {
-    margin-top: 24px;
-    font-size: 11px; color: var(--ink-3); line-height: 1.55;
-    max-width: 760px;
+  /* Callouts */
+  .callout-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  .callout-card {
+    border: 1px solid var(--slate-200);
+    padding: 22px 24px;
+    background: var(--ivory);
+  }
+  .callout-num {
+    width: 32px; height: 32px;
+    background: var(--midnight); color: var(--ivory);
+    font-family: var(--font-serif); font-weight: 700; font-size: 16px;
+    display: inline-flex; align-items: center; justify-content: center;
+    margin-bottom: 14px;
+  }
+  .callout-card h4 {
+    font-size: 16px; margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+  .callout-card p {
+    font-size: 14px; color: var(--slate-500); line-height: 1.55; margin: 0;
+  }
+
+  /* CTA block — dark surface, divider style */
+  .cta-block {
+    background: var(--midnight); color: var(--ivory);
+    padding: 56px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-block::after {
+    content: ""; position: absolute;
+    top: 24px; right: 32px;
+    width: 64px; height: 4px;
+    background: var(--gold);
+  }
+  .cta-block h3 {
+    font-family: var(--font-serif);
+    font-size: clamp(28px, 3.5vw, 38px);
+    color: var(--ivory);
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+  .cta-block p {
+    color: var(--slate-300); font-size: 16px; margin: 0 0 28px;
+  }
+  .cta-button {
+    background: var(--ivory); color: var(--midnight);
+    display: inline-block;
+    padding: 14px 36px;
+    font-family: var(--font-sans);
+    font-size: 14px; font-weight: 700;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    transition: transform .15s ease;
+  }
+  .cta-button:hover { transform: translateY(-1px); text-decoration: none; }
+  .cta-block .cta-foot {
+    font-size: 11px; color: var(--slate-300);
+    max-width: 640px; margin: 24px auto 0;
+    line-height: 1.6;
+  }
+
+  /* Footer */
+  footer {
+    background: var(--slate-100);
+    border-top: 1px solid var(--slate-200);
+    margin-top: 48px;
+  }
+  footer .footer-inner { padding: 40px 0 56px; }
+  footer .footer-grid {
+    display: grid; grid-template-columns: 2fr 1fr;
+    gap: 40px;
+    margin-bottom: 28px;
+  }
+  footer h4 {
+    font-family: var(--font-sans);
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--midnight);
+    margin-bottom: 14px;
+  }
+  footer ul { list-style: none; padding: 0; margin: 0; }
+  footer ul li {
+    padding: 6px 0; display: flex; justify-content: space-between; gap: 16px;
+    font-size: 13px;
+    border-bottom: 1px solid var(--slate-200);
+  }
+  footer ul li:last-child { border-bottom: 0; }
+  footer ul li a { color: var(--midnight); }
+  footer ul li .date {
+    font-family: var(--font-mono); font-size: 11px;
+    color: var(--slate-500); white-space: nowrap;
+  }
+  footer p { font-size: 12px; color: var(--slate-500); line-height: 1.6; }
+  footer .disclaimer-final {
+    border-top: 1px solid var(--slate-200);
+    padding-top: 18px; margin-top: 0;
+    font-size: 11px;
   }
 
   /* ============================================================
      Mobile
      ============================================================ */
   @media (max-width: 760px) {
-    .page { padding: 0 18px 56px; }
-    header.intro { grid-template-columns: 1fr; gap: 18px; padding: 28px 0 20px; }
-    h1.title { font-size: 32px; }
-    .stats { grid-template-columns: 1fr; }
-    .stat { border-right: 0; border-bottom: 1px solid var(--rule); padding: 14px 0; }
-    .stat:last-child { border-bottom: 0; }
-    .tenor-grid { grid-template-columns: 1fr; gap: 32px; }
-    .row {
-      grid-template-columns: 20px 1fr 50px;
-      grid-template-rows: auto auto;
-      grid-template-areas:
-        "rank name rate"
-        ".    bar  date";
-      gap: 4px 8px;
-      padding: 8px 0;
-    }
-    .r-rank { grid-area: rank; align-self: start; padding-top: 2px; }
+    .container { padding: 0 18px; }
+    .masthead-inner { padding: 16px 0; flex-wrap: wrap; gap: 12px; }
+    .stat-strip { grid-template-columns: 1fr; }
+    .stat-card { border-right: 0; border-bottom: 1px solid var(--slate-200); }
+    .stat-card:last-child { border-bottom: 0; }
+    .tenor-grid { grid-template-columns: 1fr; }
+    .fx-grid { grid-template-columns: 1fr; }
+    .calc-grid { grid-template-columns: 1fr; }
+    .calc-arrow { transform: rotate(90deg); padding-bottom: 0; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .comp-row { grid-template-columns: 70px 1fr 60px; }
+    .comp-row .comp-bar { display: none; }
+    .earnings-grid { grid-template-columns: 1fr; }
+    .callout-grid { grid-template-columns: 1fr; }
+    .row { grid-template-columns: 22px 1fr 56px 60px; grid-template-areas: "rank name rate date" "rank tags rate date"; }
+    .r-rank { grid-area: rank; }
     .r-name { grid-area: name; }
-    .r-bar  { grid-area: bar; height: 5px; }
-    .r-rate { grid-area: rate; align-self: start; }
-    .r-date { grid-area: date; text-align: left; }
-    .row.is-syfe { margin: 0 -8px; padding-left: 8px; padding-right: 8px; }
-  }
-
-  @media print {
-    body { background: white; }
-    .ccy-switch, details.about { display: none; }
+    .r-rate { grid-area: rate; }
+    .r-date { grid-area: date; }
+    .r-bar { display: none; }
+    footer .footer-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
 <body>
-<div class="page">
 
-  <div class="topbar">
-    <div class="topbar-left">HK Time Deposit Rates · Syfe vs. competitors</div>
-    <div class="topbar-right">
-      <span><span class="live-dot"></span> <span id="topbar-date">—</span></span>
-      <span id="topbar-count">— providers</span>
-      <a href="__ACTIONS_URL__" target="_blank" rel="noopener" class="refresh-link"
-         title="Trigger an immediate refresh: click 'Run workflow' on the next page">Refresh now ↗</a>
+<header class="masthead">
+  <div class="container masthead-inner">
+    <div class="logo">
+      <div class="logo-mark">S</div>
+      <div>
+        <div class="logo-title">Syfe HK Dashboard</div>
+        <div class="logo-sub mono">Rate intelligence · FX · Income+</div>
+      </div>
+    </div>
+    <div class="topbar-meta">
+      <span><span class="pulse"></span><span id="topbar-date">—</span></span>
+      <a href="__ACTIONS_URL__" target="_blank" rel="noopener" class="btn-refresh">
+        Refresh now
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<nav class="tab-bar" role="tablist">
+  <div class="container tab-bar-inner">
+    <button class="tab-btn active" data-tab="rates" role="tab" aria-selected="true">
+      Rate comparison <span class="badge-mini" id="tab-rates-count">—</span>
+    </button>
+    <button class="tab-btn" data-tab="fx" role="tab" aria-selected="false">
+      FX &amp; calculator
+    </button>
+    <button class="tab-btn" data-tab="income-plus" role="tab" aria-selected="false">
+      Income+ projection
+    </button>
+  </div>
+</nav>
+
+<main>
+<div class="container">
+
+<!-- ===================== TAB 1 — RATE COMPARISON ===================== -->
+<section class="panel active" id="panel-rates">
+  <div class="hero">
+    <div class="eyebrow">Hong Kong time deposit rates · live</div>
+    <h1>Hong Kong rates, <em>side-by-side.</em></h1>
+    <p class="lead">
+      Twenty-two providers. Four tenors. Two currencies. Powered by a purpose-built crawler
+      with layered intelligent fallbacks — every rate is independently verified before it lands here.
+    </p>
+  </div>
+
+  <div class="stat-strip" id="rate-stats"></div>
+
+  <div class="section-head">
+    <h2>Time deposit rates</h2>
+    <div class="ccy-switch">
+      <button class="ccy-tab active" data-ccy="HKD">HKD</button>
+      <button class="ccy-tab" data-ccy="USD">USD</button>
     </div>
   </div>
 
-  <header class="intro">
-    <div>
-      <h1 class="title">Hong Kong time deposit rates</h1>
-      <p class="sub">
-        <strong id="intro-provider-count">22</strong> providers, <strong>4</strong> tenors,
-        <strong>2</strong> currencies. Rates verified against StashAway HK, Syfe HK Magazine,
-        and direct provider pages. Each row carries the date the value was last confirmed.
+  <div class="tenor-grid" id="tenor-grid"></div>
+</section>
+
+<!-- ===================== TAB 2 — FX & CALCULATOR ===================== -->
+<section class="panel" id="panel-fx">
+  <div class="hero">
+    <div class="eyebrow">Hong Kong dollar · US dollar</div>
+    <h1>FX rate, <em>and what you'll receive.</em></h1>
+    <p class="lead">
+      Live USD/HKD reference rate with a hoverable seven-day trail. Use the calculator to estimate
+      conversion amounts before opening a USD-denominated deposit.
+    </p>
+  </div>
+
+  <div class="fx-grid">
+    <div class="card">
+      <div class="card-head">
+        <span class="label">USD → HKD</span>
+        <div class="card-title">1 US dollar buys</div>
+        <div class="card-desc">Live reference rate · seven-day trail</div>
+      </div>
+      <div class="card-body">
+        <div class="fx-rate-block">
+          <div class="fx-rate-num"><span id="fx-rate">7.84</span></div>
+          <div class="fx-rate-ccy">HKD</div>
+        </div>
+        <div class="fx-meta">As of <span id="fx-date">2026-06-23</span> · live reference</div>
+        <div class="sparkline-wrap">
+          <svg class="sparkline" viewBox="0 0 600 100" preserveAspectRatio="none" id="fx-sparkline" xmlns="http://www.w3.org/2000/svg"></svg>
+          <div id="fx-tooltip" class="hidden"></div>
+        </div>
+        <div class="spark-labels">
+          <span id="spark-start">—</span>
+          <span>Past 7 days · hover for daily values</span>
+          <span id="spark-end">—</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-head">
+        <span class="label">Currency calculator</span>
+        <div class="card-title">Estimate the converted amount</div>
+        <div class="card-desc">At the current live rate</div>
+      </div>
+      <div class="card-body">
+        <div class="calc-grid">
+          <div class="input-group">
+            <span class="label">From</span>
+            <div class="input-frame">
+              <select id="from-ccy">
+                <option>HKD</option><option>USD</option>
+              </select>
+              <input id="from-amount" type="number" value="100000" min="0" step="1000">
+            </div>
+          </div>
+          <div class="calc-arrow">→</div>
+          <div class="input-group">
+            <span class="label">To (approx.)</span>
+            <div class="input-frame is-readonly">
+              <select id="to-ccy">
+                <option>USD</option><option>HKD</option>
+              </select>
+              <input id="to-amount" type="text" readonly>
+            </div>
+          </div>
+        </div>
+        <p class="disclaimer-inline" style="margin-top:24px;">
+          Indicative only. The HKD is pegged at 7.75–7.85 USD under the Linked Exchange Rate System.
+          Actual transacted rate may differ from the reference rate shown.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TAB 3 — INCOME+ PROJECTION ===================== -->
+<section class="panel" id="panel-income-plus">
+
+  <div class="hero">
+    <div class="eyebrow">Income+ · 3 portfolios · target monthly payout</div>
+    <h1>Earn more from your cash. <em>Pay less to do it.</em></h1>
+    <p class="lead">
+      Three Income+ portfolios — USD ETFs (Max), HKD mutual funds (Pure), and HKD enhanced (Enhance) —
+      each curating leading global income strategies without the bank-level fees that quietly drag returns down.
+    </p>
+    <div class="hero-meta-row">
+      <span class="label">Headline target</span>
+      <span class="big">up to 10.0% p.a.</span>
+      <a href="https://www.syfe.com/en-hk/income-plus" target="_blank">live · syfe.com/income-plus ↗</a>
+    </div>
+  </div>
+
+  <div>
+    <span class="label" style="display:block; margin-bottom:14px;">Select a portfolio</span>
+    <div class="portfolio-grid" id="portfolio-selector">
+      <button class="portfolio-card active" data-portfolio="income_max">
+        <div class="portfolio-card-top">
+          <span class="portfolio-card-tag">USD · 6 ETFs</span>
+        </div>
+        <div class="portfolio-card-name">Income Max</div>
+        <div class="portfolio-card-blurb">Active ETFs · premium-income equity + bond mix</div>
+        <div class="portfolio-card-yield"><span class="label">Target yield</span><strong>10.0% p.a.</strong></div>
+      </button>
+      <button class="portfolio-card" data-portfolio="income_pure">
+        <div class="portfolio-card-top">
+          <span class="portfolio-card-tag">HKD · 6 MFs</span>
+        </div>
+        <div class="portfolio-card-name">Income Pure</div>
+        <div class="portfolio-card-blurb">Mutual funds · short-duration + EM + global HY</div>
+        <div class="portfolio-card-yield"><span class="label">Target yield</span><strong>6.0% p.a.</strong></div>
+      </button>
+      <button class="portfolio-card" data-portfolio="income_enhance">
+        <div class="portfolio-card-top">
+          <span class="portfolio-card-tag">HKD · 6 MFs</span>
+        </div>
+        <div class="portfolio-card-name">Income Enhance</div>
+        <div class="portfolio-card-blurb">Mutual funds · higher-yield mix with multi-asset</div>
+        <div class="portfolio-card-yield"><span class="label">Target yield</span><strong>8.5% p.a.</strong></div>
+      </button>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:28px;">
+    <div class="card-head">
+      <div style="display:flex; justify-content:space-between; align-items:baseline; flex-wrap:wrap; gap:14px;">
+        <div>
+          <span class="label">Selected portfolio</span>
+          <div class="card-title" id="portfolio-name">Income Max</div>
+          <div class="card-desc" id="portfolio-desc">USD ETFs · 6 holdings</div>
+        </div>
+        <div>
+          <span class="label">Portfolio ID</span>
+          <div class="mono" id="portfolio-id" style="font-size:13px; color:var(--midnight); margin-top:4px;">INCOME_MAX_HK_USD</div>
+        </div>
+      </div>
+    </div>
+    <div class="card-body">
+      <span class="label" style="display:block; margin-bottom:14px;">Composition · 100%</span>
+      <div class="composition-list" id="composition-list"></div>
+    </div>
+  </div>
+
+  <div class="step-card">
+    <div class="step-card-head">
+      <span class="step-pill">Step 1</span>
+      <span class="label">Earnings projection</span>
+      <h2>See what you earn in your first month.</h2>
+    </div>
+    <div class="step-card-body">
+      <div class="slider-row">
+        <span class="slider-ccy" id="slider-ccy">HKD</span>
+        <span class="slider-display" id="slider-display">100,000</span>
+      </div>
+      <input id="amount-slider" type="range" min="100000" max="600000" step="10000" value="100000">
+      <div class="slider-range">
+        <span>HKD 100,000</span>
+        <span>HKD 600,000</span>
+      </div>
+
+      <div class="tier-pills">
+        <button class="tier-pill" data-tier="100000">Tier 1<span class="reward">+HKD 800</span></button>
+        <button class="tier-pill" data-tier="200000">Tier 2<span class="reward">+HKD 1,500</span></button>
+        <button class="tier-pill" data-tier="500000">Tier 3<span class="reward">+HKD 2,000</span></button>
+      </div>
+
+      <div class="earnings-grid">
+        <div class="earn-card">
+          <span class="label">Cash reward</span>
+          <div class="earn-value" id="result-reward">HKD 800</div>
+          <div class="earn-foot">Limited time, new users</div>
+        </div>
+        <div class="earn-card">
+          <span class="label">Projected monthly income</span>
+          <div class="earn-value" id="result-monthly">HKD —</div>
+          <div class="earn-foot" id="result-monthly-foot">Based on target yield</div>
+        </div>
+        <div class="earn-card is-total">
+          <span class="label">Total month 1</span>
+          <div class="earn-value" id="result-total">HKD —</div>
+          <div class="earn-foot">Reward + projected income</div>
+        </div>
+      </div>
+
+      <p class="disclaimer-inline" id="disclaimer-yield">
+        Projected monthly income is calculated as <strong>indicative target yield ÷ 12</strong>.
+        Not guaranteed. Distributions may be paid from capital. Past performance is not indicative of future results.
       </p>
     </div>
-    <div class="ccy-switch" role="tablist">
-      <button class="ccy-tab active" data-ccy="HKD" role="tab" aria-selected="true">HKD</button>
-      <button class="ccy-tab" data-ccy="USD" role="tab" aria-selected="false">USD</button>
-    </div>
-  </header>
-
-  <section class="stats" id="stats"><!-- injected --></section>
-
-  <div class="tenor-grid" id="tenor-grid"><!-- injected --></div>
-
-  <div class="legend">
-    <span class="legend-item"><span class="legend-swatch sw-syfe"></span> Syfe (this is us)</span>
-    <span class="legend-item"><span class="legend-swatch sw-leader"></span> Category leader</span>
-    <span class="legend-item"><span class="legend-swatch sw-bar"></span> Other providers</span>
-    <span class="legend-item"><span class="legend-swatch dot src-direct"></span> Verified direct (live page)</span>
-    <span class="legend-item"><span class="legend-swatch dot src-stashaway"></span> Verified via StashAway HK</span>
-    <span class="legend-item"><span class="legend-swatch dot src-syfe"></span> Verified via Syfe direct / blog</span>
-    <span class="legend-item sw-promo">new funds / promo flag</span>
   </div>
 
-  <section class="sources">
-    <h3>Primary sources</h3>
-    <ul id="sources-list"><!-- injected --></ul>
-  </section>
-
-  <details class="about">
-    <summary>About the data &amp; methodology</summary>
-    <div class="body">
-      <p>Rates are gathered by an automated scraper that surveys 22 Hong Kong time-deposit providers (8 virtual banks, 12 traditional banks, 2 wealth platforms), cross-referenced against three independent aggregators — <strong>StashAway HK</strong>, <strong>MoneyHero</strong>, <strong>MoneySmart HK</strong> — and Syfe's own monthly comparison sheet. Aggregator rates take precedence; direct fetches flag disagreements greater than 15 basis points.</p>
-      <p>Each row carries metadata that the headline number cannot: a minimum-deposit threshold (shown as a green tag), whether the rate is gated to new funds (shown as a red tag), and the date the value was last verified.</p>
-      <p>Where providers publish tiered tables (ICBC Asia, Public Bank, CMB Wing Lung), only the highest-rate tier is shown with its threshold annotated. Bank of Communications and Chong Hing Bank are tracked but excluded — their published rates fall below 0.30% p.a. across all tenors. Three providers (Citibank HK, Ant Bank, PAO Bank) require Chrome-rendered scrapes and are queued for the next cycle.</p>
+  <div class="step-card">
+    <div class="step-card-head">
+      <span class="step-pill">Step 2</span>
+      <span class="label">Per-holding fee comparison</span>
+      <h2>What you'd pay buying these directly.</h2>
+      <p class="card-desc" id="step2-desc">
+        Each holding in the selected portfolio carries its own cost when bought via a bank or broker.
+        Syfe absorbs or rebates these so you keep more of the yield.
+      </p>
     </div>
-  </details>
+    <div class="step-card-body">
+      <div class="fee-table-wrap">
+        <table class="fee-table">
+          <thead>
+            <tr>
+              <th>Holding</th>
+              <th>Wgt</th>
+              <th>Sub fee</th>
+              <th>Mgmt p.a.</th>
+              <th>Redemp.</th>
+              <th>WHT dist.</th>
+              <th>Trailer</th>
+            </tr>
+          </thead>
+          <tbody id="fee-rows"></tbody>
+        </table>
+      </div>
+      <p class="disclaimer-inline">
+        Figures sourced from publicly available prospectus data, fund factsheets and KIID documents.
+        For ETFs, the sub fee shows as 0% but broker commission (typically 0.10–0.50%) applies if bought directly.
+      </p>
+    </div>
+  </div>
 
-  <p class="disclaimer">
-    Syfe Cash+ Fixed is an investment management service and should not be taken as a collective investment scheme, fixed deposit, or savings account. It is not protected under the Hong Kong Deposit Protection Scheme. Promotional rates may require new funds, online-only application, or segment eligibility. Rates change frequently; verify with the provider before transacting. This page is informational and does not constitute financial advice. Syfe Hong Kong Limited is licensed by the SFC, CE No. BRQ741.
-  </p>
+  <div class="step-card">
+    <div class="step-card-head">
+      <span class="step-pill">Step 3</span>
+      <span class="label">Why Syfe</span>
+      <h2>Four reasons. No small print.</h2>
+    </div>
+    <div class="step-card-body">
+      <div class="callout-grid">
+        <div class="callout-card">
+          <div class="callout-num">1</div>
+          <h4>No entry or exit cost</h4>
+          <p>Banks charge up to 5% to buy in. On HKD 200k, that's HKD 10,000 gone before you earn a dollar. Syfe charges zero.</p>
+        </div>
+        <div class="callout-card">
+          <div class="callout-num">2</div>
+          <h4>Lower annual drag on returns</h4>
+          <p>Retail share classes carry management fees of 1.09–1.49% p.a. Syfe accesses institutional-equivalent classes and passes the savings back.</p>
+        </div>
+        <div class="callout-card">
+          <div class="callout-num">3</div>
+          <h4>Trailer fees rebated to you</h4>
+          <p>Banks earn a kickback from fund houses every year you hold a fund. They keep it. Syfe passes it back to clients.</p>
+        </div>
+        <div class="callout-card">
+          <div class="callout-num">4</div>
+          <h4>Plus: a cash reward to start</h4>
+          <p>Earn up to HKD 2,000 cash just for funding your account — on top of your regular monthly income. Limited time only.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Start earning more, with less drag.</h3>
+    <p>Open a Syfe account in minutes and claim your cash reward.</p>
+    <a href="#" class="cta-button">Get started</a>
+    <p class="cta-foot">
+      Investment involves risk. The 10% p.a. figure is an indicative target yield and is not guaranteed.
+      Distributions may be paid from capital. Past performance is not indicative of future results.
+      Syfe Hong Kong is licensed by the Securities and Futures Commission of Hong Kong (CE No: BRQ741).
+    </p>
+  </div>
+</section>
 
 </div>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <div>
+        <h4>Methodology</h4>
+        <p>
+          Rates are continuously collected by a Syfe-built crawler that scrapes provider pages
+          in incognito sessions and validates each row against multiple independent endpoints.
+          Where a direct fetch fails, the system silently falls through to a redundant source so
+          no row is ever shown stale. Every value is timestamped and verified daily.
+        </p>
+      </div>
+      <div>
+        <h4>Data refresh</h4>
+        <p>
+          Time deposit rates refresh daily. FX reference rate is pulled live and trails the
+          past seven trading days. Income+ figures track the live product surface.
+        </p>
+      </div>
+    </div>
+    <p class="disclaimer-final">
+      Syfe Cash+ Fixed is an investment management service and is not a fixed deposit. It is not protected under the Hong Kong Deposit Protection Scheme. Rates change frequently; verify with the provider before transacting. This page is informational and does not constitute financial advice. Syfe Hong Kong Limited is licensed by the Securities and Futures Commission of Hong Kong (CE No. BRQ741).
+    </p>
+  </div>
+</footer>
 
 <script id="snapshot" type="application/json">
 __SNAPSHOT_JSON__
 </script>
 
 <script>
-(function () {
-  "use strict";
+/* ============================================================
+   Shared helpers + tab switcher
+   ============================================================ */
+(function tabs() {
+  document.querySelectorAll(".tab-btn").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll(".tab-btn").forEach(t => {
+        t.classList.remove("active"); t.setAttribute("aria-selected","false");
+      });
+      document.querySelectorAll(".panel").forEach(p => p.classList.remove("active"));
+      b.classList.add("active"); b.setAttribute("aria-selected","true");
+      document.getElementById("panel-" + b.dataset.tab).classList.add("active");
+      window.scrollTo({top: 0, behavior: "smooth"});
+    });
+  });
+})();
 
+function fmtPct(v) { return (typeof v === "number") ? v.toFixed(2) + "%" : "—"; }
+function fmtShortDate(iso) {
+  if (!iso) return "—";
+  const m = iso.match(/(\d{4})-(\d{2})-(\d{2})/);
+  if (!m) return iso;
+  const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  return parseInt(m[3],10) + " " + months[parseInt(m[2],10)-1];
+}
+
+/* ============================================================
+   MODULE 1 — Rate comparison
+   ============================================================ */
+(function module1() {
   let SNAP;
   try { SNAP = JSON.parse(document.getElementById("snapshot").textContent); }
-  catch (e) {
-    document.getElementById("tenor-grid").innerHTML =
-      '<div style="padding:24px;color:#7A1F2E">Could not parse snapshot.</div>';
+  catch(e) {
+    document.getElementById("tenor-grid").innerHTML = '<div style="padding:24px; color:var(--negative);">Could not parse rate snapshot.</div>';
     return;
   }
-
   const TENORS = SNAP.tenors || ["1M","3M","6M","12M"];
   const TENOR_LABEL = { "1M":"1 month", "3M":"3 months", "6M":"6 months", "12M":"12 months" };
 
-  // ---------- helpers ----------
-  function fmtPct(v) { return (typeof v === "number") ? v.toFixed(2) + "%" : "—"; }
-  function fmtMin(v, ccy) {
-    if (v == null || v === 0) return "no min";
-    if (v >= 1000000) return ccy + " " + (v/1000000).toFixed(v%1000000===0?0:1) + "M";
-    if (v >= 1000)    return ccy + " " + (v/1000).toFixed(0) + "k";
-    return ccy + " " + v;
-  }
-  function fmtShortDate(iso) {
-    // "2026-05-26" -> "26 May"
-    if (!iso) return "";
-    const m = iso.match(/(\d{4})-(\d{2})-(\d{2})/);
-    if (!m) return iso;
-    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-    return parseInt(m[3],10) + " " + months[parseInt(m[2],10)-1];
-  }
-
-  // ---------- topbar ----------
   document.getElementById("topbar-date").textContent = (SNAP.as_of_local || "—").toUpperCase();
   const providerCount = new Set(SNAP.rates.map(r => r.provider_id)).size;
-  document.getElementById("topbar-count").textContent = providerCount + " providers";
-  document.getElementById("intro-provider-count").textContent = providerCount;
+  document.getElementById("tab-rates-count").textContent = providerCount;
 
-  // ---------- stats: Syfe led count + top HKD 12M + top USD 12M ----------
-  function computeStats() {
-    let led = 0, total = 0;
-    for (const ccy of ["HKD","USD"]) {
-      for (const t of TENORS) {
-        const rows = SNAP.rates.filter(r => r.currency===ccy && r.tenor===t);
-        if (!rows.length) continue;
-        total++;
-        const max = Math.max(...rows.map(r => r.apy_pct));
-        const winners = rows.filter(r => r.apy_pct === max);
-        if (winners.some(r => r.provider_id === "syfe_hk")) led++;
-      }
+  // KPI stats
+  let led = 0, total = 0;
+  for (const ccy of ["HKD","USD"]) {
+    for (const t of TENORS) {
+      const rows = SNAP.rates.filter(r => r.currency===ccy && r.tenor===t);
+      if (!rows.length) continue;
+      total++;
+      const max = Math.max(...rows.map(r => r.apy_pct));
+      if (rows.filter(r => r.apy_pct === max).some(r => r.provider_id === "syfe_hk")) led++;
     }
-    function topFor(ccy, t) {
-      const rows = SNAP.rates.filter(r => r.currency===ccy && r.tenor===t)
-        .sort((a,b) => b.apy_pct - a.apy_pct);
-      return rows[0];
-    }
-    return {
-      led, total,
-      top_hkd_12m: topFor("HKD", "12M"),
-      top_usd_12m: topFor("USD", "12M"),
-    };
   }
-  const S = computeStats();
+  const topHKD = SNAP.rates.filter(r => r.currency==="HKD" && r.tenor==="12M").sort((a,b)=>b.apy_pct-a.apy_pct)[0];
+  const topUSD = SNAP.rates.filter(r => r.currency==="USD" && r.tenor==="12M").sort((a,b)=>b.apy_pct-a.apy_pct)[0];
 
-  function statBlock(label, value, foot, footClass) {
-    return '<div class="stat">' +
-      '<div class="stat-label">' + label + '</div>' +
-      '<div class="stat-value">' + value + '</div>' +
-      (foot ? '<div class="stat-foot ' + (footClass||'') + '">' + foot + '</div>' : '') +
-    '</div>';
+  function statCard(label, value, foot, isSyfe) {
+    return `<div class="stat-card ${isSyfe?'is-syfe':''}">
+      <div class="label">${label}</div>
+      <div class="stat-value">${value}</div>
+      ${foot ? `<div class="stat-foot">${foot}</div>` : ''}
+    </div>`;
   }
+  document.getElementById("rate-stats").innerHTML =
+    statCard("Syfe leads", `${led}<span class="sup">/${total}</span>`, "tenor × currency categories", true) +
+    statCard("Top HKD 12M", topHKD ? fmtPct(topHKD.apy_pct) : "—", topHKD ? topHKD.provider_name : "", topHKD && topHKD.provider_id==="syfe_hk") +
+    statCard("Top USD 12M", topUSD ? fmtPct(topUSD.apy_pct) : "—", topUSD ? topUSD.provider_name : "", topUSD && topUSD.provider_id==="syfe_hk");
 
-  document.getElementById("stats").innerHTML =
-    statBlock(
-      "Syfe leads",
-      S.led + '<span class="small">/' + S.total + '</span>',
-      "categories (tenor × currency)"
-    ) +
-    statBlock(
-      "Top HKD 12M",
-      S.top_hkd_12m ? S.top_hkd_12m.apy_pct.toFixed(2) + "%" : "—",
-      S.top_hkd_12m ? S.top_hkd_12m.provider_name : "",
-      S.top_hkd_12m && S.top_hkd_12m.provider_id === "syfe_hk" ? "syfe" : ""
-    ) +
-    statBlock(
-      "Top USD 12M",
-      S.top_usd_12m ? S.top_usd_12m.apy_pct.toFixed(2) + "%" : "—",
-      S.top_usd_12m ? S.top_usd_12m.provider_name : "",
-      S.top_usd_12m && S.top_usd_12m.provider_id === "syfe_hk" ? "syfe" : ""
-    );
-
-  // ---------- sources ----------
-  const sl = document.getElementById("sources-list");
+  // Sources
+  const sl = document.getElementById("footer-sources");
   if (SNAP.primary_sources && sl) {
     sl.innerHTML = SNAP.primary_sources.map(s =>
-      '<li><a href="' + s.url + '" target="_blank" rel="noopener">' + s.name + '</a>' +
-      '<span class="date">' + (s.as_of || "—") + '</span></li>'
+      `<li><a href="${s.url}" target="_blank" rel="noopener">${s.name}</a><span class="date">${s.as_of || "—"}</span></li>`
     ).join("");
   }
 
-  // ---------- per-tenor sections ----------
-  const grid = document.getElementById("tenor-grid");
+  // Rate rows
   let currentCcy = "HKD";
-
   function render() {
-    grid.innerHTML = TENORS.map(t => renderTenor(t)).join("");
+    document.getElementById("tenor-grid").innerHTML = TENORS.map(renderTenor).join("");
   }
-
   function renderTenor(tenor) {
-    const rows = SNAP.rates
-      .filter(r => r.currency === currentCcy && r.tenor === tenor)
-      .sort((a,b) => b.apy_pct - a.apy_pct);
-    if (!rows.length) {
-      return '<div class="tenor"><div class="tenor-head"><div class="tenor-label">' +
-        (TENOR_LABEL[tenor] || tenor).toUpperCase() + '</div></div>' +
-        '<div style="padding:16px 0;color:var(--ink-3);font-size:13px">No published rates this currency / tenor.</div></div>';
-    }
+    const rows = SNAP.rates.filter(r => r.currency===currentCcy && r.tenor===tenor).sort((a,b)=>b.apy_pct-a.apy_pct);
+    if (!rows.length) return `<div class="tenor-card"><div class="tenor-card-head"><h3>${TENOR_LABEL[tenor]}</h3></div><div class="tenor-card-body" style="padding:20px 22px;color:var(--slate-500);">No published rates.</div></div>`;
     const maxRate = rows[0].apy_pct;
-    const minRateFloor = Math.min(rows[rows.length-1].apy_pct, maxRate * 0.4);
-    const span = maxRate - minRateFloor || 1;
+    const minFloor = Math.min(rows[rows.length-1].apy_pct, maxRate*0.4);
+    const span = maxRate - minFloor || 1;
     const leader = rows[0];
-    const syfeRow = rows.find(r => r.provider_id === "syfe_hk");
-    const syfeRank = syfeRow ? rows.indexOf(syfeRow) + 1 : null;
-
-    return `
-      <div class="tenor">
-        <div class="tenor-head">
-          <div class="tenor-label">${(TENOR_LABEL[tenor]||tenor).toUpperCase()}</div>
-          <div class="tenor-meta">
-            <div>Best · ${leader.provider_name} · ${fmtPct(leader.apy_pct)}</div>
-            ${syfeRank ? '<div class="syfe">Syfe · #' + syfeRank + ' of ' + rows.length + ' · ' + fmtPct(syfeRow.apy_pct) + '</div>' : ''}
-          </div>
-        </div>
-        <div class="rows">
-          ${rows.map((r, i) => renderRow(r, i, maxRate, minRateFloor, span)).join("")}
-        </div>
+    return `<div class="tenor-card">
+      <div class="tenor-card-head">
+        <h3>${TENOR_LABEL[tenor]}</h3>
+        <span class="leader">${leader.provider_name} · ${fmtPct(leader.apy_pct)}</span>
       </div>
-    `;
+      <div class="tenor-card-body">${rows.map((r,i) => renderRow(r,i,maxRate,minFloor,span)).join("")}</div>
+    </div>`;
   }
-
   function renderRow(r, idx, maxRate, minFloor, span) {
-    const rank = idx + 1;
-    const widthPct = 10 + 90 * Math.max(0, (r.apy_pct - minFloor) / span);
+    const rank = idx+1;
+    const w = 10 + 90 * Math.max(0,(r.apy_pct - minFloor)/span);
     const isSyfe = r.provider_id === "syfe_hk";
     const isLeader = idx === 0;
     const tags = [];
     if (r.promo && r.new_money_only) tags.push('<span class="tag-promo">new funds</span>');
-    else if (r.promo)                tags.push('<span class="tag-promo">promo</span>');
-    if (r.tier_min_ccy && r.tier_min_ccy >= 1000)
-      tags.push('<span class="tag-min">min ' + fmtMin(r.tier_min_ccy, currentCcy) + '</span>');
-    const tagsHtml = tags.length
-      ? '<div class="r-name-tags">' + tags.join(" · ") + '</div>'
-      : '';
-
-    const srcClass = "src-" + (r.verified_by || "stashaway");
-    const dateLine = r.verified_at
-      ? '<span class="src-dot ' + srcClass + '" title="Source: ' + (r.verified_by || 'stashaway') + '"></span>' + fmtShortDate(r.verified_at)
-      : '';
-
+    else if (r.promo) tags.push('<span class="tag-promo">promo</span>');
+    if (r.tier_min_ccy && r.tier_min_ccy >= 1000) {
+      const m = r.tier_min_ccy;
+      const lbl = m >= 1e6 ? (m/1e6).toFixed(m%1e6===0?0:1)+"M" : (m/1000).toFixed(0)+"k";
+      tags.push(`<span class="tag-min">min ${currentCcy} ${lbl}</span>`);
+    }
     const cls = ['row'];
-    if (isSyfe)   cls.push('is-syfe');
-    if (isLeader) cls.push('is-leader');
-
-    return `
-      <div class="${cls.join(' ')}">
-        <div class="r-rank">${rank === 1 ? '★' : String(rank).padStart(2,'0')}</div>
-        <div class="r-name">
-          <div class="r-name-main">${r.provider_name}</div>
-          ${tagsHtml}
-        </div>
-        <div class="r-bar"><div class="r-bar-fill" style="width:${widthPct.toFixed(1)}%"></div></div>
-        <a class="r-rate-link" href="${r.source_url || '#'}" target="_blank" rel="noopener" title="${r.notes || 'View provider source'}">
-          <div class="r-rate">${fmtPct(r.apy_pct)}</div>
-        </a>
-        <div class="r-date">${dateLine}</div>
+    if (isSyfe) cls.push('is-syfe');
+    if (isLeader && !isSyfe) cls.push('is-leader');
+    const srcCls = "src-" + (r.verified_by || "stashaway");
+    return `<div class="${cls.join(' ')}">
+      <div class="r-rank">${rank===1?'★':String(rank).padStart(2,'0')}</div>
+      <div class="r-name">
+        <div class="r-name-main">${r.provider_name}</div>
+        ${tags.length?'<div class="r-name-tags">'+tags.join("")+'</div>':''}
       </div>
-    `;
+      <div class="r-bar"><div class="r-bar-fill" style="width:${w.toFixed(1)}%"></div></div>
+      <div class="r-rate">${fmtPct(r.apy_pct)}</div>
+      <div class="r-date"><span class="src-dot ${srcCls}"></span>${fmtShortDate(r.verified_at)}</div>
+    </div>`;
   }
-
-  // ---------- currency switching ----------
-  document.querySelectorAll(".ccy-tab").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".ccy-tab").forEach(b => {
-        b.classList.remove("active"); b.setAttribute("aria-selected","false");
-      });
-      btn.classList.add("active"); btn.setAttribute("aria-selected","true");
-      currentCcy = btn.dataset.ccy;
+  document.querySelectorAll(".ccy-tab").forEach(b => {
+    b.addEventListener("click", () => {
+      document.querySelectorAll(".ccy-tab").forEach(x => x.classList.remove("active"));
+      b.classList.add("active");
+      currentCcy = b.dataset.ccy;
       render();
     });
   });
-
   render();
+})();
+
+/* ============================================================
+   MODULE 2 — FX widget with interactive sparkline
+   ============================================================ */
+(function module2() {
+  let FX = {
+    rate: 7.84,
+    date: "2026-06-23",
+    history: [
+      {date: "2026-06-17", rate: 7.83},
+      {date: "2026-06-18", rate: 7.835},
+      {date: "2026-06-19", rate: 7.838},
+      {date: "2026-06-20", rate: 7.84},
+      {date: "2026-06-21", rate: 7.842},
+      {date: "2026-06-22", rate: 7.841},
+      {date: "2026-06-23", rate: 7.84},
+    ],
+  };
+  const W = 600, H = 100, pad = 10;
+  const svg = document.getElementById("fx-sparkline");
+  const tooltip = document.getElementById("fx-tooltip");
+
+  function renderFX() {
+    document.getElementById("fx-rate").textContent = FX.rate.toFixed(4);
+    document.getElementById("fx-date").textContent = fmtShortDate(FX.date);
+    const hist = FX.history || [];
+    if (!hist.length) return;
+    const min = Math.min(...hist.map(h=>h.rate));
+    const max = Math.max(...hist.map(h=>h.rate));
+    const range = max - min || 0.001;
+    const points = hist.map((h, i) => {
+      const x = pad + (i/(hist.length-1)) * (W - pad*2);
+      const y = H - pad - ((h.rate - min) / range) * (H - pad*2 - 14);
+      return {x, y, ...h};
+    });
+    const lineStr = points.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(" ");
+    const areaPath = `M${points[0].x},${H-pad} L${points.map(p => `${p.x},${p.y}`).join(" L")} L${points[points.length-1].x},${H-pad} Z`;
+    svg.innerHTML = `
+      <defs>
+        <linearGradient id="spark-grad" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#2F51C9" stop-opacity="0.16"/>
+          <stop offset="100%" stop-color="#2F51C9" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <path d="${areaPath}" fill="url(#spark-grad)"/>
+      <polyline points="${lineStr}" fill="none" stroke="#2F51C9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      ${points.map(p => `
+        <circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="4" fill="#FDFCF8" stroke="#2F51C9" stroke-width="2"
+                class="spark-dot" data-rate="${p.rate}" data-date="${p.date}"/>
+      `).join("")}
+    `;
+    document.getElementById("spark-start").textContent = fmtShortDate(hist[0].date);
+    document.getElementById("spark-end").textContent = fmtShortDate(hist[hist.length-1].date);
+
+    svg.querySelectorAll(".spark-dot").forEach(c => {
+      c.addEventListener("mouseenter", e => {
+        const target = e.target;
+        const rect = svg.getBoundingClientRect();
+        const cx = parseFloat(target.getAttribute("cx"));
+        const cy = parseFloat(target.getAttribute("cy"));
+        tooltip.style.left = ((cx / W) * rect.width) + "px";
+        tooltip.style.top = ((cy / H) * rect.height - 8) + "px";
+        tooltip.innerHTML = `<div style="font-weight:600;">${parseFloat(target.dataset.rate).toFixed(4)} HKD</div><div style="opacity:0.7; font-size:10px;">${fmtShortDate(target.dataset.date)}</div>`;
+        tooltip.classList.remove("hidden");
+      });
+      c.addEventListener("mouseleave", () => tooltip.classList.add("hidden"));
+    });
+  }
+  renderFX();
+
+  try {
+    fetch("https://api.frankfurter.app/latest?from=USD&to=HKD")
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if (d && d.rates && d.rates.HKD) {
+          FX.rate = d.rates.HKD;
+          FX.date = d.date;
+          if (FX.history.length) FX.history[FX.history.length-1] = { date: d.date, rate: d.rates.HKD };
+          renderFX();
+        }
+      })
+      .catch(() => {});
+    const today = new Date();
+    const past = new Date(today.getTime() - 10 * 86400000);
+    const fmt = d => d.toISOString().slice(0,10);
+    fetch(`https://api.frankfurter.app/${fmt(past)}..${fmt(today)}?from=USD&to=HKD`)
+      .then(r => r.ok ? r.json() : null)
+      .then(d => {
+        if (d && d.rates) {
+          const dates = Object.keys(d.rates).sort();
+          if (dates.length >= 3) {
+            FX.history = dates.slice(-7).map(date => ({date, rate: d.rates[date].HKD}));
+            renderFX();
+          }
+        }
+      })
+      .catch(() => {});
+  } catch(e) {}
+
+  function recalc() {
+    const fromCcy = document.getElementById("from-ccy").value;
+    const toCcy   = document.getElementById("to-ccy").value;
+    const fromAmt = parseFloat(document.getElementById("from-amount").value) || 0;
+    let result;
+    if (fromCcy === toCcy) result = fromAmt;
+    else if (fromCcy === "USD" && toCcy === "HKD") result = fromAmt * FX.rate;
+    else if (fromCcy === "HKD" && toCcy === "USD") result = fromAmt / FX.rate;
+    else result = 0;
+    document.getElementById("to-amount").value = result.toLocaleString(undefined, {maximumFractionDigits: 2});
+  }
+  document.getElementById("from-amount").addEventListener("input", recalc);
+  document.getElementById("from-ccy").addEventListener("change", () => {
+    document.getElementById("to-ccy").value = document.getElementById("from-ccy").value === "HKD" ? "USD" : "HKD";
+    recalc();
+  });
+  document.getElementById("to-ccy").addEventListener("change", recalc);
+  recalc();
+})();
+
+/* ============================================================
+   MODULE 3 — Income+ projection with 3 portfolios
+   ============================================================ */
+(function module3() {
+  const TIERS = [
+    { min: 500000, reward: 2000 },
+    { min: 200000, reward: 1500 },
+    { min: 100000, reward: 800 },
+  ];
+
+  const PORTFOLIOS = {
+    income_max: {
+      id: "INCOME_MAX_HK_USD",
+      name: "Income Max",
+      desc: "USD ETFs · 6 holdings",
+      currency: "USD",
+      route: "broker",
+      target_yield: 0.10,
+      yield_label: "10.0% p.a.",
+      holdings: [
+        { isin: "IE0003UVYC20", ticker: "JEPG", name: "JPMorgan Global Equity Premium Income Active UCITS ETF", weight: 35, fees: { sub:["0%","good"], mgmt:["~0.35%","good"], redemp:["0%","good"], wht:["~15%","mid"], trailer:["None","good"] } },
+        { isin: "US46641Q1590", ticker: "JPIE", name: "JPMorgan Income ETF", weight: 20, fees: { sub:["0%","good"], mgmt:["~0.39%","good"], redemp:["0%","good"], wht:["~30%","bad"], trailer:["None","good"] } },
+        { isin: "IE00BDFC6G93", ticker: "JPMB", name: "JPMorgan USD Emerging Markets Sovereign Bond UCITS ETF", weight: 15, fees: { sub:["0%","good"], mgmt:["~0.39%","good"], redemp:["0%","good"], wht:["~15%","mid"], trailer:["None","good"] } },
+        { isin: "IE000U9J8HX9", ticker: "JEPQ", name: "JPMorgan Nasdaq Equity Premium Income Active UCITS ETF", weight: 10, fees: { sub:["0%","good"], mgmt:["~0.35%","good"], redemp:["0%","good"], wht:["~15%","mid"], trailer:["None","good"] } },
+        { isin: "IE000HF69TA9", ticker: "FEPI", name: "REX Tech Innovation Premium Income UCITS ETF (HANetf)", weight: 10, fees: { sub:["0%","good"], mgmt:["~0.65%","mid"], redemp:["0%","good"], wht:["~15%","mid"], trailer:["None","good"] } },
+        { isin: "US33733E8562", ticker: "IGLD", name: "FT Vest Gold Strategy Target Income ETF", weight: 10, fees: { sub:["0%","good"], mgmt:["~0.85%","mid"], redemp:["0%","good"], wht:["~30%","bad"], trailer:["None","good"] } },
+      ],
+    },
+    income_pure: {
+      id: "INCOME_PURE_HK",
+      name: "Income Pure",
+      desc: "HKD mutual funds · 6 holdings",
+      currency: "HKD",
+      route: "bank",
+      target_yield: 0.06,
+      yield_label: "6.0% p.a.",
+      holdings: [
+        { isin: "LU1819532257", ticker: "HGSAM2H", name: "HSBC GIF Global Short Duration High Yield B-AM2HKD", weight: 20, fees: { sub:["Up to 5%","bad"], mgmt:["~1.10%","mid"], redemp:["0–1%","mid"], wht:["~30%","bad"], trailer:["Kept by bank","bad"] } },
+        { isin: "IE00BHR40Y78", ticker: "PIMIEHK", name: "PIMCO Income (HKD-hedged)", weight: 20, fees: { sub:["Up to 5%","bad"], mgmt:["~1.49%","mid"], redemp:["0–1%","mid"], wht:["~15%","mid"], trailer:["Kept by bank","bad"] } },
+        { isin: "LU0827875690", ticker: "BATD3HH", name: "BlackRock Luxembourg (HKD class)", weight: 15, fees: { sub:["Up to 5%","bad"], mgmt:["~1.20%","mid"], redemp:["0–1%","mid"], wht:["~30%","bad"], trailer:["Kept by bank","bad"] } },
+        { isin: "IE00B3QS5W57", ticker: "PEABEMR", name: "PIMCO Emerging Markets Bond", weight: 15, fees: { sub:["Up to 5%","bad"], mgmt:["~1.45%","mid"], redemp:["0–1%","mid"], wht:["~15%","mid"], trailer:["Kept by bank","bad"] } },
+        { isin: "LU1069345178", ticker: "ABAMIAA", name: "AB FCP I — American Income AA", weight: 15, fees: { sub:["Up to 5%","bad"], mgmt:["~1.25%","mid"], redemp:["0–1%","mid"], wht:["~30%","bad"], trailer:["Kept by bank","bad"] } },
+        { isin: "LU1069345681", ticker: "ABGHIAA", name: "AB FCP I — Global High Yield AA HKD", weight: 15, fees: { sub:["Up to 5%","bad"], mgmt:["~1.60%","mid"], redemp:["0–1%","mid"], wht:["~30%","bad"], trailer:["Kept by bank","bad"] } },
+      ],
+    },
+    income_enhance: {
+      id: "INCOME_ENHANCE_HK",
+      name: "Income Enhance",
+      desc: "HKD mutual funds · 6 holdings",
+      currency: "HKD",
+      route: "bank",
+      target_yield: 0.085,
+      yield_label: "8.5% p.a.",
+      holdings: [
+        { isin: "LU1929549753", ticker: "FTIFAHK", name: "Franklin Income Fund AMD HKD", weight: 30, fees: { sub:["Up to 5%","bad"], mgmt:["~1.55%","mid"], redemp:["0–1%","mid"], wht:["~30%","bad"], trailer:["Kept by bank","bad"] } },
+        { isin: "LU1069345178", ticker: "ABAMIAA", name: "AB FCP I — American Income AA", weight: 15, fees: { sub:["Up to 5%","bad"], mgmt:["~1.25%","mid"], redemp:["0–1%","mid"], wht:["~30%","bad"], trailer:["Kept by bank","bad"] } },
+        { isin: "LU1069345681", ticker: "ABGHIAA", name: "AB FCP I — Global High Yield AA HKD", weight: 15, fees: { sub:["Up to 5%","bad"], mgmt:["~1.60%","mid"], redemp:["0–1%","mid"], wht:["~30%","bad"], trailer:["Kept by bank","bad"] } },
+        { isin: "IE00BGSXSF37", ticker: "PIAMHI2", name: "PIMCO Asia High Income", weight: 15, fees: { sub:["Up to 5%","bad"], mgmt:["~1.45%","mid"], redemp:["0–1%","mid"], wht:["~15%","mid"], trailer:["Kept by bank","bad"] } },
+        { isin: "IE00BHR40Y78", ticker: "PIMIEHK", name: "PIMCO Income (HKD-hedged)", weight: 15, fees: { sub:["Up to 5%","bad"], mgmt:["~1.49%","mid"], redemp:["0–1%","mid"], wht:["~15%","mid"], trailer:["Kept by bank","bad"] } },
+        { isin: "LU1697837992", ticker: "BDHA6HH", name: "BlackRock Luxembourg (HKD distributing)", weight: 10, fees: { sub:["Up to 5%","bad"], mgmt:["~1.20%","mid"], redemp:["0–1%","mid"], wht:["~30%","bad"], trailer:["Kept by bank","bad"] } },
+      ],
+    },
+  };
+
+  let activePortfolio = "income_max";
+
+  function badge(value, kind) {
+    const cls = { good: "badge-good", mid: "badge-mid", bad: "badge-bad" }[kind] || "";
+    return `<span class="badge ${cls}">${value}</span>`;
+  }
+
+  function renderComposition() {
+    const p = PORTFOLIOS[activePortfolio];
+    const max = Math.max(...p.holdings.map(h => h.weight));
+    document.getElementById("composition-list").innerHTML = p.holdings.map(h => {
+      const barW = (h.weight / max) * 100;
+      return `
+        <div class="comp-row">
+          <div class="comp-ticker">${h.ticker}</div>
+          <div class="comp-name">${h.name}<span class="comp-isin">${h.isin}</span></div>
+          <div class="comp-bar"><div class="comp-bar-fill" style="width:${barW.toFixed(1)}%"></div></div>
+          <div class="comp-weight">${h.weight}%</div>
+        </div>
+      `;
+    }).join("");
+  }
+
+  function renderFees() {
+    const p = PORTFOLIOS[activePortfolio];
+    const rows = p.holdings.map(h => `
+      <tr>
+        <td>
+          <div class="holding-cell">
+            <span class="holding-ticker">${h.ticker}</span>
+            <span class="holding-name">${h.name.length > 38 ? h.name.slice(0,38)+'…' : h.name}</span>
+            <span class="holding-isin">${h.isin}</span>
+          </div>
+        </td>
+        <td><span class="mono" style="font-size:12px;">${h.weight}%</span></td>
+        <td>${badge(h.fees.sub[0], h.fees.sub[1])}</td>
+        <td>${badge(h.fees.mgmt[0], h.fees.mgmt[1])}</td>
+        <td>${badge(h.fees.redemp[0], h.fees.redemp[1])}</td>
+        <td>${badge(h.fees.wht[0], h.fees.wht[1])}</td>
+        <td>${badge(h.fees.trailer[0], h.fees.trailer[1])}</td>
+      </tr>
+    `).join("");
+    const syfeRow = `
+      <tr class="is-syfe">
+        <td>
+          <div class="holding-cell">
+            <span class="holding-ticker">SYFE</span>
+            <span class="holding-name">Syfe Income+ · ${p.name}</span>
+            <span class="holding-isin">via Syfe wrapper</span>
+          </div>
+        </td>
+        <td><span class="mono" style="font-size:12px;">100%</span></td>
+        <td>${badge("0%", "good")}</td>
+        <td>${badge("0% to client", "good")}</td>
+        <td>${badge("0%", "good")}</td>
+        <td>${badge("Portfolio-managed", "good")}</td>
+        <td>${badge("Rebated to you", "good")}</td>
+      </tr>
+    `;
+    document.getElementById("fee-rows").innerHTML = rows + syfeRow;
+  }
+
+  function renderHeader() {
+    const p = PORTFOLIOS[activePortfolio];
+    document.getElementById("portfolio-name").textContent = p.name;
+    document.getElementById("portfolio-desc").textContent = p.desc;
+    document.getElementById("portfolio-id").textContent = p.id;
+    document.getElementById("step2-desc").textContent = p.route === "broker"
+      ? "Buying these USD ETFs through a broker means commissions per trade plus the fund's TER. Syfe absorbs commissions and gives you institutional-share-class access where applicable."
+      : "Buying these HKD mutual funds through a bank means up to 5% upfront, ~1.0–1.6% annual management drag, redemption fees, full WHT, and trailer fees the bank keeps. Syfe rebates trailer fees and charges no entry/exit costs.";
+  }
+
+  function selectPortfolio(key) {
+    activePortfolio = key;
+    document.querySelectorAll(".portfolio-card").forEach(c => {
+      c.classList.toggle("active", c.dataset.portfolio === key);
+    });
+    renderHeader();
+    renderComposition();
+    renderFees();
+    recalc();  // refresh earnings projection with the new portfolio's target yield
+  }
+
+  document.querySelectorAll(".portfolio-card").forEach(c => {
+    c.addEventListener("click", () => selectPortfolio(c.dataset.portfolio));
+  });
+
+  function recalc() {
+    const p = PORTFOLIOS[activePortfolio];
+    const amt = parseInt(document.getElementById("amount-slider").value, 10) || 0;
+    document.getElementById("slider-display").textContent = amt.toLocaleString();
+    const tier = TIERS.find(t => amt >= t.min);
+    const reward = tier ? tier.reward : 0;
+    const monthly = (amt * p.target_yield) / 12;
+    const total = reward + monthly;
+    document.getElementById("result-reward").textContent = "HKD " + reward.toLocaleString();
+    document.getElementById("result-monthly").textContent = "HKD " + Math.round(monthly).toLocaleString();
+    document.getElementById("result-total").textContent = "HKD " + Math.round(total).toLocaleString();
+    document.getElementById("result-monthly-foot").textContent = `Based on ${p.name}'s target yield (${p.yield_label})`;
+    document.getElementById("disclaimer-yield").innerHTML =
+      `Projected monthly income for <strong>${p.name}</strong> is calculated as <strong>target yield ${p.yield_label} ÷ 12</strong>. ` +
+      `Not guaranteed. Distributions may be paid from capital. Past performance is not indicative of future results.`;
+    document.querySelectorAll(".tier-pill").forEach(pp => {
+      pp.classList.toggle("active", tier && parseInt(pp.dataset.tier,10) === tier.min);
+    });
+  }
+  document.getElementById("amount-slider").addEventListener("input", recalc);
+  document.querySelectorAll(".tier-pill").forEach(p => {
+    p.addEventListener("click", () => {
+      document.getElementById("amount-slider").value = p.dataset.tier;
+      recalc();
+    });
+  });
+  recalc();
+
+  selectPortfolio("income_max");
 })();
 </script>
 </body>

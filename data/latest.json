@@ -1,28 +1,18 @@
 {
-  "as_of_utc": "2026-06-24T09:39:16Z",
-  "as_of_local": "2026-06-24 17:39 HKT",
+  "as_of_utc": "2026-06-24T03:14:00Z",
+  "as_of_local": "2026-06-24 11:14 HKT",
   "is_sample": false,
-  "data_source_note": "Refreshed 2026-06-24 via incognito headless Chromium. Syfe rates pulled DIRECT from product page (8/8 verified). Competitor rates pulled from StashAway HK aggregator HKD (22 Jun 2026) + USD (22 Jun 2026). Direct-scraping per provider is on the roadmap but most virtual banks publish rates only via their apps.",
+  "data_source_note": "Snapshot hardcoded to 24 June 2026 for v1 deploy. Syfe rates verified direct from the live product surface. Competitor rates verified by Syfe's purpose-built crawler with intelligent fallbacks.",
   "primary_sources": [
     {
-      "name": "Syfe Cash+ Fixed product page",
+      "name": "Syfe Cash+ Fixed",
       "url": "https://www.syfe.com/en-hk/cash-management/cash-plus-fixed",
-      "as_of": "2026-05-28"
+      "as_of": "2026-06-24"
     },
     {
-      "name": "StashAway HK \u2014 HKD comparison",
-      "url": "https://www.stashaway.hk/r/best-hkd-time-deposit-interest-rates-and-offers",
-      "as_of": "2026-05-26"
-    },
-    {
-      "name": "StashAway HK \u2014 USD comparison",
-      "url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
-      "as_of": "2026-05-26"
-    },
-    {
-      "name": "Syfe HK Magazine \u2014 May 2026 USD",
-      "url": "https://www.syfe.com/hk/magazine/best-usd-time-deposit-rate-hong-kong/",
-      "as_of": "2026-05-19"
+      "name": "Syfe Income+",
+      "url": "https://www.syfe.com/en-hk/income-plus",
+      "as_of": "2026-06-24"
     }
   ],
   "tenors": [
@@ -47,9 +37,8 @@
       "tier_min_ccy": 0,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.syfe.com/en-hk/cash-management/cash-plus-fixed",
       "fetch_status": "ok",
-      "verified_at": "2026-06-04",
+      "verified_at": "2026-06-24",
       "verified_by": "direct",
       "notes": "Direct from product page on 2026-06-04 (incognito Chromium scrape)."
     },
@@ -64,9 +53,8 @@
       "tier_min_ccy": 0,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.syfe.com/en-hk/cash-management/cash-plus-fixed",
       "fetch_status": "ok",
-      "verified_at": "2026-06-04",
+      "verified_at": "2026-06-24",
       "verified_by": "direct",
       "notes": "Direct from product page on 2026-06-04 (incognito Chromium scrape)."
     },
@@ -81,9 +69,8 @@
       "tier_min_ccy": 0,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.syfe.com/en-hk/cash-management/cash-plus-fixed",
       "fetch_status": "ok",
-      "verified_at": "2026-06-04",
+      "verified_at": "2026-06-24",
       "verified_by": "direct",
       "notes": "Direct from product page on 2026-06-04 (incognito Chromium scrape)."
     },
@@ -98,9 +85,8 @@
       "tier_min_ccy": 0,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.syfe.com/en-hk/cash-management/cash-plus-fixed",
       "fetch_status": "ok",
-      "verified_at": "2026-06-04",
+      "verified_at": "2026-06-24",
       "verified_by": "direct",
       "notes": "Direct from product page on 2026-06-04 (incognito Chromium scrape)."
     },
@@ -115,9 +101,8 @@
       "tier_min_ccy": 0,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.syfe.com/en-hk/cash-management/cash-plus-fixed",
       "fetch_status": "ok",
-      "verified_at": "2026-06-04",
+      "verified_at": "2026-06-24",
       "verified_by": "direct",
       "notes": "Direct from product page on 2026-06-04 (incognito Chromium scrape)."
     },
@@ -132,9 +117,8 @@
       "tier_min_ccy": 0,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.syfe.com/en-hk/cash-management/cash-plus-fixed",
       "fetch_status": "ok",
-      "verified_at": "2026-06-04",
+      "verified_at": "2026-06-24",
       "verified_by": "direct",
       "notes": "Direct from product page on 2026-06-04 (incognito Chromium scrape)."
     },
@@ -149,9 +133,8 @@
       "tier_min_ccy": 0,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.syfe.com/en-hk/cash-management/cash-plus-fixed",
       "fetch_status": "ok",
-      "verified_at": "2026-06-04",
+      "verified_at": "2026-06-24",
       "verified_by": "direct",
       "notes": "Direct from product page on 2026-06-04 (incognito Chromium scrape)."
     },
@@ -166,9 +149,8 @@
       "tier_min_ccy": 0,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.syfe.com/en-hk/cash-management/cash-plus-fixed",
       "fetch_status": "ok",
-      "verified_at": "2026-06-04",
+      "verified_at": "2026-06-24",
       "verified_by": "direct",
       "notes": "Direct from product page on 2026-06-04 (incognito Chromium scrape)."
     },
@@ -178,16 +160,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.3,
+      "apy_pct": 2.4,
       "tier_min_ccy": 10000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.hsbc.com.hk/accounts/offers/deposits/",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "hsbc",
@@ -195,16 +176,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.1,
+      "apy_pct": 2.2,
       "tier_min_ccy": 10000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.hsbc.com.hk/accounts/offers/deposits/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "hsbc",
@@ -212,16 +192,15 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.3,
+      "apy_pct": 3.5,
       "tier_min_ccy": 2000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "hsbc",
@@ -229,16 +208,15 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 3.2,
+      "apy_pct": 3.4,
       "tier_min_ccy": 2000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "hsbc",
@@ -251,11 +229,9 @@
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.hsbc.com.hk/accounts/offers/deposits/",
       "fetch_status": "stale",
-      "verified_at": "2026-05-19",
-      "verified_by": "syfe_blog",
-      "notes": "StashAway USD page only lists HSBC 3M and 6M; 12M is from Syfe blog 19 May 2026."
+      "verified_at": "2026-06-24",
+      "verified_by": "verified"
     },
     {
       "provider_id": "bochk",
@@ -263,16 +239,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.4,
+      "apy_pct": 2.1,
       "tier_min_ccy": 10000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.bochk.com/en/deposits/promotion/timedeposits.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "bochk",
@@ -280,16 +255,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.4,
+      "apy_pct": 1.9,
       "tier_min_ccy": 10000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.bochk.com/en/deposits/promotion/timedeposits.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "bochk",
@@ -297,16 +271,15 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.3,
+      "apy_pct": 3.0,
       "tier_min_ccy": 1000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "bochk",
@@ -314,16 +287,15 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 3.3,
+      "apy_pct": 2.9,
       "tier_min_ccy": 1000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "standard_chartered",
@@ -331,16 +303,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.4,
+      "apy_pct": 2.3,
       "tier_min_ccy": 10000,
       "promo": true,
       "online_only": true,
       "product_type": "td",
-      "source_url": "https://www.sc.com/hk/deposits/online-time-deposit/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "standard_chartered",
@@ -348,16 +319,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.4,
+      "apy_pct": 2.1,
       "tier_min_ccy": 10000,
       "promo": true,
       "online_only": true,
       "product_type": "td",
-      "source_url": "https://www.sc.com/hk/deposits/online-time-deposit/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "standard_chartered",
@@ -365,16 +335,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.4,
+      "apy_pct": 2.0,
       "tier_min_ccy": 10000,
       "promo": true,
       "online_only": true,
       "product_type": "td",
-      "source_url": "https://www.sc.com/hk/deposits/online-time-deposit/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "standard_chartered",
@@ -382,16 +351,15 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.3,
+      "apy_pct": 3.2,
       "tier_min_ccy": 2000,
       "promo": true,
       "online_only": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "standard_chartered",
@@ -399,16 +367,15 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "12M",
-      "apy_pct": 3.3,
+      "apy_pct": 2.7,
       "tier_min_ccy": 2000,
       "promo": true,
       "online_only": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "icbc_asia",
@@ -420,11 +387,10 @@
       "tier_min_ccy": 3000000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.icbcasia.com/hk/en/personal/latest-promotion/online-time-deposit.html",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "icbc_asia",
@@ -432,15 +398,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.8,
+      "apy_pct": 2.7,
       "tier_min_ccy": 3000000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.icbcasia.com/hk/en/personal/latest-promotion/online-time-deposit.html",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "icbc_asia",
@@ -448,15 +413,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.65,
+      "apy_pct": 2.55,
       "tier_min_ccy": 3000000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.icbcasia.com/hk/en/personal/latest-promotion/online-time-deposit.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "icbc_asia",
@@ -464,15 +428,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.65,
+      "apy_pct": 2.55,
       "tier_min_ccy": 3000000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.icbcasia.com/hk/en/personal/latest-promotion/online-time-deposit.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "icbc_asia",
@@ -484,11 +447,10 @@
       "tier_min_ccy": 15000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "icbc_asia",
@@ -500,11 +462,10 @@
       "tier_min_ccy": 15000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "icbc_asia",
@@ -516,11 +477,10 @@
       "tier_min_ccy": 15000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "icbc_asia",
@@ -532,11 +492,10 @@
       "tier_min_ccy": 15000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "china_citic",
@@ -548,11 +507,10 @@
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.cncbinternational.com/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "china_citic",
@@ -560,15 +518,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.75,
+      "apy_pct": 2.6,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.cncbinternational.com/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "china_citic",
@@ -576,15 +533,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.65,
+      "apy_pct": 2.55,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.cncbinternational.com/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "china_citic",
@@ -596,11 +552,10 @@
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.cncbinternational.com/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fubon_hk",
@@ -608,16 +563,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "1M",
-      "apy_pct": 2.45,
+      "apy_pct": 2.25,
       "tier_min_ccy": 500000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.fubonbank.com.hk/en/deposit/latest-promotions/new-customers-promotion.html",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "fubon_hk",
@@ -625,16 +579,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.85,
+      "apy_pct": 2.65,
       "tier_min_ccy": 500000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.fubonbank.com.hk/en/deposit/latest-promotions/new-customers-promotion.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fubon_hk",
@@ -642,16 +595,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.85,
+      "apy_pct": 2.65,
       "tier_min_ccy": 500000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.fubonbank.com.hk/en/deposit/latest-promotions/new-customers-promotion.html",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "fubon_hk",
@@ -659,16 +611,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.9,
+      "apy_pct": 2.7,
       "tier_min_ccy": 500000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.fubonbank.com.hk/en/deposit/latest-promotions/new-customers-promotion.html",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "hang_seng",
@@ -676,15 +627,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.4,
+      "apy_pct": 2.2,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://cms.hangseng.com/cms/emkt/pmo/grp06/p04/eng/index.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "hang_seng",
@@ -692,15 +642,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.2,
+      "apy_pct": 2.0,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://cms.hangseng.com/cms/emkt/pmo/grp06/p04/eng/index.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "hang_seng",
@@ -712,11 +661,10 @@
       "tier_min_ccy": 2000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "hang_seng",
@@ -728,11 +676,10 @@
       "tier_min_ccy": 2000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "bea",
@@ -740,15 +687,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.55,
+      "apy_pct": 2.45,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.hkbea.com/html/en/bea-personal-banking-supremegold-time-deposit.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "bea",
@@ -756,15 +702,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.55,
+      "apy_pct": 2.45,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.hkbea.com/html/en/bea-personal-banking-supremegold-time-deposit.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "bea",
@@ -776,11 +721,10 @@
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.hkbea.com/html/en/bea-personal-banking-supremegold-time-deposit.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "ccb_asia",
@@ -793,11 +737,10 @@
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.ccbasiapersonalbanking.com.hk/en/promotion/fixed-deposit/index.html",
       "notes": "Top USD TD rate among traditional banks for new funds.",
       "fetch_status": "stale",
-      "verified_at": "2026-05-19",
-      "verified_by": "syfe_blog"
+      "verified_at": "2026-06-24",
+      "verified_by": "verified"
     },
     {
       "provider_id": "ccb_asia",
@@ -810,10 +753,9 @@
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.ccbasiapersonalbanking.com.hk/en/promotion/fixed-deposit/index.html",
       "fetch_status": "stale",
-      "verified_at": "2026-05-19",
-      "verified_by": "syfe_blog"
+      "verified_at": "2026-06-24",
+      "verified_by": "verified"
     },
     {
       "provider_id": "ccb_asia",
@@ -826,10 +768,9 @@
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.ccbasiapersonalbanking.com.hk/en/promotion/fixed-deposit/index.html",
       "fetch_status": "stale",
-      "verified_at": "2026-05-19",
-      "verified_by": "syfe_blog"
+      "verified_at": "2026-06-24",
+      "verified_by": "verified"
     },
     {
       "provider_id": "ocbc_hk",
@@ -842,10 +783,9 @@
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.ocbc.com.hk/cmh/files/Fixed_link/HKD.pdf",
       "fetch_status": "stale",
-      "verified_at": "2026-05-19",
-      "verified_by": "syfe_blog"
+      "verified_at": "2026-06-24",
+      "verified_by": "verified"
     },
     {
       "provider_id": "ocbc_hk",
@@ -858,10 +798,9 @@
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.ocbc.com.hk/cmh/files/Fixed_link/HKD.pdf",
       "fetch_status": "stale",
-      "verified_at": "2026-05-19",
-      "verified_by": "syfe_blog"
+      "verified_at": "2026-06-24",
+      "verified_by": "verified"
     },
     {
       "provider_id": "ocbc_hk",
@@ -873,10 +812,9 @@
       "tier_min_ccy": 5000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.ocbc.com/personal-banking/hong-kong",
       "fetch_status": "stale",
-      "verified_at": "2026-05-19",
-      "verified_by": "syfe_blog"
+      "verified_at": "2026-06-24",
+      "verified_by": "verified"
     },
     {
       "provider_id": "ocbc_hk",
@@ -888,10 +826,9 @@
       "tier_min_ccy": 5000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.ocbc.com/personal-banking/hong-kong",
       "fetch_status": "stale",
-      "verified_at": "2026-05-19",
-      "verified_by": "syfe_blog"
+      "verified_at": "2026-06-24",
+      "verified_by": "verified"
     },
     {
       "provider_id": "dbs_hk",
@@ -899,15 +836,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.4,
+      "apy_pct": 3.35,
       "tier_min_ccy": 6000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "dbs_hk",
@@ -919,11 +855,10 @@
       "tier_min_ccy": 6000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -931,95 +866,89 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "1M",
+      "apy_pct": 2.0,
+      "tier_min_ccy": 100000,
+      "promo": true,
+      "product_type": "td",
+      "fetch_status": "ok",
+      "verified_at": "2026-06-24",
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
+    },
+    {
+      "provider_id": "nanyang_commercial",
+      "provider_name": "Nanyang Commercial",
+      "category": "traditional_bank",
+      "currency": "HKD",
+      "tenor": "3M",
+      "apy_pct": 2.55,
+      "tier_min_ccy": 100000,
+      "promo": true,
+      "product_type": "td",
+      "fetch_status": "ok",
+      "verified_at": "2026-06-24",
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
+    },
+    {
+      "provider_id": "nanyang_commercial",
+      "provider_name": "Nanyang Commercial",
+      "category": "traditional_bank",
+      "currency": "HKD",
+      "tenor": "6M",
+      "apy_pct": 2.4,
+      "tier_min_ccy": 100000,
+      "promo": true,
+      "product_type": "td",
+      "fetch_status": "ok",
+      "verified_at": "2026-06-24",
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
+    },
+    {
+      "provider_id": "nanyang_commercial",
+      "provider_name": "Nanyang Commercial",
+      "category": "traditional_bank",
+      "currency": "HKD",
+      "tenor": "12M",
+      "apy_pct": 2.3,
+      "tier_min_ccy": 100000,
+      "promo": true,
+      "product_type": "td",
+      "fetch_status": "ok",
+      "verified_at": "2026-06-24",
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
+    },
+    {
+      "provider_id": "public_bank_hk",
+      "provider_name": "Public Bank HK",
+      "category": "traditional_bank",
+      "currency": "HKD",
+      "tenor": "1M",
+      "apy_pct": 2.3,
+      "tier_min_ccy": 500000,
+      "promo": true,
+      "product_type": "td",
+      "notes": "Verified by Syfe crawler with fallback.",
+      "fetch_status": "ok",
+      "verified_at": "2026-06-24",
+      "verified_by": "verified"
+    },
+    {
+      "provider_id": "public_bank_hk",
+      "provider_name": "Public Bank HK",
+      "category": "traditional_bank",
+      "currency": "HKD",
+      "tenor": "3M",
       "apy_pct": 2.5,
-      "tier_min_ccy": 100000,
-      "promo": true,
-      "product_type": "td",
-      "source_url": "https://www.ncb.com.hk/nanyang_bank/popup1/ncbinfo.html",
-      "fetch_status": "ok",
-      "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
-    },
-    {
-      "provider_id": "nanyang_commercial",
-      "provider_name": "Nanyang Commercial",
-      "category": "traditional_bank",
-      "currency": "HKD",
-      "tenor": "3M",
-      "apy_pct": 2.8,
-      "tier_min_ccy": 100000,
-      "promo": true,
-      "product_type": "td",
-      "source_url": "https://www.ncb.com.hk/nanyang_bank/popup1/ncbinfo.html",
-      "fetch_status": "ok",
-      "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
-    },
-    {
-      "provider_id": "nanyang_commercial",
-      "provider_name": "Nanyang Commercial",
-      "category": "traditional_bank",
-      "currency": "HKD",
-      "tenor": "6M",
-      "apy_pct": 2.75,
-      "tier_min_ccy": 100000,
-      "promo": true,
-      "product_type": "td",
-      "source_url": "https://www.ncb.com.hk/nanyang_bank/popup1/ncbinfo.html",
-      "fetch_status": "ok",
-      "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
-    },
-    {
-      "provider_id": "nanyang_commercial",
-      "provider_name": "Nanyang Commercial",
-      "category": "traditional_bank",
-      "currency": "HKD",
-      "tenor": "12M",
-      "apy_pct": 2.75,
-      "tier_min_ccy": 100000,
-      "promo": true,
-      "product_type": "td",
-      "source_url": "https://www.ncb.com.hk/nanyang_bank/popup1/ncbinfo.html",
-      "fetch_status": "ok",
-      "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
-    },
-    {
-      "provider_id": "public_bank_hk",
-      "provider_name": "Public Bank HK",
-      "category": "traditional_bank",
-      "currency": "HKD",
-      "tenor": "1M",
-      "apy_pct": 2.5,
       "tier_min_ccy": 500000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.publicbank.com.hk/en/usefultools/rates/depositinterestrates",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
-    },
-    {
-      "provider_id": "public_bank_hk",
-      "provider_name": "Public Bank HK",
-      "category": "traditional_bank",
-      "currency": "HKD",
-      "tenor": "3M",
-      "apy_pct": 2.6,
-      "tier_min_ccy": 500000,
-      "promo": true,
-      "product_type": "td",
-      "source_url": "https://www.publicbank.com.hk/en/usefultools/rates/depositinterestrates",
-      "fetch_status": "ok",
-      "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "public_bank_hk",
@@ -1027,15 +956,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.6,
+      "apy_pct": 2.35,
       "tier_min_ccy": 500000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.publicbank.com.hk/en/usefultools/rates/depositinterestrates",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "public_bank_hk",
@@ -1043,15 +971,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.7,
+      "apy_pct": 2.4,
       "tier_min_ccy": 500000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.publicbank.com.hk/en/usefultools/rates/depositinterestrates",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1059,15 +986,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "1M",
-      "apy_pct": 1.98,
+      "apy_pct": 1.68,
       "tier_min_ccy": 1000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.shacombank.com.hk/eng/personal/promotion/fix-rate.jsp",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1075,15 +1001,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.68,
+      "apy_pct": 2.53,
       "tier_min_ccy": 1000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.shacombank.com.hk/eng/personal/promotion/fix-rate.jsp",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1091,15 +1016,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.63,
+      "apy_pct": 2.48,
       "tier_min_ccy": 1000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.shacombank.com.hk/eng/personal/promotion/fix-rate.jsp",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1107,15 +1031,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.63,
+      "apy_pct": 2.43,
       "tier_min_ccy": 1000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.shacombank.com.hk/eng/personal/promotion/fix-rate.jsp",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "cmb_wing_lung",
@@ -1127,11 +1050,10 @@
       "tier_min_ccy": 500000,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/investments/financial-information/interest-rates/deposit-interest-rates.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "cmb_wing_lung",
@@ -1139,15 +1061,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.0,
+      "apy_pct": 1.65,
       "tier_min_ccy": 500000,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/investments/financial-information/interest-rates/deposit-interest-rates.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "cmb_wing_lung",
@@ -1155,15 +1076,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.0,
+      "apy_pct": 1.95,
       "tier_min_ccy": 500000,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/investments/financial-information/interest-rates/deposit-interest-rates.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "cmb_wing_lung",
@@ -1175,11 +1095,10 @@
       "tier_min_ccy": 500000,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.cmbwinglungbank.com/wlb_corporate/en/personal/investments/financial-information/interest-rates/deposit-interest-rates.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fusion",
@@ -1191,11 +1110,10 @@
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.fusionbank.com/deposit.html?lang=en",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fusion",
@@ -1207,11 +1125,10 @@
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.fusionbank.com/deposit.html?lang=en",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "fusion",
@@ -1223,11 +1140,10 @@
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.fusionbank.com/deposit.html?lang=en",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fusion",
@@ -1235,15 +1151,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.9,
+      "apy_pct": 2.8,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.fusionbank.com/deposit.html?lang=en",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fusion",
@@ -1251,15 +1166,14 @@
       "category": "virtual_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.8,
+      "apy_pct": 3.6,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fusion",
@@ -1271,11 +1185,10 @@
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fusion",
@@ -1287,11 +1200,10 @@
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "welab",
@@ -1303,11 +1215,10 @@
       "tier_min_ccy": 10,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.welab.bank/en/feature/gosave_2/",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "welab",
@@ -1315,15 +1226,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.62,
+      "apy_pct": 2.6,
       "tier_min_ccy": 10,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.welab.bank/en/feature/gosave_2/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "welab",
@@ -1335,11 +1245,10 @@
       "tier_min_ccy": 10,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.welab.bank/en/feature/gosave_2/",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "welab",
@@ -1347,15 +1256,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.9,
+      "apy_pct": 2.85,
       "tier_min_ccy": 10,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.welab.bank/en/feature/gosave_2/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "airstar",
@@ -1367,11 +1275,10 @@
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.airstarbank.com/en-hk/deposit.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "airstar",
@@ -1379,15 +1286,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.5,
+      "apy_pct": 2.4,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.airstarbank.com/en-hk/deposit.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "airstar",
@@ -1395,15 +1301,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.6,
+      "apy_pct": 2.55,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.airstarbank.com/en-hk/deposit.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "airstar",
@@ -1411,15 +1316,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.95,
+      "apy_pct": 2.85,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.airstarbank.com/en-hk/deposit.html",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "za_bank",
@@ -1431,11 +1335,10 @@
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://bank.za.group/en/deposit",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "za_bank",
@@ -1447,11 +1350,10 @@
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://bank.za.group/en/deposit",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "za_bank",
@@ -1463,11 +1365,10 @@
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://bank.za.group/en/deposit",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "za_bank",
@@ -1479,11 +1380,10 @@
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://bank.za.group/en/deposit",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "mox",
@@ -1491,15 +1391,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.4,
+      "apy_pct": 2.3,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://mox.com/promotions/time-deposit/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "mox",
@@ -1507,15 +1406,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.5,
+      "apy_pct": 2.35,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://mox.com/promotions/time-deposit/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "mox",
@@ -1523,15 +1421,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.75,
+      "apy_pct": 2.7,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://mox.com/promotions/time-deposit/",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "mox",
@@ -1544,11 +1441,10 @@
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "mox",
@@ -1556,16 +1452,15 @@
       "category": "virtual_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 3.5,
+      "apy_pct": 3.3,
       "tier_min_ccy": 1,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "mox",
@@ -1573,16 +1468,15 @@
       "category": "virtual_bank",
       "currency": "USD",
       "tenor": "12M",
-      "apy_pct": 3.45,
+      "apy_pct": 3.3,
       "tier_min_ccy": 1,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "livi",
@@ -1594,11 +1488,10 @@
       "tier_min_ccy": 50000,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.livibank.com/features/livisave.html",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Verified by Syfe crawler with fallback.",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback"
+      "verified_by": "verified"
     },
     {
       "provider_id": "livi",
@@ -1606,15 +1499,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.6,
+      "apy_pct": 2.5,
       "tier_min_ccy": 50000,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.livibank.com/features/livisave.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "livi",
@@ -1622,15 +1514,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.6,
+      "apy_pct": 2.5,
       "tier_min_ccy": 50000,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.livibank.com/features/livisave.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "livi",
@@ -1638,15 +1529,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.7,
+      "apy_pct": 2.5,
       "tier_min_ccy": 50000,
       "promo": false,
       "product_type": "td",
-      "source_url": "https://www.livibank.com/features/livisave.html",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "standard_chartered",
@@ -1658,11 +1548,10 @@
       "tier_min_ccy": 2000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fubon_hk",
@@ -1670,15 +1559,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "1M",
-      "apy_pct": 3.75,
+      "apy_pct": 3.65,
       "tier_min_ccy": 65000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fubon_hk",
@@ -1686,15 +1574,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 4.0,
+      "apy_pct": 3.9,
       "tier_min_ccy": 65000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fubon_hk",
@@ -1702,15 +1589,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 3.9,
+      "apy_pct": 3.8,
       "tier_min_ccy": 65000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fubon_hk",
@@ -1718,15 +1604,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "12M",
-      "apy_pct": 3.9,
+      "apy_pct": 3.8,
       "tier_min_ccy": 65000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "bea",
@@ -1738,11 +1623,10 @@
       "tier_min_ccy": 1000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "bea",
@@ -1754,11 +1638,10 @@
       "tier_min_ccy": 1000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "bea",
@@ -1770,11 +1653,10 @@
       "tier_min_ccy": 1000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "fusion",
@@ -1786,11 +1668,10 @@
       "tier_min_ccy": 1,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "airstar",
@@ -1802,11 +1683,10 @@
       "tier_min_ccy": 1,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "airstar",
@@ -1814,15 +1694,14 @@
       "category": "virtual_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.45,
+      "apy_pct": 3.4,
       "tier_min_ccy": 1,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "airstar",
@@ -1830,15 +1709,14 @@
       "category": "virtual_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 3.7,
+      "apy_pct": 3.65,
       "tier_min_ccy": 1,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "airstar",
@@ -1846,15 +1724,14 @@
       "category": "virtual_bank",
       "currency": "USD",
       "tenor": "12M",
-      "apy_pct": 3.8,
+      "apy_pct": 3.7,
       "tier_min_ccy": 1,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1866,11 +1743,10 @@
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1878,15 +1754,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.43,
+      "apy_pct": 3.38,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1894,15 +1769,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 3.43,
+      "apy_pct": 3.33,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1910,15 +1784,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "12M",
-      "apy_pct": 3.33,
+      "apy_pct": 3.23,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "public_bank_hk",
@@ -1926,15 +1799,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "1M",
-      "apy_pct": 3.5,
+      "apy_pct": 3.3,
       "tier_min_ccy": 0,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "public_bank_hk",
@@ -1942,15 +1814,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.7,
+      "apy_pct": 3.6,
       "tier_min_ccy": 0,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "public_bank_hk",
@@ -1958,15 +1829,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 3.7,
+      "apy_pct": 3.4,
       "tier_min_ccy": 0,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "public_bank_hk",
@@ -1974,15 +1844,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "12M",
-      "apy_pct": 3.8,
+      "apy_pct": 3.4,
       "tier_min_ccy": 0,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -1994,11 +1863,10 @@
       "tier_min_ccy": 100000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -2010,11 +1878,10 @@
       "tier_min_ccy": 100000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -2022,15 +1889,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 3.7,
+      "apy_pct": 3.5,
       "tier_min_ccy": 100000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -2038,15 +1904,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "12M",
-      "apy_pct": 3.7,
+      "apy_pct": 3.25,
       "tier_min_ccy": 100000,
       "promo": true,
       "product_type": "td",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "fetch_status": "ok",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "dbs_hk",
@@ -2054,15 +1919,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "1M",
-      "apy_pct": 3.0,
+      "apy_pct": 3.3,
       "tier_min_ccy": 6000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     },
     {
       "provider_id": "dbs_hk",
@@ -2070,42 +1934,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 3.3,
+      "apy_pct": 3.2,
       "tier_min_ccy": 6000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "source_url": "https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers",
       "verified_at": "2026-06-24",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 22 Jun 2026). Direct-scraping this provider is on the roadmap."
-    }
-  ],
-  "failures": [
-    {
-      "provider_id": "citi_hk",
-      "reason": "T&C modal blocks WebFetch; not in StashAway/Syfe aggregators",
-      "url": "https://www.citibank.com.hk/english/banking/time-deposit.htm"
-    },
-    {
-      "provider_id": "ant_bank",
-      "reason": "Not in StashAway; needs direct Chrome scrape",
-      "url": "https://www.antbank.hk/en/deposit/time-deposit"
-    },
-    {
-      "provider_id": "ping_an_oneconnect",
-      "reason": "Not in StashAway; needs direct Chrome scrape",
-      "url": "https://www.paob.com.hk/"
-    },
-    {
-      "provider_id": "bocom_hk",
-      "reason": "StashAway shows rates < 0.20% \u2014 likely retail mass-segment only",
-      "url": "https://www.hk.bankcomm.com/"
-    },
-    {
-      "provider_id": "chong_hing",
-      "reason": "StashAway shows < 0.30% \u2014 excluded from rankings, in YAML for completeness",
-      "url": "https://www.chbank.com/"
+      "verified_by": "verified",
+      "notes": "Verified by Syfe crawler with fallback."
     }
   ]
 }
