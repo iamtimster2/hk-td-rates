@@ -1,0 +1,628 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HK Time Deposit Rates · Syfe vs. competitors</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper:        #FAF6EB;
+    --paper-deep:   #F0EBDC;
+    --ink:          #0E0D0B;
+    --ink-1:        #2C2A26;
+    --ink-2:        #5A554A;
+    --ink-3:        #8B8478;
+    --rule:         #BDB39A;
+    --rule-soft:    #D9D0B6;
+    --oxblood:      #7A1F2E;
+    --oxblood-tint: #F2E5E4;
+    --gold:         #B89248;
+    --gold-tint:    #F4ECD7;
+    --moss:         #5F6B3F;
+    --bar-ink:      #0E0D0B;
+    --bar-syfe:     #7A1F2E;
+    --bar-gold:     #B89248;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, system-ui, sans-serif;
+    font-size: 15px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  a { color: inherit; }
+
+  .page { max-width: 1140px; margin: 0 auto; padding: 0 36px 72px; }
+
+  /* ============================================================
+     Top bar — system info, not editorial framing
+     ============================================================ */
+  .topbar {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 16px 0; gap: 16px;
+    border-bottom: 1px solid var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-2);
+  }
+  .topbar-left { font-weight: 500; color: var(--ink); }
+  .topbar-right { display: flex; gap: 16px; align-items: center; }
+  .live-dot { display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: var(--moss); }
+  .refresh-link {
+    color: var(--ink); text-decoration: none;
+    border: 1px solid var(--ink); padding: 4px 10px;
+    border-radius: 2px;
+    font-family: 'JetBrains Mono', monospace; font-size: 10px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    transition: all .15s ease;
+  }
+  .refresh-link:hover { background: var(--ink); color: var(--paper); }
+
+  /* ============================================================
+     Header
+     ============================================================ */
+  header.intro {
+    display: grid; grid-template-columns: 1fr auto; gap: 32px;
+    align-items: end; padding: 40px 0 28px;
+    border-bottom: 1px solid var(--ink);
+  }
+  h1.title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500; font-size: clamp(36px, 5vw, 56px);
+    line-height: 1.02; letter-spacing: -0.015em;
+    margin: 0 0 10px;
+    font-variation-settings: "opsz" 144;
+  }
+  .sub {
+    font-size: 15px; color: var(--ink-2);
+    max-width: 620px; line-height: 1.5;
+  }
+  .sub strong { color: var(--ink); font-weight: 500; }
+
+  /* Currency switcher */
+  .ccy-switch {
+    display: inline-flex; border: 1px solid var(--ink); padding: 3px;
+    background: var(--paper-deep);
+  }
+  .ccy-tab {
+    appearance: none; border: 0; background: transparent;
+    padding: 9px 18px; font-family: 'JetBrains Mono', monospace;
+    font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--ink-2); cursor: pointer; font-weight: 500;
+    transition: all .15s ease;
+  }
+  .ccy-tab:hover { color: var(--ink); }
+  .ccy-tab.active { background: var(--ink); color: var(--paper); }
+
+  /* ============================================================
+     Stat strip — three numbers, factual
+     ============================================================ */
+  .stats {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0; margin: 28px 0 8px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .stat {
+    padding: 18px 20px;
+    border-right: 1px solid var(--rule);
+  }
+  .stat:last-child { border-right: 0; }
+  .stat-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-3); margin-bottom: 6px;
+  }
+  .stat-value {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 500; font-size: 30px; line-height: 1.05;
+    letter-spacing: -0.01em;
+    font-variation-settings: "opsz" 96;
+  }
+  .stat-value .small {
+    font-size: 18px; color: var(--ink-3);
+    font-weight: 400; margin-left: 2px;
+  }
+  .stat-foot {
+    font-size: 12px; color: var(--ink-2);
+    margin-top: 4px;
+  }
+  .stat-foot.syfe { color: var(--oxblood); font-weight: 500; }
+
+  /* ============================================================
+     Tenor sections
+     ============================================================ */
+  .tenor-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 36px 40px; margin-top: 36px;
+  }
+  .tenor {}
+  .tenor-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 14px 0 12px;
+    border-bottom: 1.5px solid var(--ink);
+    gap: 16px;
+  }
+  .tenor-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink);
+  }
+  .tenor-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; letter-spacing: 0.04em;
+    color: var(--ink-2); text-align: right; line-height: 1.5;
+  }
+  .tenor-meta .syfe { color: var(--oxblood); font-weight: 500; }
+
+  /* ============================================================
+     Bar rows
+     ============================================================ */
+  .rows { display: flex; flex-direction: column; }
+  .row {
+    display: grid;
+    grid-template-columns: 22px minmax(110px, 1.2fr) minmax(80px, 1.5fr) 56px 64px;
+    gap: 10px; align-items: center;
+    padding: 9px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    font-size: 13.5px;
+  }
+  .row:last-child { border-bottom: 0; }
+  .row.is-syfe {
+    background: var(--oxblood-tint);
+    margin: 0 -10px; padding-left: 10px; padding-right: 10px;
+    border-bottom-color: var(--oxblood-tint);
+  }
+
+  .r-rank {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 500;
+    color: var(--ink-3); text-align: right;
+    font-feature-settings: "tnum";
+  }
+  .row.is-leader .r-rank { color: var(--gold); font-weight: 700; }
+  .row.is-syfe   .r-rank { color: var(--oxblood); font-weight: 700; }
+
+  .r-name {
+    display: flex; flex-direction: column; gap: 1px;
+    min-width: 0;
+  }
+  .r-name-main {
+    font-weight: 500; color: var(--ink);
+    font-size: 14px; line-height: 1.25;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  .row.is-syfe .r-name-main { font-weight: 700; color: var(--oxblood); }
+  .r-name-tags {
+    display: flex; gap: 6px; flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; color: var(--ink-3);
+    letter-spacing: 0.02em;
+  }
+  .tag-promo { color: var(--oxblood); }
+  .tag-min   { color: var(--moss); }
+
+  .r-bar {
+    height: 18px; display: flex; align-items: center;
+    position: relative;
+  }
+  .r-bar-fill {
+    height: 100%; background: var(--bar-ink);
+    transition: width .6s cubic-bezier(.2,.6,.2,1);
+  }
+  .row.is-syfe .r-bar-fill { background: var(--bar-syfe); }
+  .row.is-leader .r-bar-fill { background: var(--bar-gold); }
+
+  .r-rate {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 15px; font-weight: 600;
+    text-align: right;
+    font-feature-settings: "tnum";
+    color: var(--ink);
+  }
+  .row.is-syfe .r-rate { color: var(--oxblood); }
+  .row.is-leader .r-rate { font-weight: 700; }
+
+  .r-date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px; font-weight: 500;
+    color: var(--ink-3); text-align: right;
+    letter-spacing: 0.02em;
+    font-feature-settings: "tnum";
+  }
+  .r-date .src-dot {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    vertical-align: middle; margin-right: 5px;
+  }
+  .src-dot.src-stashaway { background: #5A8FB8; }
+  .src-dot.src-stashaway_fallback { background: #5A8FB8; }
+  .src-dot.src-direct            { background: var(--moss); }
+  .src-dot.src-syfe      { background: var(--oxblood); }
+  .src-dot.src-syfe_blog { background: var(--oxblood); opacity: 0.5; }
+
+  /* Make rate clickable */
+  a.r-rate-link { text-decoration: none; color: inherit; }
+  a.r-rate-link:hover .r-rate { text-decoration: underline; text-decoration-color: var(--ink-3); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+
+  /* ============================================================
+     Source legend + footer
+     ============================================================ */
+  .legend {
+    margin-top: 36px;
+    display: flex; flex-wrap: wrap; gap: 22px;
+    padding-top: 18px; padding-bottom: 18px;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--ink-2);
+    letter-spacing: 0.04em;
+  }
+  .legend-item { display: inline-flex; align-items: center; gap: 8px; }
+  .legend-swatch { width: 14px; height: 14px; flex-shrink: 0; }
+  .legend-swatch.dot { border-radius: 50%; width: 10px; height: 10px; }
+  .sw-syfe   { background: var(--oxblood-tint); border-left: 3px solid var(--oxblood); }
+  .sw-leader { background: var(--gold); }
+  .sw-bar    { background: var(--bar-ink); }
+  .sw-promo  { color: var(--oxblood); }
+
+  /* Sources list — flat, factual */
+  .sources {
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+  .sources h3 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink); margin: 0 0 12px; font-weight: 600;
+  }
+  .sources ul {
+    list-style: none; margin: 0; padding: 0;
+  }
+  .sources li {
+    display: grid; grid-template-columns: 1fr auto; gap: 16px;
+    padding: 8px 0; border-bottom: 1px solid var(--rule-soft);
+    font-size: 13px;
+  }
+  .sources li:last-child { border-bottom: 0; }
+  .sources a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--ink-3); }
+  .sources a:hover { border-bottom-color: var(--ink); }
+  .sources .date {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; color: var(--ink-3); white-space: nowrap;
+  }
+
+  /* Methodology + disclaimer */
+  details.about {
+    margin-top: 28px; padding: 14px 0;
+    border-top: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  details.about summary {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink); cursor: pointer;
+    list-style: none;
+  }
+  details.about summary::after {
+    content: " +"; color: var(--ink-3);
+  }
+  details.about[open] summary::after { content: " −"; }
+  details.about .body {
+    font-size: 13.5px; color: var(--ink-2);
+    line-height: 1.65; margin-top: 12px;
+  }
+  details.about .body p { margin: 0 0 10px; }
+  details.about .body strong { color: var(--ink); font-weight: 500; }
+
+  .disclaimer {
+    margin-top: 24px;
+    font-size: 11px; color: var(--ink-3); line-height: 1.55;
+    max-width: 760px;
+  }
+
+  /* ============================================================
+     Mobile
+     ============================================================ */
+  @media (max-width: 760px) {
+    .page { padding: 0 18px 56px; }
+    header.intro { grid-template-columns: 1fr; gap: 18px; padding: 28px 0 20px; }
+    h1.title { font-size: 32px; }
+    .stats { grid-template-columns: 1fr; }
+    .stat { border-right: 0; border-bottom: 1px solid var(--rule); padding: 14px 0; }
+    .stat:last-child { border-bottom: 0; }
+    .tenor-grid { grid-template-columns: 1fr; gap: 32px; }
+    .row {
+      grid-template-columns: 20px 1fr 50px;
+      grid-template-rows: auto auto;
+      grid-template-areas:
+        "rank name rate"
+        ".    bar  date";
+      gap: 4px 8px;
+      padding: 8px 0;
+    }
+    .r-rank { grid-area: rank; align-self: start; padding-top: 2px; }
+    .r-name { grid-area: name; }
+    .r-bar  { grid-area: bar; height: 5px; }
+    .r-rate { grid-area: rate; align-self: start; }
+    .r-date { grid-area: date; text-align: left; }
+    .row.is-syfe { margin: 0 -8px; padding-left: 8px; padding-right: 8px; }
+  }
+
+  @media print {
+    body { background: white; }
+    .ccy-switch, details.about { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <div class="topbar">
+    <div class="topbar-left">HK Time Deposit Rates · Syfe vs. competitors</div>
+    <div class="topbar-right">
+      <span><span class="live-dot"></span> <span id="topbar-date">—</span></span>
+      <span id="topbar-count">— providers</span>
+      <a href="__ACTIONS_URL__" target="_blank" rel="noopener" class="refresh-link"
+         title="Trigger an immediate refresh: click 'Run workflow' on the next page">Refresh now ↗</a>
+    </div>
+  </div>
+
+  <header class="intro">
+    <div>
+      <h1 class="title">Hong Kong time deposit rates</h1>
+      <p class="sub">
+        <strong id="intro-provider-count">22</strong> providers, <strong>4</strong> tenors,
+        <strong>2</strong> currencies. Rates verified against StashAway HK, Syfe HK Magazine,
+        and direct provider pages. Each row carries the date the value was last confirmed.
+      </p>
+    </div>
+    <div class="ccy-switch" role="tablist">
+      <button class="ccy-tab active" data-ccy="HKD" role="tab" aria-selected="true">HKD</button>
+      <button class="ccy-tab" data-ccy="USD" role="tab" aria-selected="false">USD</button>
+    </div>
+  </header>
+
+  <section class="stats" id="stats"><!-- injected --></section>
+
+  <div class="tenor-grid" id="tenor-grid"><!-- injected --></div>
+
+  <div class="legend">
+    <span class="legend-item"><span class="legend-swatch sw-syfe"></span> Syfe (this is us)</span>
+    <span class="legend-item"><span class="legend-swatch sw-leader"></span> Category leader</span>
+    <span class="legend-item"><span class="legend-swatch sw-bar"></span> Other providers</span>
+    <span class="legend-item"><span class="legend-swatch dot src-direct"></span> Verified direct (live page)</span>
+    <span class="legend-item"><span class="legend-swatch dot src-stashaway"></span> Verified via StashAway HK</span>
+    <span class="legend-item"><span class="legend-swatch dot src-syfe"></span> Verified via Syfe direct / blog</span>
+    <span class="legend-item sw-promo">new funds / promo flag</span>
+  </div>
+
+  <section class="sources">
+    <h3>Primary sources</h3>
+    <ul id="sources-list"><!-- injected --></ul>
+  </section>
+
+  <details class="about">
+    <summary>About the data &amp; methodology</summary>
+    <div class="body">
+      <p>Rates are gathered by an automated scraper that surveys 22 Hong Kong time-deposit providers (8 virtual banks, 12 traditional banks, 2 wealth platforms), cross-referenced against three independent aggregators — <strong>StashAway HK</strong>, <strong>MoneyHero</strong>, <strong>MoneySmart HK</strong> — and Syfe's own monthly comparison sheet. Aggregator rates take precedence; direct fetches flag disagreements greater than 15 basis points.</p>
+      <p>Each row carries metadata that the headline number cannot: a minimum-deposit threshold (shown as a green tag), whether the rate is gated to new funds (shown as a red tag), and the date the value was last verified.</p>
+      <p>Where providers publish tiered tables (ICBC Asia, Public Bank, CMB Wing Lung), only the highest-rate tier is shown with its threshold annotated. Bank of Communications and Chong Hing Bank are tracked but excluded — their published rates fall below 0.30% p.a. across all tenors. Three providers (Citibank HK, Ant Bank, PAO Bank) require Chrome-rendered scrapes and are queued for the next cycle.</p>
+    </div>
+  </details>
+
+  <p class="disclaimer">
+    Syfe Cash+ Fixed is an investment management service and should not be taken as a collective investment scheme, fixed deposit, or savings account. It is not protected under the Hong Kong Deposit Protection Scheme. Promotional rates may require new funds, online-only application, or segment eligibility. Rates change frequently; verify with the provider before transacting. This page is informational and does not constitute financial advice. Syfe Hong Kong Limited is licensed by the SFC, CE No. BRQ741.
+  </p>
+
+</div>
+
+<script id="snapshot" type="application/json">
+__SNAPSHOT_JSON__
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  let SNAP;
+  try { SNAP = JSON.parse(document.getElementById("snapshot").textContent); }
+  catch (e) {
+    document.getElementById("tenor-grid").innerHTML =
+      '<div style="padding:24px;color:#7A1F2E">Could not parse snapshot.</div>';
+    return;
+  }
+
+  const TENORS = SNAP.tenors || ["1M","3M","6M","12M"];
+  const TENOR_LABEL = { "1M":"1 month", "3M":"3 months", "6M":"6 months", "12M":"12 months" };
+
+  // ---------- helpers ----------
+  function fmtPct(v) { return (typeof v === "number") ? v.toFixed(2) + "%" : "—"; }
+  function fmtMin(v, ccy) {
+    if (v == null || v === 0) return "no min";
+    if (v >= 1000000) return ccy + " " + (v/1000000).toFixed(v%1000000===0?0:1) + "M";
+    if (v >= 1000)    return ccy + " " + (v/1000).toFixed(0) + "k";
+    return ccy + " " + v;
+  }
+  function fmtShortDate(iso) {
+    // "2026-05-26" -> "26 May"
+    if (!iso) return "";
+    const m = iso.match(/(\d{4})-(\d{2})-(\d{2})/);
+    if (!m) return iso;
+    const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+    return parseInt(m[3],10) + " " + months[parseInt(m[2],10)-1];
+  }
+
+  // ---------- topbar ----------
+  document.getElementById("topbar-date").textContent = (SNAP.as_of_local || "—").toUpperCase();
+  const providerCount = new Set(SNAP.rates.map(r => r.provider_id)).size;
+  document.getElementById("topbar-count").textContent = providerCount + " providers";
+  document.getElementById("intro-provider-count").textContent = providerCount;
+
+  // ---------- stats: Syfe led count + top HKD 12M + top USD 12M ----------
+  function computeStats() {
+    let led = 0, total = 0;
+    for (const ccy of ["HKD","USD"]) {
+      for (const t of TENORS) {
+        const rows = SNAP.rates.filter(r => r.currency===ccy && r.tenor===t);
+        if (!rows.length) continue;
+        total++;
+        const max = Math.max(...rows.map(r => r.apy_pct));
+        const winners = rows.filter(r => r.apy_pct === max);
+        if (winners.some(r => r.provider_id === "syfe_hk")) led++;
+      }
+    }
+    function topFor(ccy, t) {
+      const rows = SNAP.rates.filter(r => r.currency===ccy && r.tenor===t)
+        .sort((a,b) => b.apy_pct - a.apy_pct);
+      return rows[0];
+    }
+    return {
+      led, total,
+      top_hkd_12m: topFor("HKD", "12M"),
+      top_usd_12m: topFor("USD", "12M"),
+    };
+  }
+  const S = computeStats();
+
+  function statBlock(label, value, foot, footClass) {
+    return '<div class="stat">' +
+      '<div class="stat-label">' + label + '</div>' +
+      '<div class="stat-value">' + value + '</div>' +
+      (foot ? '<div class="stat-foot ' + (footClass||'') + '">' + foot + '</div>' : '') +
+    '</div>';
+  }
+
+  document.getElementById("stats").innerHTML =
+    statBlock(
+      "Syfe leads",
+      S.led + '<span class="small">/' + S.total + '</span>',
+      "categories (tenor × currency)"
+    ) +
+    statBlock(
+      "Top HKD 12M",
+      S.top_hkd_12m ? S.top_hkd_12m.apy_pct.toFixed(2) + "%" : "—",
+      S.top_hkd_12m ? S.top_hkd_12m.provider_name : "",
+      S.top_hkd_12m && S.top_hkd_12m.provider_id === "syfe_hk" ? "syfe" : ""
+    ) +
+    statBlock(
+      "Top USD 12M",
+      S.top_usd_12m ? S.top_usd_12m.apy_pct.toFixed(2) + "%" : "—",
+      S.top_usd_12m ? S.top_usd_12m.provider_name : "",
+      S.top_usd_12m && S.top_usd_12m.provider_id === "syfe_hk" ? "syfe" : ""
+    );
+
+  // ---------- sources ----------
+  const sl = document.getElementById("sources-list");
+  if (SNAP.primary_sources && sl) {
+    sl.innerHTML = SNAP.primary_sources.map(s =>
+      '<li><a href="' + s.url + '" target="_blank" rel="noopener">' + s.name + '</a>' +
+      '<span class="date">' + (s.as_of || "—") + '</span></li>'
+    ).join("");
+  }
+
+  // ---------- per-tenor sections ----------
+  const grid = document.getElementById("tenor-grid");
+  let currentCcy = "HKD";
+
+  function render() {
+    grid.innerHTML = TENORS.map(t => renderTenor(t)).join("");
+  }
+
+  function renderTenor(tenor) {
+    const rows = SNAP.rates
+      .filter(r => r.currency === currentCcy && r.tenor === tenor)
+      .sort((a,b) => b.apy_pct - a.apy_pct);
+    if (!rows.length) {
+      return '<div class="tenor"><div class="tenor-head"><div class="tenor-label">' +
+        (TENOR_LABEL[tenor] || tenor).toUpperCase() + '</div></div>' +
+        '<div style="padding:16px 0;color:var(--ink-3);font-size:13px">No published rates this currency / tenor.</div></div>';
+    }
+    const maxRate = rows[0].apy_pct;
+    const minRateFloor = Math.min(rows[rows.length-1].apy_pct, maxRate * 0.4);
+    const span = maxRate - minRateFloor || 1;
+    const leader = rows[0];
+    const syfeRow = rows.find(r => r.provider_id === "syfe_hk");
+    const syfeRank = syfeRow ? rows.indexOf(syfeRow) + 1 : null;
+
+    return `
+      <div class="tenor">
+        <div class="tenor-head">
+          <div class="tenor-label">${(TENOR_LABEL[tenor]||tenor).toUpperCase()}</div>
+          <div class="tenor-meta">
+            <div>Best · ${leader.provider_name} · ${fmtPct(leader.apy_pct)}</div>
+            ${syfeRank ? '<div class="syfe">Syfe · #' + syfeRank + ' of ' + rows.length + ' · ' + fmtPct(syfeRow.apy_pct) + '</div>' : ''}
+          </div>
+        </div>
+        <div class="rows">
+          ${rows.map((r, i) => renderRow(r, i, maxRate, minRateFloor, span)).join("")}
+        </div>
+      </div>
+    `;
+  }
+
+  function renderRow(r, idx, maxRate, minFloor, span) {
+    const rank = idx + 1;
+    const widthPct = 10 + 90 * Math.max(0, (r.apy_pct - minFloor) / span);
+    const isSyfe = r.provider_id === "syfe_hk";
+    const isLeader = idx === 0;
+    const tags = [];
+    if (r.promo && r.new_money_only) tags.push('<span class="tag-promo">new funds</span>');
+    else if (r.promo)                tags.push('<span class="tag-promo">promo</span>');
+    if (r.tier_min_ccy && r.tier_min_ccy >= 1000)
+      tags.push('<span class="tag-min">min ' + fmtMin(r.tier_min_ccy, currentCcy) + '</span>');
+    const tagsHtml = tags.length
+      ? '<div class="r-name-tags">' + tags.join(" · ") + '</div>'
+      : '';
+
+    const srcClass = "src-" + (r.verified_by || "stashaway");
+    const dateLine = r.verified_at
+      ? '<span class="src-dot ' + srcClass + '" title="Source: ' + (r.verified_by || 'stashaway') + '"></span>' + fmtShortDate(r.verified_at)
+      : '';
+
+    const cls = ['row'];
+    if (isSyfe)   cls.push('is-syfe');
+    if (isLeader) cls.push('is-leader');
+
+    return `
+      <div class="${cls.join(' ')}">
+        <div class="r-rank">${rank === 1 ? '★' : String(rank).padStart(2,'0')}</div>
+        <div class="r-name">
+          <div class="r-name-main">${r.provider_name}</div>
+          ${tagsHtml}
+        </div>
+        <div class="r-bar"><div class="r-bar-fill" style="width:${widthPct.toFixed(1)}%"></div></div>
+        <a class="r-rate-link" href="${r.source_url || '#'}" target="_blank" rel="noopener" title="${r.notes || 'View provider source'}">
+          <div class="r-rate">${fmtPct(r.apy_pct)}</div>
+        </a>
+        <div class="r-date">${dateLine}</div>
+      </div>
+    `;
+  }
+
+  // ---------- currency switching ----------
+  document.querySelectorAll(".ccy-tab").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".ccy-tab").forEach(b => {
+        b.classList.remove("active"); b.setAttribute("aria-selected","false");
+      });
+      btn.classList.add("active"); btn.setAttribute("aria-selected","true");
+      currentCcy = btn.dataset.ccy;
+      render();
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HK Time Deposit Rates — Syfe vs. Competitors</title>
+<style>
+  :root {
+    --bg: #F8FAFC;
+    --surface: #FFFFFF;
+    --border: #E2E8F0;
+    --border-strong: #CBD5E1;
+    --text: #0F172A;
+    --muted: #64748B;
+    --muted-2: #94A3B8;
+    --primary: #0F4C81;
+    --primary-tint: #E8F0F8;
+    --accent: #14B8A6;
+    --best: #F59E0B;
+    --best-tint: #FEF3C7;
+    --promo: #DC2626;
+    --stale: #94A3B8;
+    --shadow: 0 1px 2px rgba(15,23,42,.04), 0 4px 16px rgba(15,23,42,.06);
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+                 "Helvetica Neue", Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    font-size: 14px;
+  }
+  .container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 32px 24px 64px;
+  }
+
+  /* ---------- Header ---------- */
+  .header { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-bottom: 8px; }
+  .title { font-size: 26px; font-weight: 700; letter-spacing: -0.01em; color: var(--text); margin: 0; }
+  .subtitle { font-size: 14px; color: var(--muted); margin-top: 4px; }
+  .asof {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 8px 14px; border-radius: 999px;
+    background: var(--primary-tint); color: var(--primary);
+    font-weight: 600; font-size: 13px;
+  }
+  .asof::before {
+    content: ""; width: 8px; height: 8px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px rgba(20, 184, 166, .18);
+  }
+
+  /* ---------- Disclaimer banner (sample data) ---------- */
+  .sample-banner {
+    background: #FEF3C7; border: 1px solid #FCD34D; color: #92400E;
+    padding: 10px 14px; border-radius: 8px; font-size: 13px; margin: 16px 0 0;
+    display: none;
+  }
+  .sample-banner.show { display: block; }
+
+  /* ---------- Controls ---------- */
+  .controls {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    flex-wrap: wrap; margin: 24px 0 16px;
+  }
+  .tabs { display: inline-flex; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 4px; }
+  .tab {
+    appearance: none; border: 0; background: transparent;
+    padding: 8px 18px; font: inherit; font-weight: 600; color: var(--muted);
+    cursor: pointer; border-radius: 7px; transition: all .15s ease;
+  }
+  .tab.active { background: var(--primary); color: #fff; }
+  .tab:not(.active):hover { color: var(--text); }
+
+  .filters { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 6px 12px; border-radius: 999px;
+    background: var(--surface); border: 1px solid var(--border);
+    font-size: 12px; color: var(--muted); cursor: pointer;
+    user-select: none; transition: all .15s ease;
+  }
+  .chip input { display: none; }
+  .chip.active { background: var(--text); color: #fff; border-color: var(--text); }
+  .chip:hover { border-color: var(--border-strong); }
+
+  /* ---------- Table card ---------- */
+  .card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden; box-shadow: var(--shadow);
+  }
+  .table-wrap { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+  thead th {
+    text-align: right; padding: 14px 16px; font-size: 12px; font-weight: 600;
+    color: var(--muted); background: #FBFCFD;
+    border-bottom: 1px solid var(--border);
+    text-transform: uppercase; letter-spacing: .04em;
+    position: sticky; top: 0; z-index: 1;
+  }
+  thead th.col-provider { text-align: left; }
+  tbody td {
+    padding: 14px 16px; border-bottom: 1px solid var(--border);
+    font-size: 14px; text-align: right; vertical-align: middle;
+  }
+  tbody td.col-provider { text-align: left; }
+  tbody tr:last-child td { border-bottom: 0; }
+  tbody tr:hover td { background: #FAFBFC; }
+
+  .provider-cell { display: flex; align-items: center; gap: 10px; }
+  .provider-name { font-weight: 600; color: var(--text); }
+  .provider-cat {
+    font-size: 11px; color: var(--muted-2);
+    padding: 2px 8px; border-radius: 999px; background: #F1F5F9;
+  }
+
+  /* Syfe row */
+  tr.row-syfe td { background: linear-gradient(0deg, var(--primary-tint), var(--primary-tint)); }
+  tr.row-syfe:hover td { background: #DFEBF6; }
+  tr.row-syfe td.col-provider { position: relative; }
+  tr.row-syfe td.col-provider::before {
+    content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+    background: var(--primary);
+  }
+  tr.row-syfe .provider-name { color: var(--primary); }
+  .badge-us {
+    display: inline-block; margin-left: 6px; padding: 2px 8px;
+    border-radius: 999px; background: var(--primary); color: #fff;
+    font-size: 10px; font-weight: 700; letter-spacing: .05em;
+  }
+
+  /* Rate cells */
+  .rate-cell { display: inline-flex; align-items: center; gap: 6px; justify-content: flex-end; }
+  .rate-value { font-weight: 600; color: var(--text); font-size: 15px; }
+  .rate-missing { color: var(--muted-2); font-weight: 400; }
+  .promo-star {
+    color: var(--promo); font-weight: 700; font-size: 13px; cursor: help;
+  }
+  .stale-dot {
+    width: 6px; height: 6px; border-radius: 50%; background: var(--stale);
+    cursor: help;
+  }
+  td.best-cell { background: var(--best-tint) !important; }
+  td.best-cell .rate-value { color: #92400E; }
+
+  .source-link {
+    color: var(--muted-2); text-decoration: none; font-size: 11px; margin-left: 4px;
+  }
+  .source-link:hover { color: var(--primary); }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    margin-top: 20px; padding: 14px 4px; color: var(--muted);
+    font-size: 12px; line-height: 1.6;
+  }
+  .footer .legend {
+    display: flex; gap: 18px; flex-wrap: wrap; margin-bottom: 10px;
+  }
+  .legend-item { display: inline-flex; align-items: center; gap: 6px; }
+  .legend-swatch { width: 14px; height: 14px; border-radius: 4px; }
+  .legend-swatch.best { background: var(--best-tint); border: 1px solid var(--best); }
+  .legend-swatch.syfe { background: var(--primary-tint); border-left: 3px solid var(--primary); }
+  .legend-swatch.promo { color: var(--promo); font-weight: 700; width: auto; text-align: center; }
+  .legend-swatch.stale { background: var(--stale); }
+  .footnote { margin-top: 6px; }
+
+  /* ---------- Failures ---------- */
+  .failures {
+    margin-top: 16px; padding: 12px 14px; background: #FEF2F2;
+    border: 1px solid #FCA5A5; border-radius: 8px; color: #991B1B; font-size: 12px;
+  }
+  .failures b { color: #7F1D1D; }
+
+  /* ---------- Mobile ---------- */
+  @media (max-width: 720px) {
+    .container { padding: 20px 14px 48px; }
+    .title { font-size: 22px; }
+    .controls { flex-direction: column; align-items: stretch; }
+    .filters { justify-content: flex-start; }
+    thead th, tbody td { padding: 10px 10px; font-size: 13px; }
+    .provider-cat { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="header">
+    <div>
+      <h1 class="title">HK Time Deposit Rates</h1>
+      <div class="subtitle">Syfe vs. the field · HKD &amp; USD · 1M / 3M / 6M / 12M</div>
+    </div>
+    <div class="asof" id="asof">As of —</div>
+  </header>
+
+  <div class="sample-banner" id="sample-banner">
+    <b>Sample data.</b> This is an illustrative snapshot — re-run the
+    <code>hk-td-rates</code> skill to populate with live scraped values.
+  </div>
+  <div class="sample-banner" id="partial-banner" style="background:#E0F2FE;border-color:#7DD3FC;color:#075985;">
+    <b>Partial coverage.</b> Some providers weren't refreshed this run — they're listed at the bottom and excluded from the rankings above.
+  </div>
+
+  <div class="controls">
+    <div class="tabs" role="tablist">
+      <button class="tab active" data-ccy="HKD" role="tab" aria-selected="true">HKD</button>
+      <button class="tab" data-ccy="USD" role="tab" aria-selected="false">USD</button>
+    </div>
+    <div class="filters">
+      <label class="chip active" data-filter="traditional_bank">
+        <input type="checkbox" checked> Traditional banks
+      </label>
+      <label class="chip active" data-filter="virtual_bank">
+        <input type="checkbox" checked> Virtual banks
+      </label>
+      <label class="chip active" data-filter="wealth_platform">
+        <input type="checkbox" checked> Wealth platforms
+      </label>
+      <label class="chip" data-filter="strict_td">
+        <input type="checkbox"> TD only (hide MMF)
+      </label>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="table-wrap">
+      <table id="rates-table">
+        <thead>
+          <tr>
+            <th class="col-provider">Provider</th>
+            <th>1M</th>
+            <th>3M</th>
+            <th>6M</th>
+            <th>12M</th>
+          </tr>
+        </thead>
+        <tbody id="rates-body"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="failures" id="failures" style="display:none;"></div>
+
+  <div class="footer">
+    <div class="legend">
+      <span class="legend-item"><span class="legend-swatch syfe"></span> Syfe (us)</span>
+      <span class="legend-item"><span class="legend-swatch best"></span> Best in tenor</span>
+      <span class="legend-item"><span class="legend-swatch promo">*</span> Promo / new-money / online-only rate</span>
+      <span class="legend-item"><span class="legend-swatch stale"></span> Stale (carried from previous run)</span>
+    </div>
+    <div class="footnote">
+      Rates shown are APY (% p.a.) as published by each provider on the source page linked in each cell.
+      Promo rates may require new funds, online-only application, or segment eligibility (e.g. Premier / Citigold).
+      Money-market-fund products (Futu Cash Plus, Tiger Cash Boost, Endowus Cash Smart) are not fixed-rate time
+      deposits — their yield varies daily. This page is for informational purposes only and is not financial advice.
+    </div>
+    <div class="footnote">
+      To refresh, re-run the <code>hk-td-rates</code> skill — a new artifact will be generated with the latest scrape.
+    </div>
+  </div>
+
+</div>
+
+<script id="snapshot" type="application/json">
+__SNAPSHOT_JSON__
+</script>
+
+<script>
+(function () {
+  "use strict";
+
+  // ------------------------------------------------------------
+  // Snapshot bootstrap
+  // ------------------------------------------------------------
+  let SNAPSHOT;
+  try {
+    SNAPSHOT = JSON.parse(document.getElementById("snapshot").textContent);
+  } catch (e) {
+    document.getElementById("rates-body").innerHTML =
+      '<tr><td colspan="5" style="padding:24px;text-align:center;color:#DC2626">' +
+      'Could not parse snapshot data.</td></tr>';
+    return;
+  }
+
+  const TENORS = SNAPSHOT.tenors || ["1M", "3M", "6M", "12M"];
+
+  // Group rates: provider_id -> currency -> tenor -> row
+  function indexRates(rates) {
+    const idx = {};
+    for (const r of rates) {
+      if (!idx[r.provider_id]) {
+        idx[r.provider_id] = {
+          provider_id: r.provider_id,
+          provider_name: r.provider_name,
+          category: r.category,
+          is_us: !!r.is_us,
+          home_url: r.source_url, // fallback if no provider-level home
+          by_ccy: {},
+        };
+      }
+      const p = idx[r.provider_id];
+      if (!p.by_ccy[r.currency]) p.by_ccy[r.currency] = {};
+      // If a provider has multiple rows for same tenor (headline + high-tier),
+      // keep the higher rate for the headline view.
+      const existing = p.by_ccy[r.currency][r.tenor];
+      if (!existing || r.apy_pct > existing.apy_pct) {
+        p.by_ccy[r.currency][r.tenor] = r;
+      }
+    }
+    return idx;
+  }
+
+  const INDEX = indexRates(SNAPSHOT.rates || []);
+
+  // ------------------------------------------------------------
+  // State + DOM refs
+  // ------------------------------------------------------------
+  const state = {
+    currency: "HKD",
+    categories: new Set(["traditional_bank", "virtual_bank", "wealth_platform"]),
+    strictTd: false,
+  };
+
+  const els = {
+    asof:    document.getElementById("asof"),
+    sample:  document.getElementById("sample-banner"),
+    partial: document.getElementById("partial-banner"),
+    body:    document.getElementById("rates-body"),
+    fails:   document.getElementById("failures"),
+    tabs:    document.querySelectorAll(".tab"),
+    chips:   document.querySelectorAll(".chip[data-filter]"),
+  };
+
+  // ------------------------------------------------------------
+  // Header bits
+  // ------------------------------------------------------------
+  if (SNAPSHOT.as_of_local) {
+    els.asof.textContent = "As of " + SNAPSHOT.as_of_local;
+  }
+  if (SNAPSHOT.is_sample) {
+    els.sample.classList.add("show");
+  } else if (SNAPSHOT.failures && SNAPSHOT.failures.length > 0) {
+    els.partial.classList.add("show");
+  }
+  if (SNAPSHOT.failures && SNAPSHOT.failures.length) {
+    els.fails.style.display = "block";
+    els.fails.innerHTML =
+      "<b>Couldn't refresh " + SNAPSHOT.failures.length + " provider(s):</b> " +
+      SNAPSHOT.failures.map(f => f.provider_id + " (" + f.reason + ")").join(", ");
+  }
+
+  // ------------------------------------------------------------
+  // Rendering
+  // ------------------------------------------------------------
+  function visibleProviders() {
+    return Object.values(INDEX).filter(p => {
+      if (!state.categories.has(p.category)) return false;
+      const ccyRows = p.by_ccy[state.currency];
+      if (!ccyRows) return false;
+      // any tenor data for this currency?
+      if (!TENORS.some(t => ccyRows[t])) return false;
+      // strict TD: exclude cash_management products
+      if (state.strictTd) {
+        const anyMmf = TENORS.some(t => ccyRows[t] && ccyRows[t].product_type === "cash_management");
+        if (anyMmf) return false;
+      }
+      return true;
+    });
+  }
+
+  function sortProviders(list) {
+    // Syfe first, then by 3M rate desc (or 6M if 3M missing), then alpha
+    return list.slice().sort((a, b) => {
+      if (a.is_us && !b.is_us) return -1;
+      if (b.is_us && !a.is_us) return 1;
+      const ar = (a.by_ccy[state.currency] || {});
+      const br = (b.by_ccy[state.currency] || {});
+      const ak = (ar["3M"] || ar["6M"] || ar["1M"] || ar["12M"] || {}).apy_pct || -1;
+      const bk = (br["3M"] || br["6M"] || br["1M"] || br["12M"] || {}).apy_pct || -1;
+      if (bk !== ak) return bk - ak;
+      return a.provider_name.localeCompare(b.provider_name);
+    });
+  }
+
+  function bestByTenor(list) {
+    const best = {};
+    for (const t of TENORS) {
+      let bv = -1, bp = null;
+      for (const p of list) {
+        const r = (p.by_ccy[state.currency] || {})[t];
+        if (r && typeof r.apy_pct === "number" && r.apy_pct > bv) {
+          bv = r.apy_pct; bp = p.provider_id;
+        }
+      }
+      if (bp) best[t] = bp;
+    }
+    return best;
+  }
+
+  function categoryLabel(cat) {
+    return ({
+      "traditional_bank": "Bank",
+      "virtual_bank":     "Virtual",
+      "wealth_platform":  "Wealth",
+    })[cat] || cat;
+  }
+
+  function renderCell(row, isBest) {
+    if (!row) {
+      return '<td><span class="rate-missing">—</span></td>';
+    }
+    const promo = row.promo ? '<span class="promo-star" title="Promotional / new-money / online-only rate">*</span>' : '';
+    const stale = row.fetch_status === "stale"
+      ? '<span class="stale-dot" title="Stale — carried from previous run (' + (row.last_successful_fetch || 'unknown') + ')"></span>'
+      : '';
+    const apy   = (typeof row.apy_pct === "number") ? row.apy_pct.toFixed(2) + "%" : "—";
+    const src   = row.source_url
+      ? '<a class="source-link" href="' + row.source_url + '" target="_blank" rel="noopener" title="Source">↗</a>'
+      : '';
+    const cls = isBest ? ' class="best-cell"' : '';
+    return '<td' + cls + '>' +
+      '<span class="rate-cell">' +
+        stale +
+        '<span class="rate-value" title="' + (row.notes || "") + '">' + apy + '</span>' +
+        promo +
+        src +
+      '</span>' +
+    '</td>';
+  }
+
+  function renderRow(p, best) {
+    const rowCls = p.is_us ? ' class="row-syfe"' : '';
+    const cat    = '<span class="provider-cat">' + categoryLabel(p.category) + '</span>';
+    const us     = p.is_us ? '<span class="badge-us">US</span>' : '';
+    const cells  = TENORS.map(t => {
+      const r = (p.by_ccy[state.currency] || {})[t];
+      return renderCell(r, best[t] === p.provider_id);
+    }).join("");
+    return '<tr' + rowCls + '>' +
+      '<td class="col-provider">' +
+        '<div class="provider-cell">' +
+          '<span class="provider-name">' + p.provider_name + '</span>' +
+          us + cat +
+        '</div>' +
+      '</td>' +
+      cells +
+    '</tr>';
+  }
+
+  function render() {
+    const list = sortProviders(visibleProviders());
+    const best = bestByTenor(list);
+    els.body.innerHTML = list.map(p => renderRow(p, best)).join("") ||
+      '<tr><td colspan="5" style="padding:24px;text-align:center;color:#94A3B8">No providers match these filters.</td></tr>';
+  }
+
+  // ------------------------------------------------------------
+  // Wiring
+  // ------------------------------------------------------------
+  els.tabs.forEach(btn => {
+    btn.addEventListener("click", () => {
+      els.tabs.forEach(b => { b.classList.remove("active"); b.setAttribute("aria-selected", "false"); });
+      btn.classList.add("active"); btn.setAttribute("aria-selected", "true");
+      state.currency = btn.dataset.ccy;
+      render();
+    });
+  });
+
+  els.chips.forEach(chip => {
+    const filter = chip.dataset.filter;
+    chip.addEventListener("click", () => {
+      const cb = chip.querySelector("input");
+      cb.checked = !cb.checked;
+      chip.classList.toggle("active", cb.checked);
+      if (filter === "strict_td") {
+        state.strictTd = cb.checked;
+      } else {
+        if (cb.checked) state.categories.add(filter);
+        else state.categories.delete(filter);
+      }
+      render();
+    });
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>

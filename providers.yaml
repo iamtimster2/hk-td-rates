@@ -1,0 +1,671 @@
+# =============================================================================
+# HK Time Deposit Provider Catalog
+# =============================================================================
+# Source of truth for everywhere the skill needs to scrape.
+#
+# Schema for each provider:
+#   id:           stable snake_case key (used in snapshot.json + artifact)
+#   name:         display name (used in the artifact)
+#   category:     traditional_bank | virtual_bank | wealth_platform
+#   home:         marketing/home page (for citation link in the artifact)
+#   sources:      list of pages to scrape; each has:
+#       url:        page URL
+#       currency:   HKD | USD | both
+#       method:     fetch | chrome
+#         - fetch  -> WebFetch (page is server-rendered, fast path)
+#         - chrome -> mcp__Claude_in_Chrome (page is JS-rendered or behind a
+#                     promo modal / requires consent banner click)
+#       notes:      caveats: "new money only", "online only", min ticket, etc.
+#       last_known_quirks: optional free-text reminders for the scraper turn
+#
+# Tenors captured everywhere: 1M, 3M, 6M, 12M
+# Amount tier captured by default: the "headline" tier each provider
+#   advertises, plus the highest published tier. The snapshot can hold
+#   multiple tiers per (provider,currency,tenor) row.
+#
+# Maintenance: when a provider redesigns their rates page, only this YAML
+# changes — the SKILL.md flow stays the same.
+# =============================================================================
+
+# =============================================================================
+# FIRECRAWL — production scraper for scheduled jobs
+# =============================================================================
+# All scheduled refreshes go through Firecrawl. The local Playwright scripts
+# in `verification/` are kept as a fallback for ad-hoc verification and for
+# the cases where Firecrawl credits are exhausted.
+#
+# Required: FIRECRAWL_API_KEY environment variable.
+#
+# The standard extraction schema (used by every rate-page source unless
+# overridden in firecrawl_config.schema) is:
+#
+firecrawl:
+  default_endpoint: "https://api.firecrawl.dev/v1/extract"
+  default_options:
+    formats: ["extract", "markdown"]
+    onlyMainContent: false       # Many rate pages put tables in side-rails
+    waitFor: 3000                # ms — let JS-rendered tables populate
+    timeout: 25000               # ms hard cap per page
+    cacheTtl: 14400              # 4h — safe for daily-cron refresh
+    proxy: "auto"                # rotate IPs (defeats some HK bank geo-gating)
+  default_schema:
+    type: object
+    properties:
+      rates_as_of_date:
+        type: string
+        description: "The 'as of' or 'last updated' date printed on the page (any format)"
+      rows:
+        type: array
+        items:
+          type: object
+          properties:
+            provider_name: { type: string, description: "The bank or fintech name on this row" }
+            currency:      { type: string, enum: ["HKD","USD","CNY","RMB","GBP","AUD","JPY"] }
+            tenor_months:  { type: integer, description: "Tenor in months: 1, 3, 6, or 12" }
+            rate_pct:      { type: number,  description: "APY as published, e.g. 2.75 for 2.75% p.a." }
+            min_deposit_amount: { type: ["integer", "null"], description: "Minimum deposit threshold in the row currency, null if not specified" }
+            new_funds_only:     { type: boolean }
+            online_channel_only:{ type: boolean }
+            promo_end_date:     { type: ["string", "null"] }
+            sub_product:        { type: ["string", "null"], description: "e.g. 'HSBC One', 'HSBC Premier', 'Cash+ Fixed (HKD)'" }
+        description: "Every tenor × currency × tier row visible on the page"
+
+# Why schema-driven extraction beats regex:
+#   - Firecrawl's extractor runs an LLM pass that understands "this is a
+#     rate table" without us specifying selectors.
+#   - When the bank redesigns their page (e.g. moves from HTML table to
+#     a JS-rendered card grid), our schema still works — no parser rewrite.
+#   - Tiered providers (ICBC Asia × 3 min-deposit tiers, Public Bank × 3,
+#     CMB Wing Lung × 2) come back as separate rows naturally.
+#   - HSBC One vs HSBC Premier disambiguation falls out of `sub_product`.
+
+# =============================================================================
+# AGGREGATORS — primary sources
+# =============================================================================
+# These third-party comparison sites publish structured rate tables covering
+# 15-22 HK providers each, dated to within 1-7 days. The scraper should hit
+# these FIRST and pull rates from the table; direct provider URLs below are
+# used for (a) verification — does the aggregator agree with the source? —
+# and (b) capturing any rows the aggregator misses (e.g. new digital banks).
+#
+# Why aggregators first:
+#   - One fetch covers 20+ providers — way less brittle than 20 separate
+#     scrapes each fighting JS rendering + consent modals.
+#   - Aggregators are themselves competitively pressured to be accurate
+#     and freshly-dated — they timestamp every page.
+#   - For the external client view, citing a neutral 3rd party
+#     ("rates per StashAway HK, 26 May 2026") is more defensible than
+#     citing a bank's own promo page.
+#
+# Aggregator precedence rules (encoded in SKILL.md):
+#   1. Try aggregators in order until one returns a parseable table.
+#   2. For each provider × tenor × currency, the aggregator value is the
+#      headline rate UNLESS the direct fetch returns a fresher (newer
+#      timestamp) value AND it disagrees materially (>15bps). Then prefer
+#      the direct value and log a `disagreement` note in the row.
+#   3. If an aggregator publishes a tiered table (e.g. ICBC at three
+#      different min-deposit tiers), capture them all and tag with
+#      `tier_min_ccy`.
+# =============================================================================
+
+aggregators:
+
+  - id: stashaway_hk
+    name: StashAway HK
+    note: |
+      Competitor wealth manager that publishes the most comprehensive
+      HK TD comparison. Updated weekly. Structured Markdown table parses
+      cleanly from WebFetch. Covers 15 traditional + 7 virtual banks.
+    sources:
+      - url: https://www.stashaway.hk/r/best-hkd-time-deposit-interest-rates-and-offers
+        currency: HKD
+        method: fetch
+      - url: https://www.stashaway.hk/r/best-usd-time-deposit-interest-rates-and-offers
+        currency: USD
+        method: fetch
+        notes: |
+          USD page sometimes returns empty body via WebFetch — escalate
+          to Chrome if the first response has no rate table.
+
+  - id: moneyhero_hk
+    name: MoneyHero HK
+    note: |
+      NASDAQ-listed (MNY) financial product aggregator. Daily-updated.
+      Good for cross-checking promotional rates and capturing minor
+      banks not on StashAway.
+    sources:
+      - url: https://www.moneyhero.com.hk/zh/banking/blog/time-deposit/hkd
+        currency: HKD
+        method: chrome
+        notes: Chinese version; English version often empty via WebFetch.
+
+  - id: moneysmart_hk
+    name: MoneySmart HK
+    note: |
+      Aggregator focused on virtual banks + new-money promos. Useful
+      cross-check for the digital-bank tier.
+    sources:
+      - url: https://blog.moneysmart.hk/en/budgeting/fixed-time-deposit-hkd-preferential-interest-rate-comparison/
+        currency: HKD
+        method: chrome
+      - url: https://www.moneysmart.hk/en/savings-account/time-deposit-ms
+        currency: HKD
+        method: chrome
+
+  - id: syfe_blog
+    name: Syfe HK Magazine
+    note: |
+      Syfe's own monthly HK TD comparison. Self-citable for the
+      external view. Use as primary for Syfe's own rate and as a
+      cross-check for the 5 banks Syfe benchmarks against.
+    sources:
+      - url: https://www.syfe.com/hk/magazine/tag/time-deposit-rate-hong-kong/
+        currency: both
+        method: fetch
+        notes: Tag index — pick the latest post.
+
+  - id: ezone_hk
+    name: ezone.hk
+    note: |
+      Hong Kong tech/finance media. Daily-updated "18大銀行港元定期存款利率比較"
+      page. Chinese only. Useful for sanity-checking traditional bank rates.
+    sources:
+      - url: https://ezone.hk/article/20054761
+        currency: HKD
+        method: fetch
+
+  - id: moneyhk101
+    name: MoneyHK101
+    note: |
+      "12 banks 1-12M HKD rate comparison" — updated weekly. Lighter
+      coverage than StashAway but useful when StashAway is stale.
+    sources:
+      - url: https://www.moneyhk101.com/hkd-fixed-deposit/
+        currency: HKD
+        method: fetch
+
+
+# =============================================================================
+# Direct provider catalog (verification + filling gaps)
+# =============================================================================
+providers:
+
+  # ---------------------------------------------------------------------------
+  # TRADITIONAL BANKS
+  # ---------------------------------------------------------------------------
+
+  - id: hsbc
+    name: HSBC
+    category: traditional_bank
+    home: https://www.hsbc.com.hk/
+    sources:
+      # Primary: the "preferential rates" landing page (more reliable than the
+      # product page, which often shows board rates only).
+      - url: https://www.hsbc.com.hk/accounts/offers/deposits/
+        currency: both
+        method: fetch
+        notes: |
+          HSBC publishes "preferential" rates for new-money / online-only.
+          Capture BOTH the standard board rate and the preferential rate
+          when both are shown; flag preferential rows with `promo: true`.
+        last_known_quirks: |
+          - Rates table lives in a tabbed section: HKD / USD / Other currencies.
+          - Tiers: typically HKD 10k / 500k / 1M+.
+
+  - id: standard_chartered
+    name: Standard Chartered
+    category: traditional_bank
+    home: https://www.sc.com/hk/
+    sources:
+      - url: https://www.sc.com/hk/deposits/online-time-deposit/
+        currency: both
+        method: fetch
+        notes: |
+          SCB headline is usually the "online exclusive" promo rate for
+          new funds. Standard board rates also published — capture both.
+        last_known_quirks: |
+          - Promo cards near top of page; full board further down as PDF link.
+          - If only PDF available, switch this source to method: chrome and
+            navigate the PDF reader.
+
+  - id: bochk
+    name: Bank of China (Hong Kong)
+    category: traditional_bank
+    home: https://www.bochk.com/
+    sources:
+      # NOTE: 2026-05 dry-run found the old `/deposit/timedeposit/intrate.html`
+      # URL returns an empty body. Promo page is the real source of truth.
+      - url: https://www.bochk.com/en/deposits/promotion/timedeposits.html
+        currency: both
+        method: chrome
+        notes: |
+          BOCHK posts a rich currency × tenor × tier matrix; the static
+          fetch returns an empty body, so Chrome navigation is required.
+          Capture the full HKD and USD slices.
+
+  - id: hang_seng
+    name: Hang Seng Bank
+    category: traditional_bank
+    home: https://www.hangseng.com/
+    sources:
+      - url: https://cms.hangseng.com/cms/emkt/pmo/grp06/p04/eng/index.html
+        currency: both
+        method: chrome
+        notes: |
+          Promo landing page (per StashAway citation). Prestige/Preferred
+          segments may show higher than board — capture mass-segment row
+          by default; tag segment-gated rows with `segment_only`.
+
+  - id: citi_hk
+    name: Citibank Hong Kong
+    category: traditional_bank
+    home: https://www.citibank.com.hk/
+    sources:
+      - url: https://www.citibank.com.hk/english/banking/time-deposit.htm
+        currency: both
+        method: firecrawl
+        notes: |
+          Citi rate page requires dismissing a T&C modal. Citigold /
+          Citi Priority tiers usually have higher promo rates; capture
+          the broadly-eligible mass-market rate.
+        firecrawl_config:
+          waitFor: 3000
+          actions:
+            # Dismiss the T&C / cookie consent modal that blocks the page
+            - { type: click, selector: "button:has-text('Accept')", optional: true }
+            - { type: click, selector: "button:has-text('I have read')", optional: true }
+            - { type: click, selector: "button:has-text('Agree')", optional: true }
+            - { type: wait, milliseconds: 1500 }
+
+  - id: dbs_hk
+    name: DBS Hong Kong
+    category: traditional_bank
+    home: https://www.dbs.com.hk/
+    sources:
+      - url: https://www.dbs.com.hk/personal/deposits/time-deposit/default.page
+        currency: both
+        method: fetch
+        notes: |
+          DBS lists "promotional" and "standard" rates side-by-side.
+          Promo usually requires DBS Treasures or new money. Capture
+          both rows.
+
+  - id: icbc_asia
+    name: ICBC (Asia)
+    category: traditional_bank
+    home: https://www.icbcasia.com/
+    sources:
+      - url: https://www.icbcasia.com/hk/en/personal/latest-promotion/online-time-deposit.html
+        currency: both
+        method: chrome
+        notes: |
+          ICBC rates live behind a date-picker; need to select latest date
+          via Chrome before the table populates.
+
+  - id: cmb_wing_lung
+    name: CMB Wing Lung Bank
+    category: traditional_bank
+    home: https://www.cmbwinglungbank.com/
+    sources:
+      - url: https://www.cmbwinglungbank.com/wlb_corporate/en/personal/investments/financial-information/interest-rates/deposit-interest-rates.html
+        currency: both
+        method: fetch
+        notes: |
+          Frequent promo rates for new money — typically the most
+          aggressive among the traditional banks for short tenors.
+
+  # --- Added after 2026-05 dry-run: Syfe's own monthly comparison flagged
+  # these as top performers. We were missing them.
+
+  - id: ccb_asia
+    name: China Construction Bank (Asia)
+    category: traditional_bank
+    home: https://www.asia.ccb.com/
+    sources:
+      - url: https://www.ccbasiapersonalbanking.com.hk/en/promotion/fixed-deposit/index.html
+        currency: both
+        method: chrome
+        notes: |
+          CCB Asia is consistently among the top 3 mainstream HK banks for
+          both HKD and USD TD promos (often 3.65% USD across 3/6/12M for
+          new money). Page is promotional/JS-heavy.
+
+  - id: ocbc_hk
+    name: OCBC Hong Kong
+    category: traditional_bank
+    home: https://www.ocbc.com/personal-banking/hong-kong
+    sources:
+      - url: https://www.ocbc.com.hk/cmh/files/Fixed_link/HKD.pdf
+        currency: HKD
+        method: firecrawl
+        notes: |
+          OCBC HK posts HKD rates as a PDF — Firecrawl's PDF extractor
+          handles it natively (parses text + tables from the PDF).
+        firecrawl_config:
+          parsePDF: true
+          # PDF text is one-shot; no JS actions needed
+      - url: https://www.ocbc.com/personal-banking/hong-kong/time-deposit
+        currency: USD
+        method: firecrawl
+        firecrawl_config:
+          waitFor: 2500
+          actions:
+            - { type: click, selector: "button:has-text('Accept')", optional: true }
+
+  - id: bea
+    name: Bank of East Asia
+    category: traditional_bank
+    home: https://www.hkbea.com/
+    sources:
+      - url: https://www.hkbea.com/html/en/bea-personal-banking-supremegold-time-deposit.html
+        currency: both
+        method: chrome
+        notes: |
+          BEA frequently runs new-money HKD promos that compete with
+          CMB Wing Lung. Page is JS-rendered.
+
+  # --- Added 2026-05 dry-run round 2 via StashAway HK aggregator. These six
+  # mid-sized HK banks turn out to publish among the most aggressive TD
+  # promos, so an external comparison without them is misleading.
+
+  - id: fubon_hk
+    name: Fubon Bank
+    category: traditional_bank
+    home: https://www.fubonbank.com.hk/
+    sources:
+      - url: https://www.fubonbank.com.hk/en/deposit/latest-promotions/new-customers-promotion.html
+        currency: both
+        method: chrome
+        notes: |
+          Per StashAway 26 May 2026 — Fubon leads traditional banks across
+          1M/6M/12M HKD (2.25 / 2.65 / 2.70%) for new funds with HKD 500K
+          minimum. The page is promo-heavy and JS-rendered.
+
+  - id: china_citic
+    name: China CITIC Bank International
+    category: traditional_bank
+    home: https://www.cncbinternational.com/
+    sources:
+      - url: https://ibanking.cncbinternational.com/CKWPortal/appmanager/Portal/CKWPersonPopup?_nfpb=true&rateEnquiryController_CS_popup_1_actionOverride=%2Fportlets%2Fpersonal%2FrateEnquiry%2FdoInitFdRate&_pageLabel=ckwPopupCS_RateTables
+        currency: both
+        method: chrome
+        notes: |
+          Live rate-enquiry portlet — JS rendered. StashAway-cited rates
+          (26 May 2026): 1M=1.90, 3M=2.58, 6M=2.55, 12M=2.60% (HKD 10K min).
+
+  - id: nanyang_commercial
+    name: Nanyang Commercial Bank
+    category: traditional_bank
+    home: https://www.ncb.com.hk/
+    sources:
+      - url: https://www.ncb.com.hk/nanyang_bank/popup1/ncbinfo.html
+        currency: both
+        method: fetch
+        notes: |
+          Popup page lists current rates inline. Per StashAway 26 May 2026:
+          1M=2.00, 3M=2.55, 6M=2.40, 12M=2.30 (HKD 100K min).
+
+  - id: public_bank_hk
+    name: Public Bank HK
+    category: traditional_bank
+    home: https://www.publicbank.com.hk/
+    sources:
+      - url: https://www.publicbank.com.hk/en/usefultools/rates/depositinterestrates
+        currency: both
+        method: fetch
+        notes: |
+          Publishes tiered table (< HKD 100K / >= HKD 100K / >= HKD 500K).
+          Capture all three tiers and tag each row with tier_min_ccy.
+
+  - id: shanghai_commercial
+    name: Shanghai Commercial Bank
+    category: traditional_bank
+    home: https://www.shacombank.com.hk/
+    sources:
+      - url: https://www.shacombank.com.hk/eng/personal/promotion/fix-rate.jsp
+        currency: both
+        method: chrome
+        notes: |
+          Per StashAway: 1M=1.68, 3M=2.48, 6M=2.48, 12M=2.43 (HKD 1K min) —
+          remarkably accessible minimum for a traditional bank.
+
+  - id: chong_hing
+    name: Chong Hing Bank
+    category: traditional_bank
+    home: https://www.chbank.com/
+    sources:
+      - url: https://www.chbank.com/en/personal/banking-services/useful-information/deposit-rates/index.shtml
+        currency: both
+        method: fetch
+        notes: |
+          Conservative rates (1M=0.10, 12M=0.25% per StashAway). Included
+          for completeness; will rank near the bottom in the artifact.
+
+  - id: bocom_hk
+    name: Bank of Communications (HK)
+    category: traditional_bank
+    home: https://www.hk.bankcomm.com/
+    sources:
+      - url: https://www.hk.bankcomm.com/BOCOMHK/jsp/en/persoanl/td_promotion.jsp
+        currency: both
+        method: chrome
+        notes: |
+          BoCom HK appears in Syfe's monthly comparison sheet for 12M HKD
+          (around 1.95-2.20% range as of May 2026).
+
+  # ---------------------------------------------------------------------------
+  # VIRTUAL BANKS
+  # ---------------------------------------------------------------------------
+
+  - id: za_bank
+    name: ZA Bank
+    category: virtual_bank
+    home: https://bank.za.group/
+    sources:
+      - url: https://bank.za.group/en/deposit
+        currency: both
+        method: chrome
+        notes: |
+          ZA's rate ticker is JS-rendered. After load, the table shows
+          current promo by tenor + min deposit tier.
+
+  - id: mox
+    name: Mox Bank
+    category: virtual_bank
+    home: https://mox.com/
+    sources:
+      - url: https://mox.com/promotions/time-deposit/
+        currency: both
+        method: chrome
+        notes: |
+          Mox tends to lead with USD rates and brand them as "Mox Booster".
+          Watch for limited-time campaign banners — record promo_end_date.
+
+  - id: livi
+    name: livi Bank
+    category: virtual_bank
+    home: https://www.livibank.com/
+    sources:
+      - url: https://www.livibank.com/features/livisave.html
+        currency: both
+        method: fetch
+
+  - id: welab
+    name: WeLab Bank
+    category: virtual_bank
+    home: https://www.welab.bank/
+    sources:
+      - url: https://www.welab.bank/en/feature/gosave_2/
+        currency: both
+        method: chrome
+        notes: |
+          WeLab markets a "GoalSaver" with TD-like behaviour — verify the
+          product is a time deposit (fixed-tenor lockup) vs. a savings
+          account before including. If hybrid, tag `product_type: hybrid`
+          in the snapshot.
+
+  - id: ant_bank
+    name: Ant Bank
+    category: virtual_bank
+    home: https://www.antbank.hk/
+    sources:
+      - url: https://www.antbank.hk/en/deposit/time-deposit
+        currency: both
+        method: fetch
+
+  - id: airstar
+    name: Airstar Bank
+    category: virtual_bank
+    home: https://www.airstarbank.com/
+    sources:
+      - url: https://www.airstarbank.com/en-hk/deposit.html
+        currency: both
+        method: fetch
+
+  - id: fusion
+    name: Fusion Bank
+    category: virtual_bank
+    home: https://www.fusionbank.com/
+    sources:
+      - url: https://www.fusionbank.com/deposit.html?lang=en
+        currency: both
+        method: fetch
+
+  - id: ping_an_oneconnect
+    name: PAOB (Ping An OneConnect Bank)
+    category: virtual_bank
+    home: https://www.paob.com.hk/
+    sources:
+      - url: https://www.paob.com.hk/en/personal/time-deposit
+        currency: both
+        method: fetch
+
+  # ---------------------------------------------------------------------------
+  # WEALTH / BROKERAGE PLATFORMS
+  # ---------------------------------------------------------------------------
+
+  - id: futu_moomoo
+    name: Futu / moomoo HK
+    category: wealth_platform
+    home: https://www.futuhk.com/
+    sources:
+      - url: https://www.futuhk.com/en/wealth/cash-plus
+        currency: both
+        method: chrome
+        notes: |
+          Futu's Cash Plus is a money-market-fund wrapper, not a true TD,
+          but it is the comparison most clients make. Tag with
+          `product_type: cash_management` and surface the 7-day yield.
+          Skip in the "TD comparison" view if `strict_td_only=true`.
+
+  - id: tiger_hk
+    name: Tiger Brokers HK
+    category: wealth_platform
+    home: https://www.itigerup.com/hk
+    sources:
+      - url: https://www.itigerup.com/hk/wealth/cash-boost
+        currency: both
+        method: chrome
+        notes: same caveat as Futu — usually MMF, not TD.
+
+  - id: endowus_hk
+    name: Endowus HK
+    category: wealth_platform
+    home: https://endowus.com/hk
+    sources:
+      - url: https://endowus.com/hk/cash-smart
+        currency: both
+        method: chrome
+        notes: |
+          Cash Smart is MMF-based. Surface projected yield ranges
+          (Secure / Enhanced / Ultra). Tag `product_type: cash_management`.
+
+  - id: syfe_hk
+    name: Syfe HK
+    category: wealth_platform
+    is_us: true       # <-- our own row; pinned & highlighted in artifact
+    home: https://www.syfe.com/en-hk
+    sources:
+      # Product page — rates are JS-injected so static fetch shows "-".
+      # Use Firecrawl for the live number.
+      - url: https://www.syfe.com/en-hk/cash-management/cash-plus-fixed
+        currency: both
+        method: firecrawl
+        notes: |
+          OUR PRODUCT. The product page renders rates via JS so the
+          static fetch returns dashes; Firecrawl handles the JS render
+          natively. Capture both Cash+ Fixed (HKD) and Cash+ Fixed (USD)
+          rows by tenor. Tag `sub_product: "Cash+ Fixed (HKD)"` etc.
+        firecrawl_config:
+          waitFor: 4000           # Syfe's calculator widget needs longer
+          actions:
+            # Click HKD tab to ensure both blocks render
+            - { type: scroll, direction: down }
+            - { type: wait, milliseconds: 1500 }
+            - { type: click, selector: "a:has-text('Cash+ Fixed (HKD)')" }
+            - { type: wait, milliseconds: 1500 }
+            - { type: scroll, direction: up }
+          # No schema override — uses the default firecrawl.default_schema
+          # which captures (currency × tenor × rate) rows.
+
+      # FALLBACK + GROUND TRUTH FOR COMPETITORS.
+      # Syfe publishes a curated monthly HK TD comparison blog. This is
+      # the single best source for both our own rate AND for the canonical
+      # competitor numbers — and it's self-citable for the client view.
+      # URL pattern changes monthly; the scraper should:
+      #   1. Fetch https://www.syfe.com/hk/magazine/tag/time-deposit-rate-hong-kong/
+      #   2. Pick the latest post linked from that tag page
+      #   3. Parse rates from the prose + embedded tables
+      # If the live Chrome scrape of cash-plus-fixed fails, fall back to
+      # the rate from the latest blog post (with `notes: "from monthly blog"`).
+      - url: https://www.syfe.com/hk/magazine/tag/time-deposit-rate-hong-kong/
+        currency: both
+        method: fetch
+        priority: fallback
+        notes: |
+          Syfe's monthly HK TD rate comparison blog. Used as fallback for
+          our own rate AND as ground-truth secondary source for competitors
+          (HSBC, BOCHK, SCBHK, Hang Seng, ICBC Asia, CCB Asia, OCBC,
+          Fusion, Mox, etc.). When a competitor's own site is unreachable
+          but the Syfe blog cites them with a rate + date, surface that row
+          with `notes: "via Syfe monthly comparison"` and the blog URL as
+          source_url.
+
+
+# =============================================================================
+# Snapshot schema (for reference — produced by the skill in data/latest.json):
+# =============================================================================
+#
+# {
+#   "as_of_utc":   "2026-05-28T03:14:00Z",
+#   "as_of_local": "2026-05-28 HKT",
+#   "tenors":      ["1M", "3M", "6M", "12M"],
+#   "currencies":  ["HKD", "USD"],
+#   "rates": [
+#     {
+#       "provider_id":   "hsbc",
+#       "provider_name": "HSBC",
+#       "category":      "traditional_bank",
+#       "currency":      "HKD",
+#       "tenor":         "3M",
+#       "apy_pct":       3.80,
+#       "tier_min_ccy":  500000,
+#       "tier_max_ccy":  null,
+#       "promo":         true,
+#       "new_money_only":true,
+#       "online_only":   false,
+#       "promo_end_date":"2026-06-30",
+#       "product_type":  "td",
+#       "source_url":    "https://www.hsbc.com.hk/...",
+#       "notes":         "Online-exclusive promo, new funds.",
+#       "fetched_at":    "2026-05-28T03:13:42Z",
+#       "fetch_status":  "ok"
+#     },
+#     ...
+#   ],
+#   "failures": [
+#     {"provider_id": "icbc_asia", "reason": "datepicker timeout", "url": "..."}
+#   ]
+# }
+#
+# =============================================================================

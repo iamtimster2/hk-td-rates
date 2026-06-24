@@ -1,0 +1,106 @@
+name: Refresh HK TD Rates
+
+on:
+  # 9am HKT daily = 1am UTC
+  schedule:
+    - cron: "0 1 * * *"
+  # Manual "Refresh now" — anyone with repo access can click "Run workflow"
+  workflow_dispatch:
+  # Re-deploy when you push template/scraper changes to main
+  push:
+    branches: [main]
+    paths:
+      - "templates/**"
+      - "scripts/**"
+      - "providers.yaml"
+      - ".github/workflows/refresh.yml"
+
+permissions:
+  contents: write   # commit refreshed snapshot back
+  pages: write      # deploy to Pages
+  id-token: write   # OIDC for Pages deploy
+
+# Cancel queued runs if a newer one comes in
+concurrency:
+  group: refresh-rates
+  cancel-in-progress: false
+
+jobs:
+  refresh-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install Python deps
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml playwright firecrawl-py
+
+      - name: Install headless Chromium (Playwright fallback)
+        run: python -m playwright install --with-deps chromium
+
+      - name: Refresh rates
+        env:
+          FIRECRAWL_API_KEY: ${{ secrets.FIRECRAWL_API_KEY }}
+        run: |
+          # refresh_firecrawl.py auto-falls-back to refresh_rates.py
+          # if FIRECRAWL_API_KEY is missing, so the deploy never blocks
+          python scripts/refresh_firecrawl.py || python scripts/refresh_rates.py
+
+      - name: Build site
+        env:
+          REPO_FULL_NAME: ${{ github.repository }}
+        run: |
+          mkdir -p public
+          python - <<'PY'
+          import json, os, pathlib
+          tpl  = pathlib.Path("templates/editorial.html").read_text()
+          snap = pathlib.Path("data/latest.json").read_text()
+          html = tpl.replace("__SNAPSHOT_JSON__", snap)
+          # Inject the Actions workflow URL so the "Refresh now ↗" link works
+          repo = os.environ.get("REPO_FULL_NAME", "")
+          actions_url = f"https://github.com/{repo}/actions/workflows/refresh.yml"
+          html = html.replace("__ACTIONS_URL__", actions_url)
+          pathlib.Path("public/index.html").write_text(html)
+
+          # Also publish raw JSON snapshot at /latest.json for downstream uses
+          pathlib.Path("public/latest.json").write_text(snap)
+
+          # 404 fallback for typo'd paths
+          pathlib.Path("public/404.html").write_text(
+              "<meta http-equiv=refresh content='0;/'>"
+          )
+          print("built", len(html), "bytes")
+          PY
+
+      - name: Commit refreshed data
+        # Only commits when data actually changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/latest.json data/history/ || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore: refresh rates $(date -u +%Y-%m-%d-%H%M)"
+            git push
+          else
+            echo "No data changes to commit."
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
