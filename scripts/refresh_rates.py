@@ -172,9 +172,8 @@ def main():
 
     # Sanity-check: did Syfe scrape return everything expected?
     if n_hkd != 4 or n_usd != 4:
-        print(f"\n⚠️  Syfe direct returned partial data — aborting refresh of Syfe rows. "
-              f"Run scrape_syfe_live.py to debug.")
-        return 1
+        print(f"WARN: Syfe direct returned partial (HKD={n_hkd}, USD={n_usd}) - keeping prior Syfe values, proceeding with StashAway data")
+        syfe_direct = {"HKD": {}, "USD": {}}
 
     # Convert StashAway parsed data to dict[ccy][pid][tenor]=row for fast lookup
     def index_by_ccy(parsed):
