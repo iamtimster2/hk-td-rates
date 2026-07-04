@@ -1,8 +1,8 @@
 {
-  "as_of_utc": "2026-07-03T04:49:53Z",
-  "as_of_local": "2026-07-03 12:49 HKT",
+  "as_of_utc": "2026-07-04T04:41:32Z",
+  "as_of_local": "2026-07-04 12:41 HKT",
   "is_sample": false,
-  "data_source_note": "Refreshed 2026-07-03 via incognito headless Chromium. Syfe rates pulled DIRECT from product page (8/8 verified). Competitor rates pulled from StashAway HK aggregator HKD (29 Jun 2026) + USD (29 Jun 2026). Direct-scraping per provider is on the roadmap but most virtual banks publish rates only via their apps.",
+  "data_source_note": "Refreshed 2026-07-04 via incognito headless Chromium. Syfe rates pulled DIRECT from product page (8/8 verified). Competitor rates pulled from StashAway HK aggregator HKD (29 Jun 2026) + USD (29 Jun 2026). Direct-scraping per provider is on the roadmap but most virtual banks publish rates only via their apps.",
   "primary_sources": [
     {
       "name": "Syfe Cash+ Fixed",
@@ -167,7 +167,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -182,7 +182,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -198,7 +198,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -214,7 +214,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -245,7 +245,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -261,7 +261,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -277,7 +277,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -293,7 +293,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -309,7 +309,7 @@
       "online_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -325,7 +325,7 @@
       "online_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -341,7 +341,7 @@
       "online_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -357,7 +357,7 @@
       "online_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -373,7 +373,7 @@
       "online_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -389,7 +389,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -404,7 +404,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -418,7 +418,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -433,7 +433,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -448,7 +448,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -463,7 +463,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -478,7 +478,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -493,7 +493,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -508,7 +508,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -523,7 +523,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -538,7 +538,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -553,7 +553,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -570,7 +570,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -585,7 +585,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -602,7 +602,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -618,7 +618,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -632,7 +632,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -647,7 +647,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -662,7 +662,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -677,7 +677,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -692,7 +692,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -707,7 +707,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -722,7 +722,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -841,7 +841,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -856,7 +856,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -871,7 +871,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -886,7 +886,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -901,7 +901,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -916,7 +916,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -932,7 +932,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -946,7 +946,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -961,7 +961,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -976,7 +976,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -991,7 +991,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1006,7 +1006,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1021,7 +1021,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1036,7 +1036,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1051,7 +1051,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1066,7 +1066,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1081,7 +1081,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1096,7 +1096,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1111,7 +1111,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1127,7 +1127,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -1141,7 +1141,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1156,7 +1156,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1171,7 +1171,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1186,7 +1186,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1201,7 +1201,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1217,7 +1217,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -1231,7 +1231,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1247,7 +1247,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -1261,7 +1261,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1276,7 +1276,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1291,7 +1291,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1306,7 +1306,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1322,7 +1322,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -1336,7 +1336,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1351,7 +1351,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1366,7 +1366,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1381,7 +1381,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1396,7 +1396,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1411,7 +1411,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1426,7 +1426,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1442,7 +1442,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1458,7 +1458,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1474,7 +1474,7 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1490,7 +1490,7 @@
       "product_type": "td",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -1504,7 +1504,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1519,7 +1519,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1534,7 +1534,7 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK HKD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1549,7 +1549,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1564,7 +1564,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1579,7 +1579,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1594,7 +1594,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1609,7 +1609,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1624,7 +1624,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1639,7 +1639,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1654,7 +1654,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1669,7 +1669,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1684,7 +1684,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1699,7 +1699,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1714,7 +1714,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1729,7 +1729,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1744,7 +1744,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1759,7 +1759,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1774,7 +1774,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1789,7 +1789,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1804,7 +1804,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1819,7 +1819,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1834,7 +1834,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1849,7 +1849,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1864,7 +1864,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1879,7 +1879,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1894,7 +1894,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1909,7 +1909,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1924,7 +1924,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     },
@@ -1939,7 +1939,7 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-07-03",
+      "verified_at": "2026-07-04",
       "verified_by": "stashaway_fallback",
       "notes": "Aggregator fallback (StashAway HK USD, as of 29 Jun 2026). Direct-scraping this provider is on the roadmap."
     }
