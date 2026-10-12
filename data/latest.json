@@ -1,8 +1,8 @@
 {
-  "as_of_utc": "2026-10-11T06:59:05Z",
-  "as_of_local": "2026-10-11 14:59 HKT",
+  "as_of_utc": "2026-10-12T07:11:53Z",
+  "as_of_local": "2026-10-12 15:11 HKT",
   "is_sample": false,
-  "data_source_note": "Refreshed 2026-10-11 via incognito headless Chromium. Syfe rates pulled DIRECT from product page (8/8 verified). Competitor rates pulled from StashAway HK aggregator HKD (21 Sep 2026) + USD (5 Oct 2026). Direct-scraping per provider is on the roadmap but most virtual banks publish rates only via their apps.",
+  "data_source_note": "Refreshed 2026-10-12 via incognito headless Chromium. Syfe rates pulled DIRECT from product page (8/8 verified). Competitor rates pulled from StashAway HK aggregator HKD (12 Oct 2026) + USD (12 Oct 2026). Direct-scraping per provider is on the roadmap but most virtual banks publish rates only via their apps.",
   "primary_sources": [
     {
       "name": "Syfe Cash+ Fixed",
@@ -165,9 +165,9 @@
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -182,9 +182,9 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "hsbc",
@@ -198,9 +198,9 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "hsbc",
@@ -214,9 +214,9 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "hsbc",
@@ -245,9 +245,9 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "bochk",
@@ -261,9 +261,9 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "bochk",
@@ -277,9 +277,9 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "bochk",
@@ -293,9 +293,9 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "standard_chartered",
@@ -309,9 +309,9 @@
       "online_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "standard_chartered",
@@ -325,9 +325,9 @@
       "online_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "standard_chartered",
@@ -335,15 +335,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.8,
+      "apy_pct": 3.3,
       "tier_min_ccy": 10000,
       "promo": true,
       "online_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "standard_chartered",
@@ -357,9 +357,9 @@
       "online_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "standard_chartered",
@@ -373,9 +373,9 @@
       "online_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "icbc_asia",
@@ -387,9 +387,9 @@
       "tier_min_ccy": 3000000,
       "promo": true,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -398,13 +398,13 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.9,
+      "apy_pct": 3.0,
       "tier_min_ccy": 3000000,
       "promo": true,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -413,14 +413,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 3.05,
+      "apy_pct": 3.15,
       "tier_min_ccy": 3000000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "icbc_asia",
@@ -428,14 +428,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 3.05,
+      "apy_pct": 3.25,
       "tier_min_ccy": 3000000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "icbc_asia",
@@ -448,9 +448,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "icbc_asia",
@@ -463,9 +463,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "icbc_asia",
@@ -478,9 +478,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "icbc_asia",
@@ -493,84 +493,84 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "china_citic",
       "provider_name": "China CITIC Bank",
-      "category": "traditional_bank",
-      "currency": "HKD",
-      "tenor": "1M",
-      "apy_pct": 2.4,
-      "tier_min_ccy": 10000,
-      "promo": true,
-      "product_type": "td",
-      "fetch_status": "ok",
-      "verified_at": "2026-10-11",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
-    },
-    {
-      "provider_id": "china_citic",
-      "provider_name": "China CITIC Bank",
-      "category": "traditional_bank",
-      "currency": "HKD",
-      "tenor": "3M",
-      "apy_pct": 2.8,
-      "tier_min_ccy": 10000,
-      "promo": true,
-      "product_type": "td",
-      "fetch_status": "ok",
-      "verified_at": "2026-10-11",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
-    },
-    {
-      "provider_id": "china_citic",
-      "provider_name": "China CITIC Bank",
-      "category": "traditional_bank",
-      "currency": "HKD",
-      "tenor": "6M",
-      "apy_pct": 2.77,
-      "tier_min_ccy": 10000,
-      "promo": true,
-      "product_type": "td",
-      "fetch_status": "ok",
-      "verified_at": "2026-10-11",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
-    },
-    {
-      "provider_id": "china_citic",
-      "provider_name": "China CITIC Bank",
-      "category": "traditional_bank",
-      "currency": "HKD",
-      "tenor": "12M",
-      "apy_pct": 3.0,
-      "tier_min_ccy": 10000,
-      "promo": true,
-      "product_type": "td",
-      "fetch_status": "ok",
-      "verified_at": "2026-10-11",
-      "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
-    },
-    {
-      "provider_id": "fubon_hk",
-      "provider_name": "Fubon Bank",
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "1M",
       "apy_pct": 2.45,
+      "tier_min_ccy": 10000,
+      "promo": true,
+      "product_type": "td",
+      "fetch_status": "ok",
+      "verified_at": "2026-10-12",
+      "verified_by": "stashaway_fallback",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
+    },
+    {
+      "provider_id": "china_citic",
+      "provider_name": "China CITIC Bank",
+      "category": "traditional_bank",
+      "currency": "HKD",
+      "tenor": "3M",
+      "apy_pct": 3.02,
+      "tier_min_ccy": 10000,
+      "promo": true,
+      "product_type": "td",
+      "fetch_status": "ok",
+      "verified_at": "2026-10-12",
+      "verified_by": "stashaway_fallback",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
+    },
+    {
+      "provider_id": "china_citic",
+      "provider_name": "China CITIC Bank",
+      "category": "traditional_bank",
+      "currency": "HKD",
+      "tenor": "6M",
+      "apy_pct": 3.09,
+      "tier_min_ccy": 10000,
+      "promo": true,
+      "product_type": "td",
+      "fetch_status": "ok",
+      "verified_at": "2026-10-12",
+      "verified_by": "stashaway_fallback",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
+    },
+    {
+      "provider_id": "china_citic",
+      "provider_name": "China CITIC Bank",
+      "category": "traditional_bank",
+      "currency": "HKD",
+      "tenor": "12M",
+      "apy_pct": 3.09,
+      "tier_min_ccy": 10000,
+      "promo": true,
+      "product_type": "td",
+      "fetch_status": "ok",
+      "verified_at": "2026-10-12",
+      "verified_by": "stashaway_fallback",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
+    },
+    {
+      "provider_id": "fubon_hk",
+      "provider_name": "Fubon Bank",
+      "category": "traditional_bank",
+      "currency": "HKD",
+      "tenor": "1M",
+      "apy_pct": 2.55,
       "tier_min_ccy": 500000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -579,15 +579,15 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.9,
+      "apy_pct": 3.0,
       "tier_min_ccy": 500000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fubon_hk",
@@ -595,14 +595,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 3.15,
+      "apy_pct": 3.25,
       "tier_min_ccy": 500000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -611,14 +611,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 3.2,
+      "apy_pct": 3.4,
       "tier_min_ccy": 500000,
       "promo": true,
       "new_money_only": true,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -632,9 +632,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "hang_seng",
@@ -647,9 +647,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "hang_seng",
@@ -662,9 +662,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "hang_seng",
@@ -677,9 +677,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "bea",
@@ -687,14 +687,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.75,
+      "apy_pct": 2.95,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "bea",
@@ -702,14 +702,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.75,
+      "apy_pct": 3.35,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "bea",
@@ -717,14 +717,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.75,
+      "apy_pct": 3.3,
       "tier_min_ccy": 10000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "ccb_asia",
@@ -836,14 +836,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.53,
+      "apy_pct": 3.63,
       "tier_min_ccy": 6000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "dbs_hk",
@@ -851,14 +851,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "12M",
-      "apy_pct": 3.68,
+      "apy_pct": 3.73,
       "tier_min_ccy": 6000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -871,9 +871,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -881,14 +881,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.85,
+      "apy_pct": 3.0,
       "tier_min_ccy": 100000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -896,14 +896,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 3.05,
+      "apy_pct": 3.2,
       "tier_min_ccy": 100000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -911,14 +911,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 3.05,
+      "apy_pct": 3.4,
       "tier_min_ccy": 100000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "public_bank_hk",
@@ -926,13 +926,13 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "1M",
-      "apy_pct": 2.4,
+      "apy_pct": 2.3,
       "tier_min_ccy": 500000,
       "promo": true,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -941,14 +941,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.7,
+      "apy_pct": 2.85,
       "tier_min_ccy": 500000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "public_bank_hk",
@@ -956,14 +956,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.85,
+      "apy_pct": 2.9,
       "tier_min_ccy": 500000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "public_bank_hk",
@@ -971,14 +971,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 3.05,
+      "apy_pct": 3.2,
       "tier_min_ccy": 500000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -991,9 +991,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1001,14 +1001,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.73,
+      "apy_pct": 2.83,
       "tier_min_ccy": 1000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1016,14 +1016,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.88,
+      "apy_pct": 3.03,
       "tier_min_ccy": 1000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1031,14 +1031,14 @@
       "category": "traditional_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.98,
+      "apy_pct": 3.33,
       "tier_min_ccy": 1000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "cmb_wing_lung",
@@ -1051,9 +1051,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "cmb_wing_lung",
@@ -1066,9 +1066,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "cmb_wing_lung",
@@ -1081,9 +1081,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "cmb_wing_lung",
@@ -1096,9 +1096,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fusion",
@@ -1111,9 +1111,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fusion",
@@ -1121,13 +1121,13 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.85,
+      "apy_pct": 2.65,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -1136,14 +1136,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 3.0,
+      "apy_pct": 2.8,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fusion",
@@ -1151,14 +1151,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 3.0,
+      "apy_pct": 2.8,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fusion",
@@ -1171,9 +1171,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fusion",
@@ -1186,9 +1186,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fusion",
@@ -1201,9 +1201,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "welab",
@@ -1226,14 +1226,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.75,
+      "apy_pct": 2.86,
       "tier_min_ccy": 10,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "welab",
@@ -1241,13 +1241,13 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 3.0,
+      "apy_pct": 3.1,
       "tier_min_ccy": 10,
       "promo": false,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -1256,14 +1256,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 3.0,
+      "apy_pct": 3.1,
       "tier_min_ccy": 10,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "airstar",
@@ -1276,9 +1276,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "airstar",
@@ -1286,14 +1286,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.6,
+      "apy_pct": 2.65,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "airstar",
@@ -1301,14 +1301,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 3.0,
+      "apy_pct": 3.05,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "airstar",
@@ -1316,13 +1316,13 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 3.1,
+      "apy_pct": 3.45,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -1336,9 +1336,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "za_bank",
@@ -1351,9 +1351,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "za_bank",
@@ -1366,9 +1366,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "za_bank",
@@ -1381,9 +1381,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "mox",
@@ -1396,9 +1396,9 @@
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "mox",
@@ -1406,14 +1406,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.75,
+      "apy_pct": 3.0,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "mox",
@@ -1421,14 +1421,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 3.0,
+      "apy_pct": 3.2,
       "tier_min_ccy": 1,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "mox",
@@ -1442,9 +1442,9 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "mox",
@@ -1458,9 +1458,9 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "mox",
@@ -1474,9 +1474,9 @@
       "new_money_only": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "livi",
@@ -1488,9 +1488,9 @@
       "tier_min_ccy": 50000,
       "promo": false,
       "product_type": "td",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap.",
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap.",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback"
     },
     {
@@ -1499,14 +1499,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "3M",
-      "apy_pct": 2.75,
+      "apy_pct": 2.85,
       "tier_min_ccy": 50000,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "livi",
@@ -1514,14 +1514,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "6M",
-      "apy_pct": 2.75,
+      "apy_pct": 2.9,
       "tier_min_ccy": 50000,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "livi",
@@ -1529,14 +1529,14 @@
       "category": "virtual_bank",
       "currency": "HKD",
       "tenor": "12M",
-      "apy_pct": 2.8,
+      "apy_pct": 2.9,
       "tier_min_ccy": 50000,
       "promo": false,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK HKD, as of 21 Sep 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK HKD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "standard_chartered",
@@ -1549,9 +1549,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fubon_hk",
@@ -1564,9 +1564,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fubon_hk",
@@ -1579,9 +1579,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fubon_hk",
@@ -1594,9 +1594,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fubon_hk",
@@ -1609,9 +1609,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "bea",
@@ -1624,9 +1624,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "bea",
@@ -1639,9 +1639,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "bea",
@@ -1654,9 +1654,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "fusion",
@@ -1669,9 +1669,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "airstar",
@@ -1679,14 +1679,14 @@
       "category": "virtual_bank",
       "currency": "USD",
       "tenor": "1M",
-      "apy_pct": 2.95,
+      "apy_pct": 2.9,
       "tier_min_ccy": 1,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "airstar",
@@ -1699,9 +1699,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "airstar",
@@ -1714,9 +1714,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "airstar",
@@ -1729,9 +1729,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1744,9 +1744,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1759,9 +1759,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1774,9 +1774,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "shanghai_commercial",
@@ -1789,9 +1789,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "public_bank_hk",
@@ -1804,9 +1804,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "public_bank_hk",
@@ -1814,14 +1814,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.9,
+      "apy_pct": 4.05,
       "tier_min_ccy": 0,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "public_bank_hk",
@@ -1829,14 +1829,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 4.0,
+      "apy_pct": 4.05,
       "tier_min_ccy": 0,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "public_bank_hk",
@@ -1849,9 +1849,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -1864,9 +1864,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -1874,14 +1874,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "3M",
-      "apy_pct": 3.75,
+      "apy_pct": 3.9,
       "tier_min_ccy": 100000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -1889,14 +1889,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 4.0,
+      "apy_pct": 4.05,
       "tier_min_ccy": 100000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "nanyang_commercial",
@@ -1904,14 +1904,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "12M",
-      "apy_pct": 4.1,
+      "apy_pct": 4.15,
       "tier_min_ccy": 100000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "dbs_hk",
@@ -1924,9 +1924,9 @@
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     },
     {
       "provider_id": "dbs_hk",
@@ -1934,14 +1934,14 @@
       "category": "traditional_bank",
       "currency": "USD",
       "tenor": "6M",
-      "apy_pct": 3.63,
+      "apy_pct": 3.73,
       "tier_min_ccy": 6000,
       "promo": true,
       "product_type": "td",
       "fetch_status": "ok",
-      "verified_at": "2026-10-11",
+      "verified_at": "2026-10-12",
       "verified_by": "stashaway_fallback",
-      "notes": "Aggregator fallback (StashAway HK USD, as of 5 Oct 2026). Direct-scraping this provider is on the roadmap."
+      "notes": "Aggregator fallback (StashAway HK USD, as of 12 Oct 2026). Direct-scraping this provider is on the roadmap."
     }
   ]
 }
